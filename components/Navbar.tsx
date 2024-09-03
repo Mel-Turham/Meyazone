@@ -38,7 +38,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 const Navbar = () => {
 	const { theme } = useTheme();
 	return (
-		<header className='w-full  fixed top-0  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col shadow-sm shadow-slate-50 dark:shadow-gray-50'>
+		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col shadow-sm shadow-slate-50 dark:shadow-gray-50'>
 			<div className='container flex items-center  justify-between py-2'>
 				<span className='text-gray-600 text-sm dark:text-gray-100  font-normal'>
 					Welcom to meyazone store
@@ -80,7 +80,7 @@ const Navbar = () => {
 					<div className='mr-8 flex items-center justify-center'>
 						<Menu className='w-7 h-7 cursor-pointer' />
 					</div>
-					<form className='flex items-center w-[95%]  py-1 bg-yellow-300 ps-1 pe-6 rounded-sm'>
+					<form className='flex items-center w-[95%]  py-1 bg-[#EF7C1A] ps-1 pe-6 rounded-sm'>
 						<Input
 							type='search'
 							placeholder='Search for products'
@@ -116,7 +116,7 @@ const Navbar = () => {
 							type='submit'
 							className='flex items-center justify-end w-[100px] h-[40px]'
 						>
-							<Search strokeWidth={1} />
+							<Search strokeWidth={1.5} />
 						</button>
 					</form>
 				</div>
@@ -173,7 +173,7 @@ const Navbar = () => {
 
 			<div className='container flex items-center justify-between h-14 relative '>
 				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden'>
-					<CardHeader className='bg-yellow-400 p-2'>
+					<CardHeader className='bg-[#EF7C1A] p-2'>
 						<CardTitle className='flex items-center'>
 							<div>
 								<Menu className='w-6 h-6' />
