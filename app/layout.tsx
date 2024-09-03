@@ -31,9 +31,7 @@ export default function RootLayout({
 						<ToggleTheme />
 					</div>
 					<Navbar />
-					<main className='min-h-[100dvh] container flex items-center justify-center text-white transition-all duration-300 ease-linear'>
-						{children}
-					</main>
+					<main>{children}</main>
 				</ThemeProvider>
 			</body>
 		</html>
