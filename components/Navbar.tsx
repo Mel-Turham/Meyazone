@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import {
 	Bus,
+	ChevronRight,
 	Heart,
 	MapPin,
 	Menu,
@@ -32,39 +33,38 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 const Navbar = () => {
 	const { theme } = useTheme();
 	return (
-		<header className='w-full  fixed top-0  bg-white text-slate-800 dark:bg-slate-900 dark:text-white flex flex-col  h-18 '>
-			<div className='container flex items-center h-1/2 justify-between py-2'>
-				<span className='text-gray-600 text-lg capitalize font-medium'>
+		<header className='w-full  fixed top-0  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col shadow-sm shadow-slate-50 dark:shadow-gray-50'>
+			<div className='container flex items-center  justify-between py-2'>
+				<span className='text-gray-600 text-sm dark:text-gray-100  font-normal'>
 					Welcom to meyazone store
 				</span>
-				<div className='flex items-center space-x-2'>
-					<div className='flex items-center justify-center text-gray-600 text-sm gap-1 cursor-pointer '>
+				<div className='flex items-center space-x-3 divide-x'>
+					<div className='flex items-center justify-center text-gray-600 text-sm gap-1 cursor-pointer  dark:text-gray-100 pe-4'>
 						<MapPin className='w-4 h-4' strokeWidth={1} />
 						<span>Store Locator</span>
 					</div>
-					<Separator orientation='vertical' />
-					<div className='flex items-center text-gray-600 text-sm gap-1 justify-center  '>
+
+					<div className='flex items-center text-gray-600 text-sm gap-1 justify-center  dark:text-gray-100 px-4'>
 						<Bus className='w-4 h-4' strokeWidth={1} />
 						<span>Track your order</span>
 					</div>
-					<Separator orientation='vertical' />
-					<div className='flex items-center text-gray-600 text-sm gap-1 '>
+					<div className='flex items-center text-gray-600 text-sm gap-1 dark:text-gray-100 px-4'>
 						<ShoppingBag className='w-4 h-4' strokeWidth={1} />
 						<span>Shop</span>
 					</div>
-					<Separator orientation='vertical' />
-					<div className='flex items-center text-gray-600 text-sm gap-1 '>
+					<div className='flex items-center text-gray-600 text-sm gap-1 dark:text-gray-100 ps-4'>
 						<User className='w-4 h-4' strokeWidth={1} />
 						<span>My account</span>
 					</div>
 				</div>
 			</div>
 			<Separator />
-			<nav className='container flex items-center justify-between  py-4'>
+			<div className='container flex items-center justify-between  py-2 '>
 				<Link href='/' className='w-2/12'>
 					<Image
 						src={theme === 'light' ? '/logo-dark.png' : '/logo-white.png'}
@@ -77,8 +77,8 @@ const Navbar = () => {
 				</Link>
 
 				<div className='w-7/12 flex items-center gap-2 justify-between'>
-					<div>
-						<Menu />
+					<div className='mr-8 flex items-center justify-center'>
+						<Menu className='w-7 h-7 cursor-pointer' />
 					</div>
 					<form className='flex items-center w-[95%]  py-1 bg-yellow-300 ps-1 pe-6 rounded-sm'>
 						<Input
@@ -120,43 +120,175 @@ const Navbar = () => {
 						</button>
 					</form>
 				</div>
-				<div className='w-2/12 flex items-center justify-end gap-5'>
+				<div className='w-2/12 flex items-center between gap-5'>
 					<TooltipProvider>
 						<Tooltip>
 							<TooltipTrigger>
-								<Repeat strokeWidth={1.5} className='text-gray-600 w-5 h-5' />
+								<Repeat
+									strokeWidth={1.5}
+									className='text-gray-600 w-5 h-5 dark:text-gray-100'
+								/>
 							</TooltipTrigger>
-							<TooltipContent>
+							<TooltipContent side='bottom'>
 								<p>Compare</p>
 							</TooltipContent>
 						</Tooltip>
 						<Tooltip>
 							<TooltipTrigger>
-								<Heart />
+								<Heart
+									strokeWidth={1.5}
+									className='text-gray-600 w-5 h-5 dark:text-gray-100'
+								/>
 							</TooltipTrigger>
-							<TooltipContent>
+							<TooltipContent side='bottom'>
 								<p>Wishlist</p>
 							</TooltipContent>
 						</Tooltip>
 						<Tooltip>
 							<TooltipTrigger>
-								<User />
+								<User
+									strokeWidth={1.5}
+									className='text-gray-600 w-5 h-5 dark:text-gray-100'
+								/>
 							</TooltipTrigger>
-							<TooltipContent>
+							<TooltipContent side='bottom'>
 								<p>My Account</p>
 							</TooltipContent>
 						</Tooltip>
 						<Tooltip>
-							<TooltipTrigger>
-								<ShoppingCart />
+							<TooltipTrigger className='relative flex items-center gap-5'>
+								<ShoppingCart
+									strokeWidth={1.5}
+									className='text-gray-600 w-5 h-5 dark:text-gray-100'
+								/>
+								<span className='absolute -right-12'>$0.00</span>
 							</TooltipTrigger>
-							<TooltipContent>
+							<TooltipContent side='bottom'>
 								<p>Cart</p>
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 				</div>
-			</nav>
+			</div>
+
+			<div className='container flex items-center justify-between h-14 relative '>
+				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden'>
+					<CardHeader className='bg-yellow-400 p-2'>
+						<CardTitle className='flex items-center'>
+							<div>
+								<Menu className='w-6 h-6' />
+							</div>
+							<span className='text-sm ml-5 font-semibold'>
+								All Departments
+							</span>
+						</CardTitle>
+					</CardHeader>
+					<CardContent className='divide-y spacey-1 py-3 px-2 rounded-none'>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+							<p className='text-muted-foreground text-sm font-medium'>
+								Value of the day
+							</p>
+							<ChevronRight
+								className='w-6 h-6 text-muted-foreground  '
+								strokeWidth={1.5}
+							/>
+						</div>
+					</CardContent>
+				</Card>
+				<div className='w-[260px]'></div>
+				<nav className=' flex items-center'>
+					<ul className='flex items-center gap-10 text-slate-600 font-semibold dark:text-white'>
+						<li className='px-2'>Home</li>
+						<li className='px-2'>Featured brands</li>
+						<li className='px-2'>Trending Styles</li>
+						<li className='px-2'>Gift Card</li>
+					</ul>
+				</nav>
+				<small className='text-slate-500  font-medium leading-none dark:text-gray-100 text-sm'>
+					Free Shipping on Orders $50+
+				</small>
+			</div>
 		</header>
 	);
 };
