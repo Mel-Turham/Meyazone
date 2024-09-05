@@ -172,7 +172,7 @@ const Navbar = () => {
 			</div>
 
 			<div className='container flex items-center justify-between h-14 relative '>
-				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden'>
+				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden z-10'>
 					<CardHeader className='bg-[#EF7C1A] p-2'>
 						<CardTitle className='flex items-center'>
 							<div>
