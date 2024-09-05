@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import { ToggleTheme } from '@/components/ToggleTheme';
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -31,7 +32,9 @@ export default function RootLayout({
 						<ToggleTheme />
 					</div>
 					<Navbar />
-					<main>{children}</main>
+					<main>
+						{children}
+					</main>
 				</ThemeProvider>
 			</body>
 		</html>
