@@ -1,23 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { products } from '@/db';
 import {
 	Card,
 	CardContent,
-	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-import {
-	ArrowRight,
-	Eye,
-	Heart,
-	Repeat,
-	ShoppingCart,
-	Star,
-} from 'lucide-react';
+import { ArrowRight, Eye, Heart, Repeat, Star } from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
@@ -29,9 +21,16 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 // import Swiper core and required modules
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import TabFeatured from '@/components/TabFeatured';
+import { TabTypes } from '@/types';
+import TabOnsale from '@/components/TabOnsale';
+import TabTopRated from '@/components/TabTopRated';
 
 const Home = () => {
-	const partOfProduts = products.slice(0, 6);
+	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
+	const TabFeaturedProducts = products.slice(0, 6);
+	const TabOnSaleProducts = products.slice(7, 13);
+	const TabTopRatedProducts = products.slice(14, 20);
 	return (
 		<>
 			<section className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-gray-500 bg-white overflow-hidden relative dark:bg-black dark:text-gray-100'>
@@ -524,70 +523,63 @@ const Home = () => {
 					'
 					>
 						<button
+							onClick={() => setActiveTab('featured')}
 							aria-label='tab-bar '
-							className='pb-2 relative flex items-center justify-center before:w-full before:absolute before:-bottom-[0.3px] before:left-0 before:h-[1.5px] before:rounded before:bg-[#EF7C1A] after:absolute after:w-[12px] after:h-1 after:rounded-full after:-bottom-[2.8px] after:bg-[#EF7C1A] after:mx-auto after:left-[50%] after:-translate-x-[50%] font-bold tracking-wide'
+							className={`pb-2 relative flex items-center justify-center tracking-wide 
+								
+								${
+									activeTab === 'featured'
+										? 'before:w-full before:absolute before:-bottom-[0.3px] before:left-0 before:h-[1.5px] before:rounded before:bg-[#EF7C1A] after:absolute after:w-[12px] after:h-1 after:rounded-full after:-bottom-[2.8px] after:bg-[#EF7C1A] after:mx-auto after:left-[50%] after:-translate-x-[50%] font-bold '
+										: ''
+								}
+								
+								`}
 						>
 							Featured
 						</button>
+
 						<button
+							onClick={() => setActiveTab('onsale')}
 							aria-label='tab-bar'
-							className=' pb-2 relative flex items-center justify-center tracking-wide'
+							className={`pb-2 relative flex items-center justify-center tracking-wide 
+								
+								${
+									activeTab === 'onsale'
+										? 'before:w-full before:absolute before:-bottom-[0.3px] before:left-0 before:h-[1.5px] before:rounded before:bg-[#EF7C1A] after:absolute after:w-[12px] after:h-1 after:rounded-full after:-bottom-[2.8px] after:bg-[#EF7C1A] after:mx-auto after:left-[50%] after:-translate-x-[50%] font-bold '
+										: ''
+								}
+								
+								`}
 						>
 							On Sale
 						</button>
 						<button
+							onClick={() => setActiveTab('toprated')}
 							aria-label='tab-bar'
-							className=' pb-2 relative flex items-center justify-center tracking-wide'
+							className={`pb-2 relative flex items-center justify-center tracking-wide 
+								
+								${
+									activeTab === 'toprated'
+										? 'before:w-full before:absolute before:-bottom-[0.3px] before:left-0 before:h-[1.5px] before:rounded before:bg-[#EF7C1A] after:absolute after:w-[12px] after:h-1 after:rounded-full after:-bottom-[2.8px] after:bg-[#EF7C1A] after:mx-auto after:left-[50%] after:-translate-x-[50%] font-bold '
+										: ''
+								}
+								
+								`}
 						>
 							Top Rated
 						</button>
 					</div>
 					<div className='w-full grid grid-cols-3 gap-2'>
-						{partOfProduts.map((product) => {
-							return (
-								<article
-									key={product.id}
-									className='h-full w-full overflow-hidden cursor-pointer'
-								>
-									<Card className='rounded pb-1 w-full h-full overflow-hidden flex flex-col justify-between'>
-										<CardHeader className='px-3'>
-											<CardDescription className='flex items-center gap-2'>
-												{product.category?.name.map((categories, index) => {
-													return (
-														<span className='text-xs mb-0.5 ' key={index}>
-															{categories}
-														</span>
-													);
-												})}
-											</CardDescription>
-											<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
-												{product.name}
-											</CardTitle>
-										</CardHeader>
-										<CardContent className='h-[220px] px-3 mt-0 '>
-											<Image
-												src={product.image}
-												alt={product.name}
-												width={300}
-												height={300}
-												className='w-full h-full object-cover'
-												loading='lazy'
-											/>
-										</CardContent>
-										<CardFooter className='px-3  justify-between  items-center'>
-											<span className='text-xl'>${product.price}</span>
-											<Button
-												aria-label='add to cart'
-												size={'icon'}
-												className='rounded-full'
-											>
-												<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
-											</Button>
-										</CardFooter>
-									</Card>
-								</article>
-							);
-						})}
+						{activeTab === 'featured' && (
+							<TabFeatured tabFeaturedProducts={TabFeaturedProducts} />
+						)}
+
+						{activeTab === 'onsale' && (
+							<TabOnsale tabOnSaleProducts={TabOnSaleProducts} />
+						)}
+						{activeTab === 'toprated' && (
+							<TabTopRated tabTopRated={TabTopRatedProducts} />
+						)}
 					</div>
 				</div>
 			</section>

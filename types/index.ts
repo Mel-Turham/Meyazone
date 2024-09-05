@@ -1,5 +1,6 @@
 import { StaticImageData } from 'next/image';
 
+type TabTypes = 'featured' | 'onsale' | 'toprated';
 type Categories = {
 	name: string[];
 };
@@ -17,4 +18,4 @@ interface ProductTypes {
 	decription: Description;
 }
 
-export { type ProductTypes };
+export { type ProductTypes, type TabTypes };
