@@ -1,4 +1,5 @@
 import {
+	consal,
 	applap,
 	appTablet,
 	cam4k,
@@ -208,7 +209,7 @@ const products: ProductTypes[] = [
 	{
 		id: 16,
 		name: 'Game Console Controller + USB 3.0 Cable',
-		image: consal_300,
+		image: consal,
 		category: {
 			name: ['Game Consoles', 'Video'],
 		},
@@ -399,4 +400,43 @@ const products: ProductTypes[] = [
 	},
 ];
 
-export { products };
+const CategroryLinks = [
+	{
+		link: 'Best Deals',
+		href: '#',
+	},
+	{
+		link: 'TV & Video',
+		href: '#',
+	},
+	{
+		link: 'Cameras',
+		href: '#',
+	},
+	{
+		link: 'Audio',
+		href: '#',
+	},
+	{
+		link: 'Smartphones',
+		href: '#',
+	},
+	{
+		link: 'Gps & Navi',
+		href: '#',
+	},
+	{
+		link: 'Computers',
+		href: '#',
+	},
+	{
+		link: 'Portable audio',
+		href: '#',
+	},
+	{
+		link: 'Accessories',
+		href: '#',
+	},
+];
+
+export { products, CategroryLinks };
