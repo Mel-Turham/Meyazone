@@ -26,7 +26,6 @@ import {
 	SelectValue,
 	SelectTrigger,
 } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
 import {
 	Tooltip,
 	TooltipContent,
@@ -34,6 +33,8 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+
+
 
 const Navbar = () => {
 	const { theme } = useTheme();
@@ -77,48 +78,50 @@ const Navbar = () => {
 				</Link>
 
 				<div className='w-7/12 flex items-center gap-2 justify-between'>
-					<div className='mr-8 flex items-center justify-center'>
+					<div
+						className='mr-8 flex items-center justify-center'
+					>
 						<Menu className='w-7 h-7 cursor-pointer' />
 					</div>
 					<form className='flex items-center w-[95%]  py-1 bg-[#EF7C1A] ps-1 pe-6 rounded-sm'>
-						<Input
-							type='search'
-							placeholder='Search for products'
-							className='outline-none focus-visible:ring-transparent focus-visible:ring-0 border-none rounded-none'
-						/>
-						<Select>
-							<SelectTrigger className='focus-visible:ring-transparent focus-visible:ring-0 rounded-none border-none outline-none'>
-								<SelectValue placeholder='All Categories' />
-							</SelectTrigger>
-							<SelectContent className=''>
-								<SelectItem value='All'>All Categories</SelectItem>
-								<SelectItem value='Uncategorized'>Uncategorized</SelectItem>
-								<SelectItem value='Accessories'>Accessories</SelectItem>
-								<SelectItem value='Cameras & Phothographie'>
-									Cameras & Photographie
-								</SelectItem>
-								<SelectItem value='Computer'>Computers</SelectItem>
-								<SelectItem value='Gadgets'>Gadgets</SelectItem>
-								<SelectItem value='home entertaiment'>
-									Home Entertaiment
-								</SelectItem>
-								<SelectItem value='laptop-computers'>
-									Laptops & Computers
-								</SelectItem>
-								<SelectItem value='Smartp'>Smart Phone</SelectItem>
-								<SelectItem value='videogame'>Video Games</SelectItem>
-								<SelectItem value='stero'>Steros</SelectItem>
-								<SelectItem value='home theatre'>Home Theatre</SelectItem>
-							</SelectContent>
-						</Select>
+							<Input
+								type='search'
+								placeholder='Search for products'
+								className='outline-none focus-visible:ring-transparent focus-visible:ring-0 border-none rounded-none'
+							/>
+							<Select>
+								<SelectTrigger className='focus-visible:ring-transparent focus-visible:ring-0 rounded-none border-none outline-none'>
+									<SelectValue placeholder='All Categories' />
+								</SelectTrigger>
+								<SelectContent className=''>
+									<SelectItem value='All'>All Categories</SelectItem>
+									<SelectItem value='Uncategorized'>Uncategorized</SelectItem>
+									<SelectItem value='Accessories'>Accessories</SelectItem>
+									<SelectItem value='Cameras & Phothographie'>
+										Cameras & Photographie
+									</SelectItem>
+									<SelectItem value='Computer'>Computers</SelectItem>
+									<SelectItem value='Gadgets'>Gadgets</SelectItem>
+									<SelectItem value='home entertaiment'>
+										Home Entertaiment
+									</SelectItem>
+									<SelectItem value='laptop-computers'>
+										Laptops & Computers
+									</SelectItem>
+									<SelectItem value='Smartp'>Smart Phone</SelectItem>
+									<SelectItem value='videogame'>Video Games</SelectItem>
+									<SelectItem value='stero'>Steros</SelectItem>
+									<SelectItem value='home theatre'>Home Theatre</SelectItem>
+								</SelectContent>
+							</Select>
 
-						<button
-							type='submit'
-							className='flex items-center justify-end w-[100px] h-[40px]'
-						>
-							<Search strokeWidth={1.5} />
-						</button>
-					</form>
+							<button
+								type='submit'
+								className='flex items-center justify-end w-[100px] h-[40px]'
+							>
+								<Search strokeWidth={1.5} />
+							</button>
+						</form>
 				</div>
 				<div className='w-2/12 flex items-center between gap-5'>
 					<TooltipProvider>
