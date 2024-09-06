@@ -27,8 +27,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
+import 'swiper/css/grid';
 // import Swiper core and required modules
-import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import { Pagination, Autoplay, EffectFade, Grid } from 'swiper/modules';
 import TabFeatured from '@/components/TabFeatured';
 import { TabTypes } from '@/types';
 import TabOnsale from '@/components/TabOnsale';
@@ -40,6 +41,7 @@ const Home = () => {
 	const TabFeaturedProducts = products.slice(0, 6);
 	const TabOnSaleProducts = products.slice(7, 13);
 	const TabTopRatedProducts = products.slice(14, 20);
+	const BestSellersProducts = products.slice(0, 10);
 
 	const CategoriesProducts = TabTopRatedProducts.slice(0, 5);
 	return (
@@ -597,9 +599,9 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
-
-			<section className='container bg-[#F4F4F4] dark:bg-slate-900 pt-6'>
-				<nav className=' w-full flex items-center justify-center'>
+			{/* Section categories */}
+			<section className='container bg-[#F4F4F4] dark:bg-slate-900 pt-6 pb-8 '>
+				<nav className=' w-full flex items-center justify-center h-3/12'>
 					<ul className='flex w-full justify-evenly items-center gap-5 border-b border-solid border-slate-200 dark:border-gray-300'>
 						{CategroryLinks.map((link, index) => (
 							<Link
@@ -616,14 +618,14 @@ const Home = () => {
 						))}
 					</ul>
 				</nav>
-				<div className=' grid grid-cols-4 gap-1  grid-rows-2 mt-4 [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3'>
+				<div className=' grid grid-cols-4 gap-1  grid-rows-2 mt-4 [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3 min-h-[80%]'>
 					{CategoriesProducts.map((product) => {
 						return (
 							<article
 								key={product.id}
 								className='h-full w-full overflow-hidden cursor-pointer'
 							>
-								<Card className='rounded pb-1 w-full h-full overflow-hidden flex flex-col justify-between '>
+								<Card className='rounded  w-full h-full overflow-hidden flex flex-col ga-1 justify-between'>
 									<CardHeader className='px-3'>
 										<CardDescription className='flex items-center gap-2'>
 											{product.category?.name.map((categories, index) => {
@@ -662,6 +664,81 @@ const Home = () => {
 							</article>
 						);
 					})}
+				</div>
+			</section>
+			{/* Best sellers component section */}
+
+			<section className='container py-6 '>
+				<div className='flex items-center justify-between relative border-b border-solid
+				text-gray-600 border-gray-300'>
+					<h3 className='text-2xl  font-medium '>Best Sellers</h3>
+					<nav className='font-light text-xs'>
+						<ul className='flex items-center justify-center gap-5'>
+							<li>Top 20</li>
+							<li>Smart Phones & Tablets</li>
+							<li>Laptops and Computers</li>
+							<li>Video Cameras</li>
+						</ul>
+					</nav>
+				</div>
+				<div
+					className=' w-full grid grid-col-1 overflow-hidden h-[27.5rem]
+				mt-6'
+				>
+					<Swiper
+						className='w-full h-full'
+						slidesPerView={3}
+						autoplay
+						modules={[Grid, Pagination, Autoplay]}
+						grid={{
+							rows: 2,
+						}}
+						spaceBetween={10}
+						pagination={{
+							clickable: true,
+						}}
+					>
+						{BestSellersProducts.map((product) => {
+							return (
+								<SwiperSlide key={product.id}>
+									<Card className='rounded-none flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
+										<div className='h-full w-[55%] relative'>
+											<Image
+												src={product.image}
+												alt={product.name}
+												loading='lazy'
+												width={500}
+												height={500}
+												className='object-contain w-full h-full overflow-none'
+											/>
+										</div>
+										<div className='flex flex-col h-full justify-between'>
+								<div>
+											<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
+												{product.category?.name.map((categorie, index) => {
+													return (
+														<span key={index}>{categorie}</span>
+													);
+												})}
+										</p>
+											<h4 className='font-semibold text-blue-600 mt-2'>
+												{product.name}
+										</h4>
+								</div>
+											<div className='flex items-center justify-between mt-auto '>
+												<span className='font-medium text-xl text-gray-600 '>
+													${product.price}
+												</span>
+												<Button size='icon' className='rounded-full p-0'>
+													<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
+												</Button>
+											</div>
+										</div>
+									</Card>
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
 				</div>
 			</section>
 		</>
