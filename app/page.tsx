@@ -1,15 +1,23 @@
 'use client';
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { products } from '@/db';
+import { CategroryLinks, products } from '@/db';
 import {
 	Card,
 	CardContent,
+	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-import { ArrowRight, Eye, Heart, Repeat, Star } from 'lucide-react';
+import {
+	ArrowRight,
+	Eye,
+	Heart,
+	Repeat,
+	ShoppingCart,
+	Star,
+} from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
@@ -25,14 +33,18 @@ import TabFeatured from '@/components/TabFeatured';
 import { TabTypes } from '@/types';
 import TabOnsale from '@/components/TabOnsale';
 import TabTopRated from '@/components/TabTopRated';
+import Link from 'next/link';
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
 	const TabFeaturedProducts = products.slice(0, 6);
 	const TabOnSaleProducts = products.slice(7, 13);
 	const TabTopRatedProducts = products.slice(14, 20);
+
+	const CategoriesProducts = TabTopRatedProducts.slice(0, 5);
 	return (
 		<>
+			{/* Hero section */}
 			<section className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-gray-500 bg-white overflow-hidden relative dark:bg-black dark:text-gray-100'>
 				<div className='w-[70%] items-center flex h-full justify-between'>
 					<Swiper
@@ -254,6 +266,7 @@ const Home = () => {
 					</Swiper>
 				</div>
 			</section>
+			{/* top products section */}
 			<section className='container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				<Card className='dark:bg-slate-900 rounded-none py-4 cursor-pointer bg-white/40 hover:dark:bg-slate-800 transition-all duration-300 ease-in-out shadow-sm dark:shadow-none hover:scale-105 group'>
 					<CardContent className='flex  mb-0 pb-0  gap-8'>
@@ -478,7 +491,8 @@ const Home = () => {
 					</CardFooter>
 				</Card>
 			</section>
-			<section className=' container w-full gap-5 grid grid-cols-3 overflow-hidden'>
+			{/* tab sections*/}
+			<section className=' container w-full gap-5 grid grid-cols-3 overflow-hidden pb-5'>
 				<div className='col-span-1'>
 					<Card className='cursor-pointer rounded'>
 						<CardHeader>
@@ -581,6 +595,73 @@ const Home = () => {
 							<TabTopRated tabTopRated={TabTopRatedProducts} />
 						)}
 					</div>
+				</div>
+			</section>
+
+			<section className='container bg-[#F4F4F4] dark:bg-slate-900 pt-6'>
+				<nav className=' w-full flex items-center justify-center'>
+					<ul className='flex w-full justify-evenly items-center gap-5 border-b border-solid border-slate-200 dark:border-gray-300'>
+						{CategroryLinks.map((link, index) => (
+							<Link
+								className={`py-4 relative text-sm  ${
+									index === 0
+										? 'before:w-full before:absolute before:-bottom-[0.3px] before:left-0 before:h-[1.8px] before:rounded before:bg-[#EF7C1A] after:absolute after:w-[12px] after:h-1 after:rounded-full after:-bottom-[2.8px] after:bg-[#EF7C1A] after:mx-auto after:left-[50%] after:-translate-x-[50%] font-bold '
+										: 'font-light'
+								}`}
+								key={index}
+								href={link.href}
+							>
+								{link.link}
+							</Link>
+						))}
+					</ul>
+				</nav>
+				<div className=' grid grid-cols-4 gap-1  grid-rows-2 mt-4 [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3'>
+					{CategoriesProducts.map((product) => {
+						return (
+							<article
+								key={product.id}
+								className='h-full w-full overflow-hidden cursor-pointer'
+							>
+								<Card className='rounded pb-1 w-full h-full overflow-hidden flex flex-col justify-between '>
+									<CardHeader className='px-3'>
+										<CardDescription className='flex items-center gap-2'>
+											{product.category?.name.map((categories, index) => {
+												return (
+													<span className='text-xs mb-0.5 ' key={index}>
+														{categories}
+													</span>
+												);
+											})}
+										</CardDescription>
+										<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
+											{product.name}
+										</CardTitle>
+									</CardHeader>
+									<CardContent className=' px-3 mt-0 '>
+										<Image
+											src={product.image}
+											alt={product.name}
+											width={300}
+											height={300}
+											className='w-full h-full object-cover'
+											loading='lazy'
+										/>
+									</CardContent>
+									<CardFooter className='px-3  justify-between  items-center'>
+										<span className='text-xl'>${product.price}</span>
+										<Button
+											aria-label='add to cart'
+											size={'icon'}
+											className='rounded-full'
+										>
+											<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
+										</Button>
+									</CardFooter>
+								</Card>
+							</article>
+						);
+					})}
 				</div>
 			</section>
 		</>
