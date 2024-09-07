@@ -670,14 +670,14 @@ const Home = () => {
 
 			<section className='container py-6 '>
 				<div className='flex items-center justify-between relative border-b border-solid
-				text-gray-600 border-gray-300'>
-					<h3 className='text-2xl  font-medium '>Best Sellers</h3>
-					<nav className='font-light text-xs'>
+				text-gray-600 dark:text-gray-100 border-gray-300'>
+					<h3 className='text-xl  font-medium relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>Best Sellers</h3>
+					<nav className='font-light text-xs pb-3'>
 						<ul className='flex items-center justify-center gap-5'>
-							<li>Top 20</li>
-							<li>Smart Phones & Tablets</li>
-							<li>Laptops and Computers</li>
-							<li>Video Cameras</li>
+							<li className='px-2 py-1 border-2 border-solid border-[#EF7C1A] rounded-full'>Top 20</li>
+							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>Smart Phones & Tablets</li>
+							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>Laptops and Computers</li>
+							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>Video Cameras</li>
 						</ul>
 					</nav>
 				</div>
