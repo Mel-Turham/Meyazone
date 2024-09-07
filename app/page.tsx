@@ -741,6 +741,13 @@ const Home = () => {
 					</Swiper>
 				</div>
 			</section>
+
+			{/* section pub */}
+			<section className='container py-8'>
+				<Link href='#'>
+				 <Image src='/home-banner.webp' alt='publication' loading='lazy' width={500} height={600} className='w-full h-full object-cover cursor-pointer'/>
+				</Link>
+			</section>
 		</>
 	);
 };
