@@ -73,7 +73,7 @@ const Home = () => {
 										initial={{ opacity: 0, scale: 1.8 }}
 										animate={{ opacity: 1, scale: 1 }}
 										transition={{ delay: 0.8, ease: 'easeInOut' }}
-										className='scroll-m-20 text-4xl font-thin leading-loose uppercase lg:text-5xl mb-10 mt-5'
+										className='scroll-m-20 text-4xl font-light leading-loose uppercase lg:text-5xl mb-10 mt-5'
 									>
 										Timepieces that make a statement
 										<br />
@@ -143,7 +143,7 @@ const Home = () => {
 										initial={{ opacity: 0, scale: 1.8 }}
 										animate={{ opacity: 1, scale: 1 }}
 										transition={{ delay: 0.8, ease: 'easeInOut' }}
-										className='scroll-m-20 text-4xl font-thin leading-loose uppercase lg:text-5xl mb-10 mt-5'
+										className='scroll-m-20 text-4xl font-light leading-loose uppercase lg:text-5xl mb-10 mt-5'
 									>
 										Timepieces that make a statement
 										<br />
@@ -209,7 +209,7 @@ const Home = () => {
 										className='scroll-m-20 text-4xl font-thin leading-loose uppercase lg:text-6xl mb-10 '
 									>
 										<p>The new standard </p>
-										<p className='text-base my-5 font-semibold'>
+										<p className='text-base my-5 font-light'>
 											under favorable smartwatches
 										</p>
 
@@ -784,6 +784,27 @@ const Home = () => {
 						/>
 					</div>
 				</div>
+				<Swiper
+					slidesPerView={4}
+					modules={[Pagination]}
+					pagination={{ clickable: true }}
+					className='mt-7 h-[14.8rem] '
+				>
+					{products.slice(0, 10).map((product, index) => {
+						return (
+							<SwiperSlide key={product.id}>
+								<Card className='rounded-none ml-2 mt-2'>
+									<CardHeader>
+										<CardDescription>Card description</CardDescription>
+										<CardTitle>Title card there</CardTitle>
+									</CardHeader>
+									<CardContent>carcontent there..</CardContent>
+									<CardFooter>Footer card there!</CardFooter>
+								</Card>
+							</SwiperSlide>
+						);
+					})}
+				</Swiper>
 			</section>
 		</>
 	);

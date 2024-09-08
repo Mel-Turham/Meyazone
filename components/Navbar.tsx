@@ -48,7 +48,7 @@ const Navbar = () => {
 		}
 	}, [isOpen]);
 	return (
-		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-300 dark:border-gray-300 '>
+		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700 '>
 			<div className='container flex items-center  justify-between py-2'>
 				<span className='text-gray-600 text-sm dark:text-gray-100  font-normal'>
 					Welcom to meyazone store
@@ -184,7 +184,7 @@ const Navbar = () => {
 				</div>
 			</div>
 
-			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-200 py-1 '>
+			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-700 py-1 '>
 				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden z-10'>
 					<CardHeader className='bg-[#EF7C1A] p-2'>
 						<CardTitle className='flex items-center'>
