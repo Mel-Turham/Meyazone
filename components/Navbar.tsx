@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useTheme } from 'next-themes';
 import {
@@ -32,14 +32,23 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-
-
+import { useMenuStore } from '@/store/MenuStore';
 
 const Navbar = () => {
 	const { theme } = useTheme();
+	const { setIsOpen, isOpen } = useMenuStore();
+	useEffect(() => {
+		const bodyEl = document.querySelector<HTMLBodyElement>('body')!;
+		if (isOpen) {
+			bodyEl.classList.add('overflow-hidden');
+		} else {
+			bodyEl.classList.remove('overflow-hidden');
+		}
+	}, [isOpen]);
 	return (
-		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col shadow-sm shadow-slate-50 dark:shadow-gray-50'>
+		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-300 dark:border-gray-300 '>
 			<div className='container flex items-center  justify-between py-2'>
 				<span className='text-gray-600 text-sm dark:text-gray-100  font-normal'>
 					Welcom to meyazone store
@@ -79,49 +88,50 @@ const Navbar = () => {
 
 				<div className='w-7/12 flex items-center gap-2 justify-between'>
 					<div
+						onClick={() => setIsOpen(!isOpen)}
 						className='mr-8 flex items-center justify-center'
 					>
 						<Menu className='w-7 h-7 cursor-pointer' />
 					</div>
-					<form className='flex items-center w-[95%]  py-1 bg-[#EF7C1A] ps-1 pe-6 rounded-sm'>
-							<Input
-								type='search'
-								placeholder='Search for products'
-								className='outline-none focus-visible:ring-transparent focus-visible:ring-0 border-none rounded-none'
-							/>
-							<Select>
-								<SelectTrigger className='focus-visible:ring-transparent focus-visible:ring-0 rounded-none border-none outline-none'>
-									<SelectValue placeholder='All Categories' />
-								</SelectTrigger>
-								<SelectContent className=''>
-									<SelectItem value='All'>All Categories</SelectItem>
-									<SelectItem value='Uncategorized'>Uncategorized</SelectItem>
-									<SelectItem value='Accessories'>Accessories</SelectItem>
-									<SelectItem value='Cameras & Phothographie'>
-										Cameras & Photographie
-									</SelectItem>
-									<SelectItem value='Computer'>Computers</SelectItem>
-									<SelectItem value='Gadgets'>Gadgets</SelectItem>
-									<SelectItem value='home entertaiment'>
-										Home Entertaiment
-									</SelectItem>
-									<SelectItem value='laptop-computers'>
-										Laptops & Computers
-									</SelectItem>
-									<SelectItem value='Smartp'>Smart Phone</SelectItem>
-									<SelectItem value='videogame'>Video Games</SelectItem>
-									<SelectItem value='stero'>Steros</SelectItem>
-									<SelectItem value='home theatre'>Home Theatre</SelectItem>
-								</SelectContent>
-							</Select>
-
-							<button
-								type='submit'
-								className='flex items-center justify-end w-[100px] h-[40px]'
-							>
-								<Search strokeWidth={1.5} />
-							</button>
-						</form>
+					<form className='flex items-center w-[95%] rounded-full ps-2 border border-solid overflow-hidden border-gray-200 bg-gray-50 p-1'>
+						<Select>
+							<SelectTrigger className='focus-visible:ring-transparent focus-visible:ring-0 rounded-full border-none outline-none w-[40%] bg-transparent dark:text-gray-500'>
+								<SelectValue placeholder='All Categories' />
+							</SelectTrigger>
+							<SelectContent>
+								<SelectItem value='All'>All Categories</SelectItem>
+								<SelectItem value='Uncategorized'>Uncategorized</SelectItem>
+								<SelectItem value='Accessories'>Accessories</SelectItem>
+								<SelectItem value='Cameras & Phothographie'>
+									Cameras & Photographie
+								</SelectItem>
+								<SelectItem value='Computer'>Computers</SelectItem>
+								<SelectItem value='Gadgets'>Gadgets</SelectItem>
+								<SelectItem value='home entertaiment'>
+									Home Entertaiment
+								</SelectItem>
+								<SelectItem value='laptop-computers'>
+									Laptops & Computers
+								</SelectItem>
+								<SelectItem value='Smartp'>Smart Phone</SelectItem>
+								<SelectItem value='videogame'>Video Games</SelectItem>
+								<SelectItem value='stero'>Steros</SelectItem>
+								<SelectItem value='home theatre'>Home Theatre</SelectItem>
+							</SelectContent>
+						</Select>
+						<Input
+							type='search'
+							placeholder='Search for products'
+							className='outline-none focus-visible:ring-transparent focus-visible:ring-0 border-none rounded-full w-[48%] pl-6 bg-transparent text-slate-600'
+						/>
+						<Button
+							type='submit'
+							size='icon'
+							className='rounded-full h-[38.8px] w-[38.8px] p-0 ml-auto dark:bg-slate-900 text-white'
+						>
+							<Search strokeWidth={2} className='w-6 h-6' />
+						</Button>
+					</form>
 				</div>
 				<div className='w-2/12 flex items-center between gap-5'>
 					<TooltipProvider>
@@ -174,7 +184,7 @@ const Navbar = () => {
 				</div>
 			</div>
 
-			<div className='container flex items-center justify-between h-14 relative '>
+			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-200 py-1 '>
 				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden z-10'>
 					<CardHeader className='bg-[#EF7C1A] p-2'>
 						<CardTitle className='flex items-center'>
@@ -268,7 +278,7 @@ const Navbar = () => {
 								strokeWidth={1.5}
 							/>
 						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
+						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded'>
 							<p className='text-muted-foreground text-sm font-medium'>
 								Value of the day
 							</p>
@@ -281,16 +291,30 @@ const Navbar = () => {
 				</Card>
 				<div className='w-[260px]'></div>
 				<nav className=' flex items-center'>
-					<ul className='flex items-center gap-10 text-slate-600 font-semibold dark:text-white'>
-						<li className='px-2'>Home</li>
-						<li className='px-2'>Featured brands</li>
-						<li className='px-2'>Trending Styles</li>
-						<li className='px-2'>Gift Card</li>
+					<ul className='flex items-center  text-slate-600 font-medium dark:text-white'>
+						<li className='px-4'>Home</li>
+						<li className='px-4'>Shop</li>
+						<li className='px-4'>Blog</li>
+						<li className='px-4'>About us</li>
+						<li className='px-4'>Contact</li>
 					</ul>
 				</nav>
-				<small className='text-slate-500  font-medium leading-none dark:text-gray-100 text-sm'>
-					Free Shipping on Orders $50+
-				</small>
+				<div className=' h-full px-2  py-1 bg-[#EF7C1A] flex gap-2 rounded items-center cursor-pointer text-black'>
+					<Image
+						src='/call.png'
+						alt='headphone'
+						loading='lazy'
+						width={40}
+						height={40}
+						className=' w-[20%] h-full object-contain'
+					/>
+					<div className='flex flex-col h-full'>
+						<small className='font-light leading-none  text-xs '>
+							Call us 7j/24
+						</small>
+						<p className='text-lg text-nowrap font-black'>+237 672 54 22 25</p>
+					</div>
+				</div>
 			</div>
 		</header>
 	);
