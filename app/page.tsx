@@ -12,11 +12,13 @@ import {
 } from '@/components/ui/card';
 import {
 	ArrowRight,
+	ChevronLeft,
 	Eye,
 	Heart,
 	Repeat,
 	ShoppingCart,
 	Star,
+	ChevronRight,
 } from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -669,20 +671,32 @@ const Home = () => {
 			{/* Best sellers component section */}
 
 			<section className='container py-6 '>
-				<div className='flex items-center justify-between relative border-b border-solid
-				text-gray-600 dark:text-gray-100 border-gray-300'>
-					<h3 className='text-xl  font-medium relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>Best Sellers</h3>
+				<div
+					className='flex items-center justify-between relative border-b border-solid
+				text-gray-600 dark:text-gray-100 border-gray-300'
+				>
+					<h3 className='text-xl  font-medium relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
+						Best Sellers
+					</h3>
 					<nav className='font-light text-xs pb-3'>
 						<ul className='flex items-center justify-center gap-5'>
-							<li className='px-2 py-1 border-2 border-solid border-[#EF7C1A] rounded-full'>Top 20</li>
-							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>Smart Phones & Tablets</li>
-							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>Laptops and Computers</li>
-							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>Video Cameras</li>
+							<li className='px-2 py-1 border-2 border-solid border-[#EF7C1A] rounded-full'>
+								Top 20
+							</li>
+							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>
+								Smart Phones & Tablets
+							</li>
+							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>
+								Laptops and Computers
+							</li>
+							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>
+								Video Cameras
+							</li>
 						</ul>
 					</nav>
 				</div>
 				<div
-					className=' w-full grid grid-col-1 overflow-hidden h-[27.5rem]
+					className=' w-full grid grid-col-1 overflow-hidden h-[24.4rem]
 				mt-6'
 				>
 					<Swiper
@@ -713,20 +727,18 @@ const Home = () => {
 											/>
 										</div>
 										<div className='flex flex-col h-full justify-between'>
-								<div>
-											<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
-												{product.category?.name.map((categorie, index) => {
-													return (
-														<span key={index}>{categorie}</span>
-													);
-												})}
-										</p>
-											<h4 className='font-semibold text-blue-600 mt-2'>
-												{product.name}
-										</h4>
-								</div>
+											<div>
+												<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
+													{product.category?.name.map((categorie, index) => {
+														return <span key={index}>{categorie}</span>;
+													})}
+												</p>
+												<h4 className='font-semibold text-blue-600 mt-2'>
+													{product.name}
+												</h4>
+											</div>
 											<div className='flex items-center justify-between mt-auto '>
-												<span className='font-medium text-xl text-gray-600 '>
+												<span className='font-medium text-xl text-gray-600 dark:text-gray-100 '>
 													${product.price}
 												</span>
 												<Button size='icon' className='rounded-full p-0'>
@@ -745,8 +757,33 @@ const Home = () => {
 			{/* section pub */}
 			<section className='container py-8'>
 				<Link href='#'>
-				 <Image src='/home-banner.webp' alt='publication' loading='lazy' width={500} height={600} className='w-full h-full object-cover cursor-pointer'/>
+					<Image
+						src='/home-banner.webp'
+						alt='publication'
+						loading='lazy'
+						width={500}
+						height={600}
+						className='w-full h-full object-cover cursor-pointer'
+					/>
 				</Link>
+			</section>
+
+			<section className='container py-5'>
+				<div
+					className='flex items-center justify-between relative border-b border-solid
+				text-gray-600 dark:text-gray-100 border-gray-300'
+				>
+					<h3 className='text-xl  font-medium relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
+						Recent added
+					</h3>
+					<div className='flex items-center gap-1 pb-3'>
+						<ChevronLeft className='w-6 h-6 cursor-pointer' strokeWidth={2.5} />
+						<ChevronRight
+							className='w-6 h-6 cursor-pointer'
+							strokeWidth={2.5}
+						/>
+					</div>
+				</div>
 			</section>
 		</>
 	);
