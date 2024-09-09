@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { CategroryLinks, products } from '@/db';
+import { BrandsImages, CategroryLinks, products, users } from '@/db';
 import {
 	Card,
 	CardContent,
@@ -37,6 +37,8 @@ import { TabTypes } from '@/types';
 import TabOnsale from '@/components/TabOnsale';
 import TabTopRated from '@/components/TabTopRated';
 import Link from 'next/link';
+import Testimonial from '@/components/Testimonial';
+import Braind from '@/components/Braind';
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
@@ -805,6 +807,30 @@ const Home = () => {
 						);
 					})}
 				</Swiper>
+			</section>
+			{/* users testimonials */}
+			<section className='py-8'>
+				<div className='flex items-center flex-col  justify-center py-4'>
+					<h2 className='scroll-m-20  text-3xl font-bold tracking-tight first:mt-0'>
+						What our customers think
+					</h2>
+					<p className='leading-3 [&:not(:first-child)]:mt-6'>
+						Execellent 4.9 based on 22.181 reviews
+					</p>
+				</div>
+				<div className='container grid grid-cols-4 gap-2 mt-2'>
+					{users.slice(0, 4).map((user) => {
+						return <Testimonial key={user.userId} user={user} />;
+					})}
+				</div>
+			</section>
+
+			<section className='py-8'>
+				<div className='container  gap-2 border-y border-solid border-gray-200 grid grid-cols-6 py-4 dark:border-slate-800'>
+					{BrandsImages.map((img) => {
+						return <Braind key={img.id} image={img} />;
+					})}
+				</div>
 			</section>
 		</>
 	);
