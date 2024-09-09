@@ -18,4 +18,16 @@ interface ProductTypes {
 	decription: Description;
 }
 
-export { type ProductTypes, type TabTypes };
+type UsersType = {
+	userId: number;
+	userName: string;
+	userImage: StaticImageData | string;
+	userFeetBack: string;
+};
+
+type ImageType = {
+	id: number;
+	imageName: StaticImageData;
+};
+
+export { type ProductTypes, type TabTypes, type UsersType, type ImageType };

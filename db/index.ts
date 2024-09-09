@@ -22,8 +22,14 @@ import {
 	Whirelesscar,
 	WideTv,
 	WirelessSound,
+	brain_1,
+	brain_2,
+	brain_3,
+	brain_4,
+	brain_5,
+	brain_6,
 } from '@/public';
-import { ProductTypes } from '@/types';
+import { ImageType, ProductTypes, UsersType } from '@/types';
 
 const products: ProductTypes[] = [
 	{
@@ -439,4 +445,104 @@ const CategroryLinks = [
 	},
 ];
 
-export { products, CategroryLinks };
+const users: UsersType[] = [
+	{
+		userId: 1,
+		userName: 'Liam Turner',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 2,
+		userName: 'Alex Smith',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 3,
+		userName: 'Taylor Laurent',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 4,
+		userName: 'Casey Rossi',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 5,
+		userName: 'Mel Turham',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 6,
+		userName: 'Willam',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 7,
+		userName: 'Sara',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 8,
+		userName: 'John Doe',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 9,
+		userName: 'Melvine',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+	{
+		userId: 10,
+		userName: 'Manuella',
+		userImage: '',
+		userFeetBack:
+			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
+	},
+];
+
+const BrandsImages: ImageType[] = [
+	{
+		id: 1,
+		imageName: brain_1,
+	},
+	{
+		id: 2,
+		imageName: brain_2,
+	},
+	{
+		id: 3,
+		imageName: brain_3,
+	},
+	{
+		id: 4,
+		imageName: brain_4,
+	},
+	{
+		id: 5,
+		imageName: brain_5,
+	},
+	{
+		id: 6,
+		imageName: brain_6,
+	},
+];
+
+export { products, CategroryLinks, users, BrandsImages };

@@ -38,11 +38,23 @@ import Whirelesscar from './whirelesscar.webp';
 import WideTv from './widetv.webp';
 import WirelessSound from './WirelessSound.webp';
 import uniheadphone from './uniheadphone.webp';
-import GoldePhone from './GoldPhone.webp'
-import usbheadPhone from './usbheadphone.webp'
-import printer from './printer.webp'
+import GoldePhone from './GoldPhone.webp';
+import usbheadPhone from './usbheadphone.webp';
+import printer from './printer.webp';
+import brain_1 from './brain1.webp';
+import brain_2 from './brain2.webp';
+import brain_3 from './brain3.webp';
+import brain_4 from './brain4.webp';
+import brain_5 from './brain5.webp';
+import brain_6 from './brain6.webp';
 
 export {
+	brain_1,
+	brain_2,
+	brain_3,
+	brain_4,
+	brain_5,
+	brain_6,
 	usbheadPhone,
 	GoldePhone,
 	printer,
