@@ -37,7 +37,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useMenuStore } from '@/store/MenuStore';
 
 const Navbar = () => {
-	const { theme } = useTheme();
+	const { systemTheme, theme } = useTheme();
 	const { setIsOpen, isOpen } = useMenuStore();
 	useEffect(() => {
 		const bodyEl = document.querySelector<HTMLBodyElement>('body')!;
@@ -77,7 +77,11 @@ const Navbar = () => {
 			<div className='container flex items-center justify-between  py-2 '>
 				<Link href='/' className='w-2/12'>
 					<Image
-						src={theme === 'light' ? '/logo-dark.png' : '/logo-white.png'}
+						src={
+							systemTheme === 'light' || theme === 'light'
+								? '/logo-dark.png'
+								: '/logo-white.png'
+						}
 						alt='logo'
 						loading='lazy'
 						title='meyazone'
