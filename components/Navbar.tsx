@@ -37,15 +37,33 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useMenuStore } from '@/store/MenuStore';
 
 const Navbar = () => {
-	const { systemTheme, theme } = useTheme();
+	const { theme } = useTheme();
 	const { setIsOpen, isOpen } = useMenuStore();
 	useEffect(() => {
-		const bodyEl = document.querySelector<HTMLBodyElement>('body')!;
 		if (isOpen) {
-			bodyEl.classList.add('overflow-hidden');
+			document
+				.querySelector<HTMLHtmlElement>('html')!
+				.classList.add('scrollbar-w-0', 'scrollbar');
+			document
+				.querySelector<HTMLBodyElement>('body')!
+				.classList.add('overflow-hidden');
 		} else {
-			bodyEl.classList.remove('overflow-hidden');
+			document
+				.querySelector<HTMLHtmlElement>('html')!
+				.classList.remove('scrollbar-w-0', 'scrollbar');
+			document
+				.querySelector<HTMLBodyElement>('body')!
+				.classList.remove('overflow-hidden');
 		}
+
+		return () => {
+			document
+				.querySelector<HTMLHtmlElement>('html')!
+				.classList.remove('scrollbar-w-0', 'scrollbar');
+			document
+				.querySelector<HTMLBodyElement>('body')!
+				.classList.remove('overflow-hidden');
+		};
 	}, [isOpen]);
 	return (
 		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700 '>
@@ -77,11 +95,7 @@ const Navbar = () => {
 			<div className='container flex items-center justify-between  py-2 '>
 				<Link href='/' className='w-2/12'>
 					<Image
-						src={
-							systemTheme === 'light' || theme === 'light'
-								? '/logo-dark.png'
-								: '/logo-white.png'
-						}
+						src={theme == 'light' ? '/logo-dark.png' : '/logo-white.png'}
 						alt='logo'
 						loading='lazy'
 						title='meyazone'

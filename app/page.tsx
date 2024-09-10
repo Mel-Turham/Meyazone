@@ -19,6 +19,7 @@ import {
 	ShoppingCart,
 	Star,
 	ChevronRight,
+	ArrowLeft,
 } from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,7 +32,13 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 // import Swiper core and required modules
-import { Pagination, Autoplay, EffectFade, Grid } from 'swiper/modules';
+import {
+	Pagination,
+	Autoplay,
+	EffectFade,
+	Grid,
+	Navigation,
+} from 'swiper/modules';
 import TabFeatured from '@/components/TabFeatured';
 import { TabTypes } from '@/types';
 import TabOnsale from '@/components/TabOnsale';
@@ -39,6 +46,7 @@ import TabTopRated from '@/components/TabTopRated';
 import Link from 'next/link';
 import Testimonial from '@/components/Testimonial';
 import Braind from '@/components/Braind';
+import ReacentProduct from '@/components/recentProduct/ReacentProduct';
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
@@ -779,18 +787,25 @@ const Home = () => {
 						Recent added
 					</h3>
 					<div className='flex items-center gap-1 pb-3'>
-						<ChevronLeft className='w-6 h-6 cursor-pointer' strokeWidth={2.5} />
+						<ChevronLeft
+							className='w-6 h-6 cursor-pointer custom-prev'
+							strokeWidth={2.5}
+						/>
 						<ChevronRight
-							className='w-6 h-6 cursor-pointer'
+							className='w-6 h-6 cursor-pointer custom-next'
 							strokeWidth={2.5}
 						/>
 					</div>
 				</div>
 				<Swiper
 					slidesPerView={4}
-					modules={[Pagination]}
+					modules={[Pagination, Navigation]}
 					pagination={{ clickable: true }}
 					className='mt-7 h-[14.8rem] '
+					navigation={{
+						nextEl: '.custom-next',
+						prevEl: '.custom-prev',
+					}}
 				>
 					{products.slice(0, 10).map((product, index) => {
 						return (
@@ -830,6 +845,32 @@ const Home = () => {
 					{BrandsImages.map((img) => {
 						return <Braind key={img.id} image={img} />;
 					})}
+				</div>
+			</section>
+			<section className='py-8'>
+				<div className='container w-full flex gap-4'>
+					<div className='flex flex-col gap-2 w-1/3'>
+						<h4 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
+							Guides and articles
+						</h4>
+						<p className='leading-7 [&:not(:first-child)]:mt-2'>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+							optio alias minus omnis enim fugit nemo officiis ullam nihil
+							commodi?
+						</p>
+						<Button size='sm' className='rounded w-fit' variant='outline'>
+							<span>Read more</span>
+							<ArrowRight
+								className='w-4 h-4 ml-1 leading-6'
+								strokeWidth={1.3}
+							/>
+						</Button>
+					</div>
+					<div className='w-2/3 grid grid-cols-3 gap-2'>
+						<ReacentProduct />
+						<ReacentProduct />
+						<ReacentProduct />
+					</div>
 				</div>
 			</section>
 		</>
