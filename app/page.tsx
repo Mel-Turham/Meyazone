@@ -685,7 +685,7 @@ const Home = () => {
 					className='flex items-center justify-between relative border-b border-solid
 				text-gray-600 dark:text-gray-100 border-gray-300'
 				>
-					<h3 className='text-xl  font-medium relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
+					<h3 className='text-xl  font-semibold relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
 						Best Sellers
 					</h3>
 					<nav className='font-light text-xs pb-3'>
@@ -706,7 +706,7 @@ const Home = () => {
 					</nav>
 				</div>
 				<div
-					className=' w-full grid grid-col-1 overflow-hidden h-[24.4rem]
+					className=' w-full grid grid-col-1 overflow-hidden h-[25.8rem]
 				mt-6'
 				>
 					<Swiper
@@ -783,18 +783,23 @@ const Home = () => {
 					className='flex items-center justify-between relative border-b border-solid
 				text-gray-600 dark:text-gray-100 border-gray-300'
 				>
-					<h3 className='text-xl  font-medium relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
-						Recent added
+					<h3 className='text-xl  relative before:absolute before:left-0 before:-bottom-[7.5px] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-2 font-semibold'>
+						Recently Added
 					</h3>
-					<div className='flex items-center gap-1 pb-3'>
-						<ChevronLeft
-							className='w-6 h-6 cursor-pointer custom-prev'
-							strokeWidth={2.5}
-						/>
-						<ChevronRight
-							className='w-6 h-6 cursor-pointer custom-next'
-							strokeWidth={2.5}
-						/>
+					<div className='flex items-center gap-5 pb-3'>
+						<div className='w-8 h-8 rounded-full flex items-center justify-center cursor-pointer dark:bg-slate-700  ring-slate-600 custom-prev'>
+							<ChevronLeft
+								className='w-6 h-6 cursor-pointer '
+								strokeWidth={1.8}
+							/>
+						</div>
+
+						<div className='w-8 h-8 rounded-full flex items-center justify-center cursor-pointer dark:bg-slate-700  ring-slate-600  custom-next'>
+							<ChevronRight
+								className='w-6 h-6 cursor-pointer'
+								strokeWidth={1.8}
+							/>
+						</div>
 					</div>
 				</div>
 				<Swiper
@@ -806,6 +811,7 @@ const Home = () => {
 						nextEl: '.custom-next',
 						prevEl: '.custom-prev',
 					}}
+					cssMode={true}
 				>
 					{products.slice(0, 10).map((product, index) => {
 						return (
@@ -833,7 +839,15 @@ const Home = () => {
 						Execellent 4.9 based on 22.181 reviews
 					</p>
 				</div>
-				<div className='container grid grid-cols-4 gap-2 mt-2'>
+				<div className='container grid grid-cols-4 gap-2 mt-2 relative  '>
+					<div className=' flex w-full absolute top-1/2  items-center justify-between left-1/2 -translate-x-1/2 -translate-y-1/2 '>
+						<button className='w-8 h-8 rounded-full  p-1 relative left-10 flex items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1'>
+							<ChevronLeft className='w-5 h-5 ' strokeWidth={1.8} />
+						</button>
+						<button className='w-8 h-8 rounded-full p-1 relative right-10 flex items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1'>
+							<ChevronRight className='w-5 h-5 ' strokeWidth={1.8} />
+						</button>
+					</div>
 					{users.slice(0, 4).map((user) => {
 						return <Testimonial key={user.userId} user={user} />;
 					})}
