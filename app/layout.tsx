@@ -5,6 +5,7 @@ import MenuSideBar from '@/components/MenuSideBar';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import { ToggleTheme } from '@/components/ToggleTheme';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
 						{children}
 						<MenuSideBar />
 					</main>
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>
