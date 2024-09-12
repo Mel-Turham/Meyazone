@@ -777,7 +777,7 @@ const Home = () => {
 					/>
 				</Link>
 			</section>
-
+			{/* recend added */}
 			<section className='container py-5'>
 				<div
 					className='flex items-center justify-between relative border-b border-solid
@@ -839,18 +839,31 @@ const Home = () => {
 						Execellent 4.9 based on 22.181 reviews
 					</p>
 				</div>
-				<div className='container grid grid-cols-4 gap-2 mt-2 relative  '>
-					<div className=' flex w-full absolute top-1/2  items-center justify-between left-1/2 -translate-x-1/2 -translate-y-1/2 '>
-						<button className='w-8 h-8 rounded-full  p-1 relative left-10 flex items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1'>
-							<ChevronLeft className='w-5 h-5 ' strokeWidth={1.8} />
-						</button>
-						<button className='w-8 h-8 rounded-full p-1 relative right-10 flex items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1'>
-							<ChevronRight className='w-5 h-5 ' strokeWidth={1.8} />
-						</button>
-					</div>
-					{users.slice(0, 4).map((user) => {
-						return <Testimonial key={user.userId} user={user} />;
-					})}
+				<div className='container relative'>
+					<Swiper
+						slidesPerView={4}
+						modules={[Navigation]}
+						navigation={{
+							nextEl: '.next-testim',
+							prevEl: '.prev-testim',
+						}}
+						cssMode={true}
+						className='w-full mt-4'
+					>
+						{users.map((user) => {
+							return (
+								<SwiperSlide className='ml-1' key={user.userId}>
+									<Testimonial user={user} />
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+					<button className='w-8 h-8 rounded-full absolute flex items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1 prev-testim top-1/2 -translate-y-1/2 left-8 cursor-pointer'>
+						<ChevronLeft className='w-5 h-5 ' strokeWidth={1.8} />
+					</button>
+					<button className='w-8 h-8 rounded-full p-1  flex absolute top-1/2 right-8 -translate-y-1/2 items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1 next-testim cursor-pointer'>
+						<ChevronRight className='w-5 h-5 ' strokeWidth={1.8} />
+					</button>
 				</div>
 			</section>
 
@@ -863,7 +876,7 @@ const Home = () => {
 			</section>
 			<section className='py-8'>
 				<div className='container w-full flex gap-4'>
-					<div className='flex flex-col gap-2 w-1/3'>
+					<div className='flex flex-col gap-2 w-1/4'>
 						<h4 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
 							Guides and articles
 						</h4>
@@ -880,11 +893,25 @@ const Home = () => {
 							/>
 						</Button>
 					</div>
-					<div className='w-2/3 grid grid-cols-3 gap-2'>
+					{/* <div className='w-2/3 grid grid-cols-3 gap-2'>
 						<ReacentProduct />
 						<ReacentProduct />
-						<ReacentProduct />
-					</div>
+						
+					</div> */}
+					<Swiper
+						className='w-3/4 px-4'
+						slidesPerView={3}
+						modules={[Pagination]}
+						pagination={{ clickable: true }}
+					>
+						{Array.from({ length: 8 }, (_, index) => {
+							return (
+								<SwiperSlide key={index} className='ml-1'>
+									<ReacentProduct />
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
 				</div>
 			</section>
 		</>
