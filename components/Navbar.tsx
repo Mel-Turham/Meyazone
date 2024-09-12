@@ -35,10 +35,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useMenuStore } from '@/store/MenuStore';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-	const { theme } = useTheme();
 	const { setIsOpen, isOpen } = useMenuStore();
+	const { theme } = useTheme();
+	const pathname = usePathname();
 	useEffect(() => {
 		if (isOpen) {
 			document
@@ -203,110 +205,34 @@ const Navbar = () => {
 			</div>
 
 			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-700 py-1 '>
-				<Card className='w-[260px] rounded-sm absolute top-7  left-20 overflow-hidden z-10'>
-					<CardHeader className='bg-[#EF7C1A] p-2'>
-						<CardTitle className='flex items-center'>
-							<div>
+				{pathname === '/' && (
+					<Card className='w-[260px] rounded-sm absolute top-7 left-20 overflow-hidden z-10'>
+						<CardHeader className='bg-[#EF7C1A] p-2'>
+							<CardTitle className='flex items-center'>
 								<Menu className='w-6 h-6' />
-							</div>
-							<span className='text-sm ml-5 font-semibold'>
-								All Departments
-							</span>
-						</CardTitle>
-					</CardHeader>
-					<CardContent className='divide-y spacey-1 py-3 px-2 rounded-none'>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded '>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-						<div className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded'>
-							<p className='text-muted-foreground text-sm font-medium'>
-								Value of the day
-							</p>
-							<ChevronRight
-								className='w-6 h-6 text-muted-foreground  '
-								strokeWidth={1.5}
-							/>
-						</div>
-					</CardContent>
-				</Card>
+								<span className='text-sm ml-5 font-semibold'>
+									All Departments
+								</span>
+							</CardTitle>
+						</CardHeader>
+						<CardContent className='divide-y spacey-1 py-3 px-2 rounded-none'>
+							{Array.from({ length: 10 }).map((_, index) => (
+								<div
+									key={index}
+									className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded'
+								>
+									<p className='text-muted-foreground text-sm font-medium'>
+										Value of the day
+									</p>
+									<ChevronRight
+										className='w-6 h-6 text-muted-foreground'
+										strokeWidth={1.5}
+									/>
+								</div>
+							))}
+						</CardContent>
+					</Card>
+				)}
 				<div className='w-[260px]'></div>
 				<nav className=' flex items-center'>
 					<ul className='flex items-center  text-slate-600 font-medium dark:text-white'>
