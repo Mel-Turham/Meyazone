@@ -18,9 +18,9 @@ const ReacentProduct = () => {
 					src='/GoldPhone.webp'
 					alt='image'
 					loading='lazy'
-					width={300}
-					height={300}
-					className='w-full h-full object-cover'
+					width={150}
+					height={100}
+					className=' w-full object-contain'
 				/>
 				<div className='absolute top-4 left-2 bg-red-600 flex flex-col px-4 py-1 rounded text-white'>
 					<span className='text-xl font-bold'>02</span>
@@ -30,8 +30,9 @@ const ReacentProduct = () => {
 			<CardFooter className='flex-col gap-2 items-start px-4 pb-2'>
 				<div className='space-y-2'>
 					<CardDescription>New</CardDescription>
-					<CardTitle className='text-sm font-light'>
-						The number of new cars sold over 20 years
+					<CardTitle className='text-sm font-normal leading-7'>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
+						voluptate!
 					</CardTitle>
 				</div>
 				<Button size='sm' className='rounded' variant='outline'>
