@@ -83,31 +83,31 @@ const Footer = () => {
 					<menu className='flex flex-col gap-5'>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Dashbord
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Orders
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Wishlist
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							My garage
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Address
 						</Link>
@@ -118,31 +118,31 @@ const Footer = () => {
 					<menu className='flex flex-col gap-5'>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Shop by parts
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Shop by brands
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Shop by make
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Promtions
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Sitemape
 						</Link>
@@ -153,31 +153,31 @@ const Footer = () => {
 					<menu className='flex flex-col gap-5'>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Featurres
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							FAQ
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							About us
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Carreer
 						</Link>
 						<Link
 							href='#'
-							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							Contact us
 						</Link>
@@ -190,7 +190,7 @@ const Footer = () => {
 					<menu className='flex flex-col gap-5'>
 						<Link
 							href='#'
-							className='flex items-center gap-3 text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='flex items-center gap-3 text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							<p>
 								<Map className='w-6 h-6' strokeWidth={1.5} />
@@ -199,7 +199,7 @@ const Footer = () => {
 						</Link>
 						<Link
 							href='#'
-							className='flex items-center gap-3 text-xs hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300 '
+							className='flex items-center gap-3 text-xs hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300 '
 						>
 							<p>
 								<Phone className='w-6 h-6' strokeWidth={1.5} />
@@ -211,7 +211,7 @@ const Footer = () => {
 						</Link>
 						<Link
 							href='#'
-							className='flex items-center gap-3 text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-light dark:text-gray-300'
+							className='flex items-center gap-3 text-sm hover:dark:text-slate-600 transition-all duration-300 ease-linear font-normal dark:text-gray-300'
 						>
 							<p>
 								<Headphones className='w-6 h-6' strokeWidth={1.5} />
@@ -282,30 +282,30 @@ const Footer = () => {
 				</div>
 				{/* bootom bottom footer */}
 				<div className='flex items-center justify-between'>
-					<p className='text-sm font-light dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'>
+					<p className='text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'>
 						Copyright &copy; 2024. All Rights Reserved
 					</p>
 					<ul className='flex items-center justify-center gap-8'>
 						<Link
-							className='text-sm font-light dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'
+							className='text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'
 							href='#'
 						>
 							Terms of Use
 						</Link>
 						<Link
-							className='text-slate-600 text-sm font-light dark:text-slate-400 capitalize dark:hover:text-gray-200'
+							className='text-slate-600 text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200'
 							href='#'
 						>
 							Privacy Policy
 						</Link>
 						<Link
-							className='text-slate-600 text-sm font-light dark:text-slate-400 capitalize dark:hover:text-gray-200'
+							className='text-slate-600 text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200'
 							href='#'
 						>
 							Interest-Based Ads
 						</Link>
 						<Link
-							className='text-slate-600 text-sm font-light dark:text-slate-400 capitalize dark:hover:text-gray-200'
+							className='text-slate-600 text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200'
 							href='#'
 						>
 							Accessibility
