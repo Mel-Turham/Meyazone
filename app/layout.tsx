@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import { ToggleTheme } from '@/components/ToggleTheme';
 import Footer from '@/components/Footer';
-import { cn } from '@/lib/utils';
+import ScrollTop from '@/components/ScrollTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
 		<html lang='en' suppressHydrationWarning>
-			<body className={cn('flex flex-col min-h-screen antialiased')}>
+			<body className={inter.className}>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='light'
@@ -30,14 +30,13 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<Navbar />
-					<main className='grow'>
-						<div className='fixed bottom-5 right-5'>
-							<ToggleTheme />
-						</div>
-						{children}
-						<MenuSideBar />
-					</main>
+					<main className='grow'>{children}</main>
+					<MenuSideBar />
 					<Footer />
+					<div className='fixed left-5 top-1/2'>
+						<ToggleTheme />
+					</div>
+					<ScrollTop />
 				</ThemeProvider>
 			</body>
 		</html>
