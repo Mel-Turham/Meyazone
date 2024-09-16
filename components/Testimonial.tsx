@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Card,
 	CardContent,
@@ -6,7 +7,6 @@ import {
 } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
-import React from 'react';
 interface UserProps {
 	userId: number;
 	userName: string;
