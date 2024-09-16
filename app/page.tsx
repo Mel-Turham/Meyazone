@@ -47,6 +47,7 @@ import Link from 'next/link';
 import Testimonial from '@/components/Testimonial';
 import Braind from '@/components/Braind';
 import ReacentProduct from '@/components/recentProduct/ReacentProduct';
+import { scaleUp } from '@/helpers/animation';
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
@@ -54,7 +55,6 @@ const Home = () => {
 	const TabOnSaleProducts = products.slice(7, 13);
 	const TabTopRatedProducts = products.slice(14, 20);
 	const BestSellersProducts = products.slice(0, 10);
-
 	const CategoriesProducts = TabTopRatedProducts.slice(0, 5);
 	return (
 		<>
@@ -131,9 +131,9 @@ const Home = () => {
 											alt='Sounddevice'
 											title=''
 											loading='lazy'
-											width={500}
-											height={300}
-											className='object-cover h-full w-full'
+											width={400}
+											height={200}
+											className='object-contain w-full h-full object-top'
 										/>
 									</motion.div>
 								</div>
@@ -201,9 +201,9 @@ const Home = () => {
 											alt='Smartphones'
 											title=''
 											loading='lazy'
-											width={500}
-											height={300}
-											className='object-cover h-full w-full'
+											width={400}
+											height={350}
+											className='object-cover w-full h-full object-top'
 										/>
 									</motion.div>
 								</div>
@@ -832,9 +832,14 @@ const Home = () => {
 			{/* users testimonials */}
 			<section className='py-8'>
 				<div className='flex items-center flex-col  justify-center py-4'>
-					<h2 className='scroll-m-20  text-3xl font-bold tracking-tight first:mt-0'>
+					<motion.h2
+						variants={scaleUp}
+						initial='exit'
+						whileInView='enter'
+						className='scroll-m-20  text-3xl font-bold tracking-tight first:mt-0'
+					>
 						What our customers think
-					</h2>
+					</motion.h2>
 					<p className='leading-3 [&:not(:first-child)]:mt-6'>
 						Execellent 4.9 based on 22.181 reviews
 					</p>
@@ -893,11 +898,6 @@ const Home = () => {
 							/>
 						</Button>
 					</div>
-					{/* <div className='w-2/3 grid grid-cols-3 gap-2'>
-						<ReacentProduct />
-						<ReacentProduct />
-						
-					</div> */}
 					<Swiper
 						className='w-3/4 px-4'
 						slidesPerView={3}
