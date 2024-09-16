@@ -96,6 +96,10 @@ const Navbar = () => {
 				.classList.remove('overflow-hidden');
 		};
 	}, [isOpen]);
+	const hideFooter = ['/login', '/register'];
+	const shouldHide = hideFooter.includes(pathname);
+
+	if (shouldHide) return null;
 	return (
 		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700 '>
 			<div className='container flex items-center  justify-between py-2'>
