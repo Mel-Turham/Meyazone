@@ -1,11 +1,23 @@
-import Link from 'next/link';
 import React from 'react';
-type Props = {
-	path: string;
-	link: string;
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+type LinkProps = {
+	label: string;
+	href: string;
 };
-const NavLink = (props: Props) => {
-	return <Link href={props.path}>{props.link}</Link>;
+
+const NavLink = ({ label, href }: LinkProps) => {
+	const pathname = usePathname();
+	return (
+		<Link
+			href={href}
+			className={` hover:underline hover:underline-offset-8 transition-all duration-300 ease-linear  ${
+				pathname === href ? 'underline underline-offset-8 ' : ''
+			}`}
+		>
+			{label}
+		</Link>
+	);
 };
 
 export default NavLink;
