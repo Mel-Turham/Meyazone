@@ -15,15 +15,24 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
 	const { theme } = useTheme();
+
+	const pathname = usePathname();
+
+	const hideFooter = ['/login', '/register'];
+	const shouldHide = hideFooter.includes(pathname);
+
+	if (shouldHide) return null;
+
 	return (
-		<footer className=''>
+		<footer className='border-t border-solid border-slate-800 mt-8'>
 			{/* top footer */}
-			<div className='container py-6 bg-gradient-to-bl from-[#EF7C1A] via-[#EF7C1A]/80 to-[#A54B17]'>
+			{/* <div className='container py-6 bg-gradient-to-bl from-[#EF7C1A] via-[#EF7C1A]/80 to-[#A54B17]'>
 				top footer there!!!
-			</div>
+			</div> */}
 			{/* middle footer */}
 
 			<div className='container flex items-center gap-8 py-10 border-b border-solid dark:border-slate-800 border-gray-200'>
