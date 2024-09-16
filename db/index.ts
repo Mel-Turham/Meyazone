@@ -545,4 +545,143 @@ const BrandsImages: ImageType[] = [
 	},
 ];
 
+const Departments = [
+	{
+		idDep: 1,
+		label: 'Value of the day',
+	},
+	{
+		idDep: 2,
+		label: 'Top 100 Offers',
+	},
+	{
+		idDep: 3,
+		label: 'New Arrivals',
+	},
+	{
+		idDep: 4,
+		label: 'Computers & Accessories',
+		imgMegaMenu: '',
+		mengaMenu: [
+			{
+				idMegaMenu: 1,
+				cateName: 'Computers & Accessories',
+				links: [
+					{
+						idLink: 1,
+						linkName: 'All Computers & Accessories',
+					},
+					{
+						idLink: 2,
+						linkName: 'Laptops, Desktops & Monitors',
+					},
+					{
+						idLink: 3,
+						linkName: 'Printers & Ink',
+					},
+					{
+						idLink: 4,
+						linkName: 'Networking & Internet Devices',
+					},
+					{
+						idLink: 5,
+						linkName: 'Computer Accessories',
+					},
+					{
+						idLink: 6,
+						linkName: ' Software',
+					},
+				],
+			},
+			{
+				idMegaMenu: 2,
+				cateName: 'Office & Stationery',
+				links: [
+					{
+						idLink: 1,
+						linkName: 'All Computers & Accessories',
+					},
+					{
+						idLink: 2,
+						linkName: 'All Office & Stationery',
+					},
+				],
+			},
+		],
+	},
+	{
+		idDep: 5,
+		label: 'Cameras, Audio & video',
+		imgMegaMenu: '',
+		mengaMenu: [
+			{
+				idMegaMenu: 1,
+				cateName: 'Cameras and Photography',
+				links: [
+					{
+						idLink: 1,
+						linkName: 'Lenses',
+					},
+					{
+						idLink: 2,
+						linkName: 'Cameras Accessories',
+					},
+					{
+						idLink: 3,
+						linkName: 'Security and Surveillance',
+					},
+					{
+						idLink: 4,
+						linkName: 'Binoculars and Telescopes',
+					},
+					{
+						idLink: 5,
+						linkName: 'Camcorders',
+					},
+				],
+			},
+			{
+				idMegaMenu: 2,
+				cateName: 'Audio & Video',
+				links: [
+					{
+						idLink: 1,
+						linkName: 'All Video & Audio',
+					},
+					{
+						idLink: 2,
+						linkName: 'Headphones & Speakers',
+					},
+				],
+			},
+		],
+	},
+
+	{
+		idDep: 6,
+		label: 'Mobiles & Tablets',
+		imgMegaMenu: '',
+		megaMenu: [
+			{
+				idMegaMenu: 1,
+				cateName: 'Mobiles & Tablets',
+				links: [
+					{
+						idLink: 1,
+						linkName: 'All Mobiles Phones',
+					},
+					{
+						idLink: 2,
+						linkName: 'Smartphones',
+					},
+					{
+						idLink: 3,
+						linkName: 'Refurbished Mobiles',
+					},
+				],
+			},
+		],
+	},
+];
+
 export { products, CategroryLinks, users, BrandsImages };
