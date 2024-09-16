@@ -96,7 +96,7 @@ const Home = () => {
 										transition={{ delay: 1, ease: 'linear' }}
 									>
 										<Button
-											className='bg-[#EF7C1A] font-normal text-lg hover:bg-[#A54B17] text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
+											className='bg-myprimary font-normal text-lg hover:bg-myseconary text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
 											size='lg'
 										>
 											Start buying

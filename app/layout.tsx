@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import MenuSideBar from '@/components/MenuSideBar';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
-import { ToggleTheme } from '@/components/ToggleTheme';
 import Footer from '@/components/Footer';
+import { ToggleTheme } from '@/components/ToggleTheme';
 import ScrollTop from '@/components/ScrollTop';
-
+import MenuSideBar from '@/components/MenuSideBar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -31,7 +30,7 @@ export default function RootLayout({
 				>
 					<Navbar />
 					<main className='grow'>{children}</main>
-					<MenuSideBar />
+					<MenuSideBar/>
 					<Footer />
 					<div className='fixed left-5 top-1/2'>
 						<ToggleTheme />

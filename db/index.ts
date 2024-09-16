@@ -545,143 +545,86 @@ const BrandsImages: ImageType[] = [
 	},
 ];
 
-const Departments = [
-	{
-		idDep: 1,
-		label: 'Value of the day',
-	},
-	{
-		idDep: 2,
-		label: 'Top 100 Offers',
-	},
-	{
-		idDep: 3,
-		label: 'New Arrivals',
-	},
-	{
-		idDep: 4,
-		label: 'Computers & Accessories',
-		imgMegaMenu: '',
-		mengaMenu: [
-			{
-				idMegaMenu: 1,
-				cateName: 'Computers & Accessories',
-				links: [
-					{
-						idLink: 1,
-						linkName: 'All Computers & Accessories',
-					},
-					{
-						idLink: 2,
-						linkName: 'Laptops, Desktops & Monitors',
-					},
-					{
-						idLink: 3,
-						linkName: 'Printers & Ink',
-					},
-					{
-						idLink: 4,
-						linkName: 'Networking & Internet Devices',
-					},
-					{
-						idLink: 5,
-						linkName: 'Computer Accessories',
-					},
-					{
-						idLink: 6,
-						linkName: ' Software',
-					},
-				],
-			},
-			{
-				idMegaMenu: 2,
-				cateName: 'Office & Stationery',
-				links: [
-					{
-						idLink: 1,
-						linkName: 'All Computers & Accessories',
-					},
-					{
-						idLink: 2,
-						linkName: 'All Office & Stationery',
-					},
-				],
-			},
-		],
-	},
-	{
-		idDep: 5,
-		label: 'Cameras, Audio & video',
-		imgMegaMenu: '',
-		mengaMenu: [
-			{
-				idMegaMenu: 1,
-				cateName: 'Cameras and Photography',
-				links: [
-					{
-						idLink: 1,
-						linkName: 'Lenses',
-					},
-					{
-						idLink: 2,
-						linkName: 'Cameras Accessories',
-					},
-					{
-						idLink: 3,
-						linkName: 'Security and Surveillance',
-					},
-					{
-						idLink: 4,
-						linkName: 'Binoculars and Telescopes',
-					},
-					{
-						idLink: 5,
-						linkName: 'Camcorders',
-					},
-				],
-			},
-			{
-				idMegaMenu: 2,
-				cateName: 'Audio & Video',
-				links: [
-					{
-						idLink: 1,
-						linkName: 'All Video & Audio',
-					},
-					{
-						idLink: 2,
-						linkName: 'Headphones & Speakers',
-					},
-				],
-			},
-		],
-	},
-
-	{
-		idDep: 6,
-		label: 'Mobiles & Tablets',
-		imgMegaMenu: '',
-		megaMenu: [
-			{
-				idMegaMenu: 1,
-				cateName: 'Mobiles & Tablets',
-				links: [
-					{
-						idLink: 1,
-						linkName: 'All Mobiles Phones',
-					},
-					{
-						idLink: 2,
-						linkName: 'Smartphones',
-					},
-					{
-						idLink: 3,
-						linkName: 'Refurbished Mobiles',
-					},
-				],
-			},
-		],
-	},
+const departments = [
+  {
+    id: 1,
+    name: 'Value of the Day',
+  },
+  {
+    id: 2,
+    name: 'Top 100 Offers',
+  },
+  {
+    id: 3,
+    name: 'New Arrivals',
+  },
+  {
+    id: 4,
+    name: 'Computers & Accessories',
+    megaMenu: [
+      {
+        id: 1,
+        categoryName: 'Computers & Accessories',
+        links: [
+          { id: 1, label: 'All Computers & Accessories' },
+          { id: 2, label: 'Laptops, Desktops & Monitors' },
+          { id: 3, label: 'Printers & Ink' },
+          { id: 4, label: 'Networking & Internet Devices' },
+          { id: 5, label: 'Computer Accessories' },
+          { id: 6, label: 'Software' },
+        ],
+      },
+      {
+        id: 2,
+        categoryName: 'Office & Stationery',
+        links: [
+          { id: 1, label: 'All Computers & Accessories' },
+          { id: 2, label: 'All Office & Stationery' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Cameras, Audio & Video',
+    megaMenu: [
+      {
+        id: 1,
+        categoryName: 'Cameras & Photography',
+        links: [
+          { id: 1, label: 'Lenses' },
+          { id: 2, label: 'Camera Accessories' },
+          { id: 3, label: 'Security & Surveillance' },
+          { id: 4, label: 'Binoculars & Telescopes' },
+          { id: 5, label: 'Camcorders' },
+        ],
+      },
+      {
+        id: 2,
+        categoryName: 'Audio & Video',
+        links: [
+          { id: 1, label: 'All Video & Audio' },
+          { id: 2, label: 'Headphones & Speakers' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: 'Mobiles & Tablets',
+    megaMenu: [
+      {
+        id: 1,
+        categoryName: 'Mobiles & Tablets',
+        links: [
+          { id: 1, label: 'All Mobile Phones' },
+          { id: 2, label: 'Smartphones' },
+          { id: 3, label: 'Refurbished Mobiles' },
+        ],
+      },
+    ],
+  },
 ];
 
-export { products, CategroryLinks, users, BrandsImages };
+
+export { products, CategroryLinks, users, BrandsImages , departments};
