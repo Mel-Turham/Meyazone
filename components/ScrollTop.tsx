@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const scrollVariant = {
 	hidden: {
-		x: 20,
+		x: 100,
 		opacity: 0,
 	},
 	show: {
@@ -19,7 +19,7 @@ const ScrollTop = () => {
 	const [isInView, setIsInView] = useState<boolean>(false);
 
 	useEffect(() => {
-		const handleScrollWindow = () => {
+		const handleScrollY = () => {
 			if (window.scrollY > ValueY) {
 				setIsInView(true);
 			} else {
@@ -27,10 +27,9 @@ const ScrollTop = () => {
 			}
 		};
 
-		window.addEventListener('scroll', handleScrollWindow);
-
+		window.addEventListener('scroll', handleScrollY);
 		return () => {
-			window.removeEventListener('scroll', handleScrollWindow);
+			window.removeEventListener('scroll', handleScrollY);
 		};
 	}, [isInView]);
 	const goToTop = useCallback(() => {
@@ -46,10 +45,14 @@ const ScrollTop = () => {
 				variants={scrollVariant}
 				animate={isInView ? 'show' : 'hidden'}
 				transition={{ duration: 0.3 }}
-				className='fixed bottom-2 right-3 z-10 '
+				className='fixed bottom-2 right-3 z-10 w-fit h-fit flex items-center justify-center'
 			>
-				<Button size='icon' onClick={goToTop} className='animate-bounce'>
-					<ChevronUp className='w-6 h-6' strokeWidth={1.5} />
+				<Button
+					size='icon'
+					onClick={goToTop}
+					className='animate-bounce rounded-full'
+				>
+					<ChevronUp className='w-7 h-7' strokeWidth={2} />
 				</Button>
 			</motion.div>
 		</>
