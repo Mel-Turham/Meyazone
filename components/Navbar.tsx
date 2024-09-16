@@ -36,6 +36,35 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useMenuStore } from '@/store/MenuStore';
 import { usePathname } from 'next/navigation';
+import NavLink from '@/components/NavLink';
+
+const links = [
+	{
+		linkId: 1,
+		label: 'Home',
+		href: '/',
+	},
+	{
+		linkId: 2,
+		label: 'Shop',
+		href: '/shop',
+	},
+	{
+		linkId: 3,
+		label: 'Blog',
+		href: '/blog',
+	},
+	{
+		linkId: 4,
+		label: 'About Us',
+		href: '/about',
+	},
+	{
+		linkId: 5,
+		label: 'Contact Us',
+		href: '/contact',
+	},
+];
 
 const Navbar = () => {
 	const { setIsOpen, isOpen } = useMenuStore();
@@ -210,24 +239,24 @@ const Navbar = () => {
 						<CardHeader className='bg-[#EF7C1A] p-2'>
 							<CardTitle className='flex items-center'>
 								<Menu className='w-6 h-6' />
-								<span className='text-sm ml-5 font-semibold'>
+								<span className='text-sm ml-5 font-normal tracking-wide'>
 									All Departments
 								</span>
 							</CardTitle>
 						</CardHeader>
-						<CardContent className='divide-y spacey-1 py-3 px-2 rounded-none'>
+						<CardContent className='py-3 px-0 rounded-none'>
 							{Array.from({ length: 10 }).map((_, index) => (
-								<div
-									key={index}
-									className='flex items-center justify-between cursor-pointer hover:bg-blue-100 transition-all duration-300 ease-in-out py-2 px-1.5 rounded'
-								>
-									<p className='text-muted-foreground text-sm font-medium'>
-										Value of the day
-									</p>
-									<ChevronRight
-										className='w-6 h-6 text-muted-foreground'
-										strokeWidth={1.5}
-									/>
+								<div className='flex flex-col gap-2' key={index}>
+									<div className='flex items-center justify-between cursor-pointer hover:bg-slate-700 transition-all duration-300 ease-in-out  text-white px-4'>
+										<p className='text-sm font-normal tracking-wide leading-8'>
+											Value of the day
+										</p>
+										<ChevronRight
+											className='w-6 h-6 text-muted-foreground'
+											strokeWidth={1.5}
+										/>
+									</div>
+									<Separator />
 								</div>
 							))}
 						</CardContent>
@@ -236,11 +265,11 @@ const Navbar = () => {
 				<div className='w-[260px]'></div>
 				<nav className=' flex items-center'>
 					<ul className='flex items-center  text-slate-600 font-medium dark:text-white'>
-						<li className='px-4'>Home</li>
-						<li className='px-4'>Shop</li>
-						<li className='px-4'>Blog</li>
-						<li className='px-4'>About us</li>
-						<li className='px-4'>Contact</li>
+						{links.map((link) => (
+							<li key={link.linkId} className='px-4'>
+								<NavLink label={link.label} href={link.href} />
+							</li>
+						))}
 					</ul>
 				</nav>
 				<div className=' h-full px-2  py-1 bg-[#EF7C1A] flex gap-2 rounded items-center cursor-pointer text-black'>
