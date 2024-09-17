@@ -48,6 +48,8 @@ import Testimonial from '@/components/Testimonial';
 import Braind from '@/components/Braind';
 import ReacentProduct from '@/components/recentProduct/ReacentProduct';
 import { scaleUp } from '@/helpers/animation';
+import Hero from '@/sections/Hero';
+import UserTestimonial from '@/sections/UserTestimonial';
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
@@ -59,227 +61,7 @@ const Home = () => {
 	return (
 		<>
 			{/* Hero section */}
-			<section className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-gray-500 bg-white overflow-hidden relative dark:bg-black dark:text-gray-100'>
-				<div className='w-[70%] items-center flex h-full justify-between'>
-					<Swiper
-						className='h-full'
-						effect={'fade'}
-						autoplay
-						modules={[Pagination, Autoplay, EffectFade]}
-						slidesPerView={1}
-						pagination={{ clickable: true }}
-					>
-						<SwiperSlide className='bg-white dark:bg-black'>
-							<div className='flex w-full h-full justify-between'>
-								<div className='w-6/12 h-full flex flex-col justify-center'>
-									<motion.p
-										initial={{ opacity: 0, x: 100 }}
-										animate={{ opacity: 1, x: 0 }}
-										className='scroll-m-20 text-xl font-semibold uppercase tracking-tight text-sky-400'
-									>
-										Shop to get what you love
-									</motion.p>
-									<motion.h2
-										initial={{ opacity: 0, scale: 1.8 }}
-										animate={{ opacity: 1, scale: 1 }}
-										transition={{ delay: 0.8, ease: 'easeInOut' }}
-										className='scroll-m-20 text-4xl font-light leading-loose uppercase lg:text-5xl mb-10 mt-5'
-									>
-										Timepieces that make a statement
-										<br />
-										up to
-										<span className='font-black ml-2'>40% off</span>
-									</motion.h2>
-									<motion.div
-										initial={{ y: '-50%', opacity: 0 }}
-										animate={{ y: '0%', opacity: 1 }}
-										transition={{ delay: 1, ease: 'linear' }}
-									>
-										<Button
-											className='bg-myprimary font-normal text-lg hover:bg-myseconary text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
-											size='lg'
-										>
-											Start buying
-										</Button>
-									</motion.div>
-								</div>
-								<div className='w-6/12 h-full relative overflow-hidden'>
-									<motion.div
-										className='absolute w-full h-full dark:bg-black z-[2] bg-white'
-										initial={{ x: 0 }}
-										animate={{ x: 600 }}
-										transition={{
-											stiffness: 100,
-											type: 'tween',
-											duration: 2,
-											ease: 'linear',
-										}}
-									></motion.div>
-									<motion.div
-										className='h-full w-full'
-										initial={{ x: 300 }}
-										animate={{ x: 0 }}
-										transition={{
-											stiffness: 100,
-											type: 'tween',
-											duration: 2,
-											ease: 'linear',
-										}}
-									>
-										<Image
-											src='/Sounddevice.webp'
-											alt='Sounddevice'
-											title=''
-											loading='lazy'
-											width={400}
-											height={200}
-											className='object-contain w-full h-full object-top'
-										/>
-									</motion.div>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide className='bg-white dark:bg-black'>
-							<div className='flex w-full h-full justify-between'>
-								<div className='w-6/12 h-full flex flex-col justify-center'>
-									<motion.p
-										initial={{ opacity: 0, x: 100 }}
-										animate={{ opacity: 1, x: 0 }}
-										className='scroll-m-20 text-xl font-semibold uppercase tracking-tight text-sky-400'
-									>
-										Shop to get what you love
-									</motion.p>
-									<motion.h2
-										initial={{ opacity: 0, scale: 1.8 }}
-										animate={{ opacity: 1, scale: 1 }}
-										transition={{ delay: 0.8, ease: 'easeInOut' }}
-										className='scroll-m-20 text-4xl font-light leading-loose uppercase lg:text-5xl mb-10 mt-5'
-									>
-										Timepieces that make a statement
-										<br />
-										up to
-										<span className='font-black ml-2'>40% off</span>
-									</motion.h2>
-									<motion.div
-										initial={{ y: '-50%', opacity: 0 }}
-										animate={{ y: '0%', opacity: 1 }}
-										transition={{ delay: 1, ease: 'linear' }}
-									>
-										<Button
-											className='bg-[#EF7C1A] font-normal text-lg hover:bg-[#A54B17] text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
-											size='lg'
-										>
-											Start buying
-										</Button>
-									</motion.div>
-								</div>
-								<div className='w-6/12 h-full relative overflow-hidden'>
-									<motion.div
-										className='absolute w-full h-full dark:bg-black z-[2] bg-white'
-										initial={{ x: 0 }}
-										animate={{ x: 600 }}
-										transition={{
-											stiffness: 100,
-											type: 'tween',
-											duration: 2,
-											ease: 'linear',
-										}}
-									></motion.div>
-									<motion.div
-										className='h-full w-full'
-										initial={{ x: 300 }}
-										animate={{ x: 0 }}
-										transition={{
-											stiffness: 100,
-											type: 'tween',
-											duration: 2,
-											ease: 'linear',
-										}}
-									>
-										<Image
-											src='/Smartphones.webp'
-											alt='Smartphones'
-											title=''
-											loading='lazy'
-											width={400}
-											height={350}
-											className='object-cover w-full h-full object-top'
-										/>
-									</motion.div>
-								</div>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide className='bg-white dark:bg-black'>
-							<div className='flex w-full h-full justify-between'>
-								<div className='w-6/12 h-full flex flex-col justify-center'>
-									<motion.h2
-										initial={{ opacity: 0, scale: 1.8 }}
-										whileInView={{ opacity: 1, scale: 1 }}
-										transition={{ delay: 0.8, ease: 'easeInOut' }}
-										className='scroll-m-20 text-4xl font-thin leading-loose uppercase lg:text-6xl mb-10 '
-									>
-										<p>The new standard </p>
-										<p className='text-base my-5 font-light'>
-											under favorable smartwatches
-										</p>
-
-										<p className='text-sm mb-2'>From</p>
-										<p className='font-black mt-3'>
-											<sup>$</sup>749<sup>99</sup>
-										</p>
-									</motion.h2>
-									<motion.div
-										initial={{ y: '-50%', opacity: 0 }}
-										animate={{ y: '0%', opacity: 1 }}
-										transition={{ delay: 1, ease: 'linear' }}
-									>
-										<Button
-											className='bg-[#EF7C1A] font-normal text-lg hover:bg-[#A54B17] text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
-											size='lg'
-										>
-											Start buying
-										</Button>
-									</motion.div>
-								</div>
-								<div className='w-6/12 h-full relative overflow-hidden'>
-									<motion.div
-										className='absolute w-full h-full dark:bg-black z-[2] bg-white'
-										initial={{ x: 0 }}
-										animate={{ x: 600 }}
-										transition={{
-											stiffness: 100,
-											type: 'tween',
-											duration: 2,
-											ease: 'linear',
-										}}
-									></motion.div>
-									<motion.div
-										className='h-full w-full'
-										initial={{ x: 300 }}
-										animate={{ x: 0 }}
-										transition={{
-											stiffness: 100,
-											type: 'tween',
-											duration: 2,
-											ease: 'linear',
-										}}
-									>
-										<Image
-											src='/smartwatches-resized.webp'
-											alt='smartwatches'
-											title=''
-											loading='lazy'
-											width={500}
-											height={300}
-											className='object-cover h-full w-full object-left'
-										/>
-									</motion.div>
-								</div>
-							</div>
-						</SwiperSlide>
-					</Swiper>
-				</div>
-			</section>
+			<Hero />
 			{/* top products section */}
 			<section className='container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				<Card className='dark:bg-slate-900 rounded-none py-4 cursor-pointer bg-white/40 hover:dark:bg-slate-800 transition-all duration-300 ease-in-out shadow-sm dark:shadow-none hover:scale-105 group'>
@@ -685,12 +467,12 @@ const Home = () => {
 					className='flex items-center justify-between relative border-b border-solid
 				text-gray-600 dark:text-gray-100 border-gray-300'
 				>
-					<h3 className='text-xl  font-semibold relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
+					<h3 className='text-xl  font-semibold relative before:absolute before:left-0 before:top-[100%] before:rounded-sm before:bg-myprimary before:w-full before:h-1 before:translate-y-[-50%] pb-3'>
 						Best Sellers
 					</h3>
 					<nav className='font-light text-xs pb-3'>
 						<ul className='flex items-center justify-center gap-5'>
-							<li className='px-2 py-1 border-2 border-solid border-[#EF7C1A] rounded-full'>
+							<li className='px-2 py-1 border-2 border-solid border-myprimary rounded-full'>
 								Top 20
 							</li>
 							<li className='px-2 py-1 cursor-pointer hover:text-slate-400 transition-all duration-300 ease-in-out'>
@@ -783,7 +565,7 @@ const Home = () => {
 					className='flex items-center justify-between relative border-b border-solid
 				text-gray-600 dark:text-gray-100 border-gray-300'
 				>
-					<h3 className='text-xl  relative before:absolute before:left-0 before:-bottom-[7.5px] before:rounded-sm before:bg-[#EF7C1A] before:w-full before:h-1 before:translate-y-[-50%] pb-2 font-semibold'>
+					<h3 className='text-xl  relative before:absolute before:left-0 before:-bottom-[7.5px] before:rounded-sm before:bg-myprimary before:w-full before:h-1 before:translate-y-[-50%] pb-2 font-semibold'>
 						Recently Added
 					</h3>
 					<div className='flex items-center gap-5 pb-3'>
@@ -806,6 +588,7 @@ const Home = () => {
 					slidesPerView={4}
 					modules={[Pagination, Navigation]}
 					pagination={{ clickable: true }}
+					spaceBetween={8}
 					className='mt-7 h-[14.8rem] '
 					navigation={{
 						nextEl: '.custom-next',
@@ -816,7 +599,7 @@ const Home = () => {
 					{products.slice(0, 10).map((product, index) => {
 						return (
 							<SwiperSlide key={product.id}>
-								<Card className='rounded-none ml-2 mt-2'>
+								<Card className='rounded-sm mt-2'>
 									<CardHeader>
 										<CardDescription>Card description</CardDescription>
 										<CardTitle>Title card there</CardTitle>
@@ -830,47 +613,7 @@ const Home = () => {
 				</Swiper>
 			</section>
 			{/* users testimonials */}
-			<section className='py-8'>
-				<div className='flex items-center flex-col  justify-center py-4'>
-					<motion.h2
-						variants={scaleUp}
-						initial='exit'
-						whileInView='enter'
-						className='scroll-m-20  text-3xl font-bold tracking-tight first:mt-0'
-					>
-						What our customers think
-					</motion.h2>
-					<p className='leading-3 [&:not(:first-child)]:mt-6'>
-						Execellent 4.9 based on 22.181 reviews
-					</p>
-				</div>
-				<div className='container relative'>
-					<Swiper
-						slidesPerView={4}
-						modules={[Navigation]}
-						navigation={{
-							nextEl: '.next-testim',
-							prevEl: '.prev-testim',
-						}}
-						cssMode={true}
-						className='w-full mt-4'
-					>
-						{users.map((user) => {
-							return (
-								<SwiperSlide className='ml-1' key={user.userId}>
-									<Testimonial user={user} />
-								</SwiperSlide>
-							);
-						})}
-					</Swiper>
-					<button className='w-8 h-8 rounded-full absolute flex items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1 prev-testim top-1/2 -translate-y-1/2 left-8 cursor-pointer'>
-						<ChevronLeft className='w-5 h-5 ' strokeWidth={1.8} />
-					</button>
-					<button className='w-8 h-8 rounded-full p-1  flex absolute top-1/2 right-8 -translate-y-1/2 items-center justify-center dark:bg-slate-700  ring-slate-600 ring-1 next-testim cursor-pointer'>
-						<ChevronRight className='w-5 h-5 ' strokeWidth={1.8} />
-					</button>
-				</div>
-			</section>
+			<UserTestimonial />
 
 			<section className='py-8'>
 				<div className='container  gap-2 border-y border-solid border-gray-200 grid grid-cols-6 py-4 dark:border-slate-800'>
@@ -879,7 +622,7 @@ const Home = () => {
 					})}
 				</div>
 			</section>
-			<section className='py-8'>
+			<section className='py-8 '>
 				<div className='container w-full flex gap-4'>
 					<div className='flex flex-col gap-2 w-1/4'>
 						<h4 className='scroll-m-20 text-2xl font-semibold tracking-tight'>
@@ -898,20 +641,27 @@ const Home = () => {
 							/>
 						</Button>
 					</div>
-					<Swiper
-						className='w-3/4 px-4'
-						slidesPerView={3}
-						modules={[Pagination]}
-						pagination={{ clickable: true }}
-					>
-						{Array.from({ length: 8 }, (_, index) => {
-							return (
-								<SwiperSlide key={index} className='ml-1'>
-									<ReacentProduct />
-								</SwiperSlide>
-							);
-						})}
-					</Swiper>
+					<div className='w-3/4 relative'>
+						<Swiper
+							className='w-full'
+							slidesPerView={3}
+							spaceBetween={8}
+							modules={[Pagination]}
+							pagination={{
+								clickable: true,
+								el: '.users-bullets',
+							}}
+						>
+							{Array.from({ length: 8 }, (_, index) => {
+								return (
+									<SwiperSlide key={index}>
+										<ReacentProduct />
+									</SwiperSlide>
+								);
+							})}
+						</Swiper>
+						<div className='users-bullets absolute -bottom-5 left-1/2  z-10 w-fit flex items-center gap-[3px] cursor-pointer'></div>
+					</div>
 				</div>
 			</section>
 		</>
