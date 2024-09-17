@@ -86,14 +86,12 @@
 		@apply bg-background text-foreground;
 	}
 }
-.swiper-pagination {
-	bottom: -2px !important;
-}
+
 .swiper-pagination-bullet {
-	background-color: #4776d4 !important; /* Equivalent de bg-gray-500 */
-	height: 5px !important; /* Equivalent de h-4 */
-	width: 5px !important; /* Equivalent de w-4 */
-	border-radius: 9999px !important; /* Equivalent de rounded-full */
+	background-color: #4776d4 !important;
+	height: 5px !important;
+	width: 5px !important;
+	border-radius: 9999px !important;
 }
 
 .swiper-pagination-bullet-active {
