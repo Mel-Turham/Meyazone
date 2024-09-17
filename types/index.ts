@@ -22,7 +22,7 @@ type UsersType = {
 	userId: number;
 	userName: string;
 	userImage: StaticImageData | string;
-	userFeetBack: string;
+	userFeedback: string;
 };
 
 type ImageType = {
@@ -30,4 +30,21 @@ type ImageType = {
 	imageName: StaticImageData;
 };
 
-export { type ProductTypes, type TabTypes, type UsersType, type ImageType };
+type Department = {
+	id: number;
+	name: string;
+	bgImage?: string;
+	megaMenu?: {
+		id: number;
+		categoryName: string;
+		links: { id: number; label: string }[];
+	}[];
+};
+
+export {
+	type ProductTypes,
+	type TabTypes,
+	type UsersType,
+	type ImageType,
+	type Department,
+};
