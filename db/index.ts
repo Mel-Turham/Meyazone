@@ -28,8 +28,16 @@ import {
 	brain_4,
 	brain_5,
 	brain_6,
+	user_1,
+	user_2,
+	user_3,
+	user_4,
+	user_5,
+	user_6,
+	user_7,
+	user_8,
 } from '@/public';
-import { ImageType, ProductTypes, UsersType } from '@/types';
+import { Department, ImageType, ProductTypes, UsersType } from '@/types';
 
 const products: ProductTypes[] = [
 	{
@@ -449,71 +457,71 @@ const users: UsersType[] = [
 	{
 		userId: 1,
 		userName: 'Liam Turner',
-		userImage: '',
-		userFeetBack:
+		userImage: user_1,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 2,
 		userName: 'Alex Smith',
-		userImage: '',
-		userFeetBack:
+		userImage: user_2,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 3,
 		userName: 'Taylor Laurent',
-		userImage: '',
-		userFeetBack:
+		userImage: user_3,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 4,
 		userName: 'Casey Rossi',
-		userImage: '',
-		userFeetBack:
+		userImage: user_4,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 5,
 		userName: 'Mel Turham',
-		userImage: '',
-		userFeetBack:
+		userImage: user_5,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 6,
 		userName: 'Willam',
-		userImage: '',
-		userFeetBack:
+		userImage: user_6,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 7,
 		userName: 'Sara',
-		userImage: '',
-		userFeetBack:
+		userImage: user_7,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 8,
 		userName: 'John Doe',
-		userImage: '',
-		userFeetBack:
+		userImage: user_8,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 9,
 		userName: 'Melvine',
-		userImage: '',
-		userFeetBack:
+		userImage: user_1,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 	{
 		userId: 10,
 		userName: 'Manuella',
-		userImage: '',
-		userFeetBack:
+		userImage: user_3,
+		userFeedback:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, dolore.',
 	},
 ];
@@ -545,86 +553,88 @@ const BrandsImages: ImageType[] = [
 	},
 ];
 
-const departments = [
-  {
-    id: 1,
-    name: 'Value of the Day',
-  },
-  {
-    id: 2,
-    name: 'Top 100 Offers',
-  },
-  {
-    id: 3,
-    name: 'New Arrivals',
-  },
-  {
-    id: 4,
-    name: 'Computers & Accessories',
-    megaMenu: [
-      {
-        id: 1,
-        categoryName: 'Computers & Accessories',
-        links: [
-          { id: 1, label: 'All Computers & Accessories' },
-          { id: 2, label: 'Laptops, Desktops & Monitors' },
-          { id: 3, label: 'Printers & Ink' },
-          { id: 4, label: 'Networking & Internet Devices' },
-          { id: 5, label: 'Computer Accessories' },
-          { id: 6, label: 'Software' },
-        ],
-      },
-      {
-        id: 2,
-        categoryName: 'Office & Stationery',
-        links: [
-          { id: 1, label: 'All Computers & Accessories' },
-          { id: 2, label: 'All Office & Stationery' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 5,
-    name: 'Cameras, Audio & Video',
-    megaMenu: [
-      {
-        id: 1,
-        categoryName: 'Cameras & Photography',
-        links: [
-          { id: 1, label: 'Lenses' },
-          { id: 2, label: 'Camera Accessories' },
-          { id: 3, label: 'Security & Surveillance' },
-          { id: 4, label: 'Binoculars & Telescopes' },
-          { id: 5, label: 'Camcorders' },
-        ],
-      },
-      {
-        id: 2,
-        categoryName: 'Audio & Video',
-        links: [
-          { id: 1, label: 'All Video & Audio' },
-          { id: 2, label: 'Headphones & Speakers' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 6,
-    name: 'Mobiles & Tablets',
-    megaMenu: [
-      {
-        id: 1,
-        categoryName: 'Mobiles & Tablets',
-        links: [
-          { id: 1, label: 'All Mobile Phones' },
-          { id: 2, label: 'Smartphones' },
-          { id: 3, label: 'Refurbished Mobiles' },
-        ],
-      },
-    ],
-  },
+const departments: Department[] = [
+	{
+		id: 1,
+		name: 'Value of the Day',
+	},
+	{
+		id: 2,
+		name: 'Top 100 Offers',
+	},
+	{
+		id: 3,
+		name: 'New Arrivals',
+	},
+	{
+		id: 4,
+		name: 'Computers & Accessories',
+		bgImage: '/images/computers-accessories-bg.jpg', // Image de fond pour hover
+		megaMenu: [
+			{
+				id: 1,
+				categoryName: 'Computers & Accessories',
+				links: [
+					{ id: 1, label: 'All Computers & Accessories' },
+					{ id: 2, label: 'Laptops, Desktops & Monitors' },
+					{ id: 3, label: 'Printers & Ink' },
+					{ id: 4, label: 'Networking & Internet Devices' },
+					{ id: 5, label: 'Computer Accessories' },
+					{ id: 6, label: 'Software' },
+				],
+			},
+			{
+				id: 2,
+				categoryName: 'Office & Stationery',
+				links: [
+					{ id: 1, label: 'All Office & Stationery' },
+					{ id: 2, label: 'All Computers & Accessories' },
+				],
+			},
+		],
+	},
+	{
+		id: 5,
+		name: 'Cameras, Audio & Video',
+		bgImage: '/images/cameras-audio-video-bg.jpg', // Image de fond pour hover
+		megaMenu: [
+			{
+				id: 1,
+				categoryName: 'Cameras & Photography',
+				links: [
+					{ id: 1, label: 'Lenses' },
+					{ id: 2, label: 'Camera Accessories' },
+					{ id: 3, label: 'Security & Surveillance' },
+					{ id: 4, label: 'Binoculars & Telescopes' },
+					{ id: 5, label: 'Camcorders' },
+				],
+			},
+			{
+				id: 2,
+				categoryName: 'Audio & Video',
+				links: [
+					{ id: 1, label: 'All Video & Audio' },
+					{ id: 2, label: 'Headphones & Speakers' },
+				],
+			},
+		],
+	},
+	{
+		id: 6,
+		name: 'Mobiles & Tablets',
+		bgImage: '/images/mobiles-tablets-bg.jpg', // Image de fond pour hover
+		megaMenu: [
+			{
+				id: 1,
+				categoryName: 'Mobiles & Tablets',
+				links: [
+					{ id: 1, label: 'All Mobile Phones' },
+					{ id: 2, label: 'Smartphones' },
+					{ id: 3, label: 'Refurbished Mobiles' },
+				],
+			},
+		],
+	},
 ];
 
-
-export { products, CategroryLinks, users, BrandsImages , departments};
+export { products, CategroryLinks, users, BrandsImages, departments };
