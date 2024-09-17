@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {
 	Card,
 	CardContent,
@@ -7,47 +7,54 @@ import {
 } from '@/components/ui/card';
 import { Star } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
+
 interface UserProps {
 	userId: number;
 	userName: string;
-	userImage: StaticImageData | string;
-	userFeetBack: string;
+	userImage: string | StaticImageData;
+	userFeedback: string;
 }
-const Testimonial = ({ user }: { user: UserProps }) => {
+
+const StarRating = memo(() => (
+	<div className='flex items-center gap-0.5'>
+		{[...Array(5)].map((_, index) => (
+			<Star
+				key={index}
+				className='w-4 h-4 mt-0.5'
+				fill='#ef7c1a'
+				strokeWidth={0}
+				aria-hidden='true'
+			/>
+		))}
+	</div>
+));
+
+StarRating.displayName = 'StarRating';
+
+const Testimonial: React.FC<{ user: UserProps }> = ({ user }) => {
 	return (
 		<Card className='rounded'>
-			<CardHeader className='flex-row gap-3'>
-				<figure>
+			<CardHeader className='flex-row items-center gap-3'>
+				<figure className='max-w-fit'>
 					<Image
 						src={user.userImage}
-						alt={user.userName}
+						alt={`Profile picture of ${user.userName}`}
+						width={48}
+						height={48}
+						className='rounded-full object-cover object-center h-12 w-12 bg-gray-200'
 						loading='lazy'
-						width={40}
-						height={40}
-						className='w-12 h-12 rounded-full object-cover bg-gray-200 text-white'
 					/>
 				</figure>
 				<div>
 					<CardDescription>{user.userName}</CardDescription>
-					<div className='flex items-center gap-0.5'>
-						{Array.from({ length: 5 }, (_, index) => {
-							return (
-								<Star
-									key={index}
-									className='w-4 h-4 mt-0.5'
-									fill='#ef7c1a'
-									strokeWidth={0}
-								/>
-							);
-						})}
-					</div>
+					<StarRating />
 				</div>
 			</CardHeader>
 			<CardContent className='leading-6 text-sm font-normal text-muted-foreground'>
-				{user.userFeetBack}
+				{user.userFeedback}
 			</CardContent>
 		</Card>
 	);
 };
 
-export default Testimonial;
+export default memo(Testimonial);
