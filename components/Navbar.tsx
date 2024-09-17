@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import { useTheme } from 'next-themes';
 import {
@@ -39,98 +39,76 @@ import { usePathname } from 'next/navigation';
 import NavLink from '@/components/NavLink';
 
 const links = [
-	{
-		linkId: 1,
-		label: 'Home',
-		href: '/',
-	},
-	{
-		linkId: 2,
-		label: 'Shop',
-		href: '/shop',
-	},
-	{
-		linkId: 3,
-		label: 'Blog',
-		href: '/blog',
-	},
-	{
-		linkId: 4,
-		label: 'About Us',
-		href: '/about',
-	},
-	{
-		linkId: 5,
-		label: 'Contact Us',
-		href: '/contact',
-	},
+	{ linkId: 1, label: 'Home', href: '/' },
+	{ linkId: 2, label: 'Shop', href: '/shop' },
+	{ linkId: 3, label: 'Blog', href: '/blog' },
+	{ linkId: 4, label: 'About Us', href: '/about' },
+	{ linkId: 5, label: 'Contact Us', href: '/contact' },
 ];
 
 const Navbar = () => {
 	const { setIsOpen, isOpen } = useMenuStore();
-	const { theme } = useTheme();
+	const { theme, systemTheme } = useTheme();
 	const pathname = usePathname();
+
 	useEffect(() => {
+		const html = document.querySelector<HTMLHtmlElement>('html');
+		const body = document.querySelector<HTMLBodyElement>('body');
+
 		if (isOpen) {
-			document
-				.querySelector<HTMLHtmlElement>('html')!
-				.classList.add('scrollbar-w-0', 'scrollbar');
-			document
-				.querySelector<HTMLBodyElement>('body')!
-				.classList.add('overflow-hidden');
+			html?.classList.add('scrollbar-w-0', 'scrollbar');
+			body?.classList.add('overflow-hidden');
 		} else {
-			document
-				.querySelector<HTMLHtmlElement>('html')!
-				.classList.remove('scrollbar-w-0', 'scrollbar');
-			document
-				.querySelector<HTMLBodyElement>('body')!
-				.classList.remove('overflow-hidden');
+			html?.classList.remove('scrollbar-w-0', 'scrollbar');
+			body?.classList.remove('overflow-hidden');
 		}
 
 		return () => {
-			document
-				.querySelector<HTMLHtmlElement>('html')!
-				.classList.remove('scrollbar-w-0', 'scrollbar');
-			document
-				.querySelector<HTMLBodyElement>('body')!
-				.classList.remove('overflow-hidden');
+			html?.classList.remove('scrollbar-w-0', 'scrollbar');
+			body?.classList.remove('overflow-hidden');
 		};
 	}, [isOpen]);
+
 	const hideFooter = ['/login', '/register'];
 	const shouldHide = hideFooter.includes(pathname);
 
+	const logoSrc = useMemo(() => {
+		const currentTheme = theme === 'system' ? systemTheme : theme;
+		return currentTheme === 'light' ? '/logo-dark.png' : '/logo-white.png';
+	}, [theme, systemTheme]);
+
 	if (shouldHide) return null;
+
 	return (
-		<header className='w-full  bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700 '>
-			<div className='container flex items-center  justify-between py-2'>
-				<span className='text-gray-600 text-sm dark:text-gray-100  font-normal'>
-					Welcom to meyazone store
+		<header className='w-full bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700'>
+			{/* Top bar */}
+			<div className='container flex items-center justify-between py-2'>
+				<span className='text-gray-600 text-sm dark:text-gray-100 font-normal'>
+					Welcome to meyazone store
 				</span>
 				<div className='flex items-center space-x-3 divide-x'>
-					<div className='flex items-center justify-center text-gray-600 text-sm gap-1 cursor-pointer  dark:text-gray-100 pe-4'>
-						<MapPin className='w-4 h-4' strokeWidth={1} />
-						<span>Store Locator</span>
-					</div>
-
-					<div className='flex items-center text-gray-600 text-sm gap-1 justify-center  dark:text-gray-100 px-4'>
-						<Bus className='w-4 h-4' strokeWidth={1} />
-						<span>Track your order</span>
-					</div>
-					<div className='flex items-center text-gray-600 text-sm gap-1 dark:text-gray-100 px-4'>
-						<ShoppingBag className='w-4 h-4' strokeWidth={1} />
-						<span>Shop</span>
-					</div>
-					<div className='flex items-center text-gray-600 text-sm gap-1 dark:text-gray-100 ps-4'>
-						<User className='w-4 h-4' strokeWidth={1} />
-						<span>My account</span>
-					</div>
+					{[
+						{ icon: MapPin, text: 'Store Locator', className: 'pe-4' },
+						{ icon: Bus, text: 'Track your order', className: 'px-4' },
+						{ icon: ShoppingBag, text: 'Shop', className: 'px-4' },
+						{ icon: User, text: 'My account', className: 'ps-4' },
+					].map(({ icon: Icon, text, className }, index) => (
+						<div
+							key={index}
+							className={`flex items-center text-gray-600 text-sm gap-1 cursor-pointer dark:text-gray-100 ${className}`}
+						>
+							<Icon className='w-4 h-4' strokeWidth={1} />
+							<span>{text}</span>
+						</div>
+					))}
 				</div>
 			</div>
 			<Separator />
-			<div className='container flex items-center justify-between  py-2 '>
+			{/* Main navbar */}
+			<div className='container flex items-center justify-between py-2'>
 				<Link href='/' className='w-2/12'>
 					<Image
-						src={theme == 'light' ? '/logo-dark.png' : '/logo-white.png'}
+						src={logoSrc}
 						alt='logo'
 						loading='lazy'
 						title='meyazone'
@@ -152,24 +130,27 @@ const Navbar = () => {
 								<SelectValue placeholder='All Categories' />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value='All'>All Categories</SelectItem>
-								<SelectItem value='Uncategorized'>Uncategorized</SelectItem>
-								<SelectItem value='Accessories'>Accessories</SelectItem>
-								<SelectItem value='Cameras & Phothographie'>
-									Cameras & Photographie
-								</SelectItem>
-								<SelectItem value='Computer'>Computers</SelectItem>
-								<SelectItem value='Gadgets'>Gadgets</SelectItem>
-								<SelectItem value='home entertaiment'>
-									Home Entertaiment
-								</SelectItem>
-								<SelectItem value='laptop-computers'>
-									Laptops & Computers
-								</SelectItem>
-								<SelectItem value='Smartp'>Smart Phone</SelectItem>
-								<SelectItem value='videogame'>Video Games</SelectItem>
-								<SelectItem value='stero'>Steros</SelectItem>
-								<SelectItem value='home theatre'>Home Theatre</SelectItem>
+								{[
+									'All',
+									'Uncategorized',
+									'Accessories',
+									'Cameras & Photographie',
+									'Computers',
+									'Gadgets',
+									'Home Entertainment',
+									'Laptops & Computers',
+									'Smart Phone',
+									'Video Games',
+									'Stereos',
+									'Home Theatre',
+								].map((category) => (
+									<SelectItem
+										key={category}
+										value={category.toLowerCase().replace(/ /g, '-')}
+									>
+										{category}
+									</SelectItem>
+								))}
 							</SelectContent>
 						</Select>
 						<Input
@@ -188,59 +169,38 @@ const Navbar = () => {
 				</div>
 				<div className='w-2/12 flex items-center between gap-5'>
 					<TooltipProvider>
-						<Tooltip>
-							<TooltipTrigger>
-								<Repeat
-									strokeWidth={1.5}
-									className='text-gray-600 w-5 h-5 dark:text-gray-100'
-								/>
-							</TooltipTrigger>
-							<TooltipContent side='bottom'>
-								<p>Compare</p>
-							</TooltipContent>
-						</Tooltip>
-						<Tooltip>
-							<TooltipTrigger>
-								<Heart
-									strokeWidth={1.5}
-									className='text-gray-600 w-5 h-5 dark:text-gray-100'
-								/>
-							</TooltipTrigger>
-							<TooltipContent side='bottom'>
-								<p>Wishlist</p>
-							</TooltipContent>
-						</Tooltip>
-						<Tooltip>
-							<TooltipTrigger>
-								<User
-									strokeWidth={1.5}
-									className='text-gray-600 w-5 h-5 dark:text-gray-100'
-								/>
-							</TooltipTrigger>
-							<TooltipContent side='bottom'>
-								<p>My Account</p>
-							</TooltipContent>
-						</Tooltip>
-						<Tooltip>
-							<TooltipTrigger className='relative flex items-center gap-5'>
-								<ShoppingCart
-									strokeWidth={1.5}
-									className='text-gray-600 w-5 h-5 dark:text-gray-100'
-								/>
-								<span className='absolute -right-12'>$0.00</span>
-							</TooltipTrigger>
-							<TooltipContent side='bottom'>
-								<p>Cart</p>
-							</TooltipContent>
-						</Tooltip>
+						{[
+							{ icon: Repeat, tooltip: 'Compare' },
+							{ icon: Heart, tooltip: 'Wishlist' },
+							{ icon: User, tooltip: 'My Account' },
+							{
+								icon: ShoppingCart,
+								tooltip: 'Cart',
+								extra: <span className='absolute -right-12'>$0.00</span>,
+							},
+						].map(({ icon: Icon, tooltip, extra }, index) => (
+							<Tooltip key={index}>
+								<TooltipTrigger className='relative flex items-center gap-5'>
+									<Icon
+										strokeWidth={1.5}
+										className='text-gray-600 w-5 h-5 dark:text-gray-100'
+									/>
+									{extra}
+								</TooltipTrigger>
+								<TooltipContent side='bottom'>
+									<p>{tooltip}</p>
+								</TooltipContent>
+							</Tooltip>
+						))}
 					</TooltipProvider>
 				</div>
 			</div>
 
-			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-700 py-1 '>
+			{/* Bottom navbar */}
+			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-700 py-1'>
 				{pathname === '/' && (
 					<Card className='w-[260px] rounded-sm absolute top-7 left-20 overflow-hidden z-10'>
-						<CardHeader className='bg-[#EF7C1A] p-2'>
+						<CardHeader className='bg-myprimary p-2'>
 							<CardTitle className='flex items-center'>
 								<Menu className='w-6 h-6' />
 								<span className='text-sm ml-5 font-normal tracking-wide'>
@@ -251,7 +211,7 @@ const Navbar = () => {
 						<CardContent className='py-3 px-0 rounded-none'>
 							{Array.from({ length: 10 }).map((_, index) => (
 								<div className='flex flex-col gap-2' key={index}>
-									<div className='flex items-center justify-between cursor-pointer hover:bg-slate-700 transition-all duration-300 ease-in-out  text-white px-4'>
+									<div className='flex items-center justify-between cursor-pointer hover:bg-slate-700 transition-all duration-300 ease-in-out text-white px-4'>
 										<p className='text-sm font-normal tracking-wide leading-8'>
 											Value of the day
 										</p>
@@ -267,8 +227,8 @@ const Navbar = () => {
 					</Card>
 				)}
 				<div className='w-[260px]'></div>
-				<nav className=' flex items-center'>
-					<ul className='flex items-center  text-slate-600 font-medium dark:text-white'>
+				<nav className='flex items-center'>
+					<ul className='flex items-center text-slate-600 font-medium dark:text-white'>
 						{links.map((link) => (
 							<li key={link.linkId} className='px-4'>
 								<NavLink label={link.label} href={link.href} />
@@ -276,17 +236,17 @@ const Navbar = () => {
 						))}
 					</ul>
 				</nav>
-				<div className=' h-full px-2  py-1 bg-[#EF7C1A] flex gap-2 rounded items-center cursor-pointer text-black'>
+				<div className='h-full px-2 py-1 bg-[#EF7C1A] flex gap-2 rounded items-center cursor-pointer text-black'>
 					<Image
 						src='/call.png'
 						alt='headphone'
 						loading='lazy'
 						width={40}
 						height={40}
-						className=' w-[20%] h-full object-contain'
+						className='w-[20%] h-full object-contain'
 					/>
 					<div className='flex flex-col h-full'>
-						<small className='font-light leading-none  text-xs '>
+						<small className='font-light leading-none text-xs'>
 							Call us 7j/24
 						</small>
 						<p className='text-lg text-nowrap font-black'>+237 672 54 22 25</p>
