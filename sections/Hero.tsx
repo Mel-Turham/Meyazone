@@ -130,11 +130,11 @@ const Hero = () => {
 	return (
 		<section
 			className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-slate-800
-		bg-[#e5e5f7] opacity-30 bg-[repeating-radial-gradient(circle_at_0_0,transparent_0,#e5e5f7_10px),repeating-linear-gradient(#bebfcd55,#bebfcd)] overflow-hidden relative dark:text-white'
+		overflow-hidden relative dark:text-white'
 		>
 			<div className='w-[70%] items-center flex h-full justify-between relative'>
 				<Swiper
-					className='h-full'
+					className='h-full w-full'
 					effect={'fade'}
 					autoplay
 					modules={[Pagination, Autoplay, EffectFade]}

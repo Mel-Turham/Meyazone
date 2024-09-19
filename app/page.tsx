@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { motion } from 'framer-motion';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
