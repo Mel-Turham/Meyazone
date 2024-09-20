@@ -33,7 +33,7 @@ StarRating.displayName = 'StarRating';
 
 const Testimonial: React.FC<{ user: UserProps }> = ({ user }) => {
 	return (
-		<Card className='rounded'>
+		<Card className='rounded shadow dark:bg-slate-900'>
 			<CardHeader className='flex-row items-center gap-3'>
 				<figure className='max-w-fit'>
 					<Image

@@ -12,7 +12,7 @@ import React from 'react';
 
 const ReacentProduct = () => {
 	return (
-		<Card className='rounded'>
+		<Card className='rounded dark:bg-slate-900'>
 			<CardContent className='relative p-0'>
 				<Image
 					src='/GoldPhone.webp'
