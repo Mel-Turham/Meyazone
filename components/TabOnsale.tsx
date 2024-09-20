@@ -48,7 +48,7 @@ const TabOnsale = ({ tabOnSaleProducts }: { tabOnSaleProducts: Props[] }) => {
 						key={product.id}
 						className='h-full w-full overflow-hidden cursor-pointer'
 					>
-						<Card className='rounded pb-1 w-full h-full overflow-hidden flex flex-col justify-between '>
+						<Card className='rounded  dark:bg-slate-900 pb-1 w-full h-full overflow-hidden flex flex-col justify-between '>
 							<CardHeader className='px-3'>
 								<CardDescription className='flex items-center gap-2'>
 									{product.category?.name.map((categories, index) => {
