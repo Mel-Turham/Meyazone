@@ -128,29 +128,24 @@ const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 
 const Hero = () => {
 	return (
-		<section
-			className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-slate-800
-		overflow-hidden relative dark:text-white'
-		>
-			<div className='w-[70%] items-center flex h-full justify-between relative'>
-				<Swiper
-					className='h-full w-full'
-					effect={'fade'}
-					autoplay
-					modules={[Pagination, Autoplay, EffectFade]}
-					slidesPerView={1}
-					pagination={{ clickable: true, el: '.heroBullets' }}
-				>
-					{slides.map((slide, index) => (
-						<SwiperSlide key={index} className='bg-white dark:bg-slate-950'>
-							<SlideContent slide={slide} index={index} />
-						</SwiperSlide>
-					))}
-				</Swiper>
+		<div className='w-[70%] items-center flex h-full justify-between relative'>
+			<Swiper
+				className='h-full w-full'
+				effect={'fade'}
+				autoplay
+				modules={[Pagination, Autoplay, EffectFade]}
+				slidesPerView={1}
+				pagination={{ clickable: true, el: '.heroBullets' }}
+			>
+				{slides.map((slide, index) => (
+					<SwiperSlide key={index} className='bg-white dark:bg-slate-950'>
+						<SlideContent slide={slide} index={index} />
+					</SwiperSlide>
+				))}
+			</Swiper>
 
-				<div className='heroBullets absolute left-0 bottom-4 z-[2] max-w-fit flex items-center gap-0.5'></div>
-			</div>
-		</section>
+			<div className='heroBullets absolute left-0 bottom-4 z-[2] max-w-fit flex items-center gap-0.5'></div>
+		</div>
 	);
 };
 
