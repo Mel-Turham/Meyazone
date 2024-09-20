@@ -71,7 +71,7 @@ const Footer = () => {
 
 	return (
 		<footer
-			className='border-t border-solid border-slate-800 mt-8'
+			className='border-t border-solid border-slate-300 dark:border-gray-800 mt-8'
 			role='contentinfo'
 		>
 			<div className='container flex items-center gap-8 py-10 border-b border-solid dark:border-slate-800 border-gray-200'>
