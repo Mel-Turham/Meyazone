@@ -32,24 +32,17 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import 'swiper/css/grid';
 // import Swiper core and required modules
-import {
-	Pagination,
-	Autoplay,
-	EffectFade,
-	Grid,
-	Navigation,
-} from 'swiper/modules';
+import { Pagination, Autoplay, Grid, Navigation } from 'swiper/modules';
 import TabFeatured from '@/components/TabFeatured';
 import { TabTypes } from '@/types';
 import TabOnsale from '@/components/TabOnsale';
 import TabTopRated from '@/components/TabTopRated';
 import Link from 'next/link';
-import Testimonial from '@/components/Testimonial';
 import Braind from '@/components/Braind';
 import ReacentProduct from '@/components/recentProduct/ReacentProduct';
-import { scaleUp } from '@/helpers/animation';
 import Hero from '@/sections/Hero';
 import UserTestimonial from '@/sections/UserTestimonial';
+import FeaturedCategories from '@/sections/FeaturedCategories';
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
@@ -61,7 +54,16 @@ const Home = () => {
 	return (
 		<>
 			{/* Hero section */}
-			<Hero />
+
+			<section
+				className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-slate-800
+		overflow-hidden relative dark:text-white border-b'
+			>
+				<Hero />
+			</section>
+			<section className='py-8 dark:bg-slate-900 mt-8 bg-gray-300/15'>
+				<FeaturedCategories />
+			</section>
 			{/* top products section */}
 			<section className='container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				<Card className='dark:bg-slate-900 rounded-none py-4 cursor-pointer bg-white/40 hover:dark:bg-slate-800 transition-all duration-300 ease-in-out shadow-sm dark:shadow-none hover:scale-105 group'>
@@ -290,7 +292,7 @@ const Home = () => {
 			{/* tab sections*/}
 			<section className=' container w-full gap-5 grid grid-cols-3 overflow-hidden pb-5'>
 				<div className='col-span-1'>
-					<Card className='cursor-pointer rounded'>
+					<Card className='cursor-pointer rounded dark:bg-slate-900'>
 						<CardHeader>
 							<CardTitle className='font-light'>Offer special</CardTitle>
 						</CardHeader>
@@ -394,7 +396,7 @@ const Home = () => {
 				</div>
 			</section>
 			{/* Section categories */}
-			<section className='container bg-[#F4F4F4] dark:bg-slate-900 pt-6 pb-8 '>
+			<section className='container bg-[#F4F4F4] dark:bg-slate-950 pt-6 pb-8 '>
 				<nav className=' w-full flex items-center justify-center h-3/12'>
 					<ul className='flex w-full justify-evenly items-center gap-5 border-b border-solid border-slate-200 dark:border-gray-300'>
 						{CategroryLinks.map((link, index) => (
@@ -419,7 +421,7 @@ const Home = () => {
 								key={product.id}
 								className='h-full w-full overflow-hidden cursor-pointer'
 							>
-								<Card className='rounded  w-full h-full overflow-hidden flex flex-col ga-1 justify-between'>
+								<Card className='rounded dark:bg-slate-900  w-full h-full overflow-hidden flex flex-col ga-1 justify-between'>
 									<CardHeader className='px-3'>
 										<CardDescription className='flex items-center gap-2'>
 											{product.category?.name.map((categories, index) => {
@@ -507,7 +509,7 @@ const Home = () => {
 						{BestSellersProducts.map((product) => {
 							return (
 								<SwiperSlide key={product.id}>
-									<Card className='rounded-none flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
+									<Card className='rounded-none dark:bg-slate-900 flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
 										<div className='h-full w-[55%] relative'>
 											<Image
 												src={product.image}
@@ -560,7 +562,7 @@ const Home = () => {
 				</Link>
 			</section>
 			{/* recend added */}
-			<section className='container py-5'>
+			<section className='container pt-5 pb-7 relative'>
 				<div
 					className='flex items-center justify-between relative border-b border-solid
 				text-gray-600 dark:text-gray-100 border-gray-300'
@@ -587,9 +589,9 @@ const Home = () => {
 				<Swiper
 					slidesPerView={4}
 					modules={[Pagination, Navigation]}
-					pagination={{ clickable: true }}
+					pagination={{ clickable: true, el: '.dots-recend-add' }}
 					spaceBetween={8}
-					className='mt-7 h-[14.8rem] '
+					className='mt-7  '
 					navigation={{
 						nextEl: '.custom-next',
 						prevEl: '.custom-prev',
@@ -599,18 +601,49 @@ const Home = () => {
 					{products.slice(0, 10).map((product, index) => {
 						return (
 							<SwiperSlide key={product.id}>
-								<Card className='rounded-sm mt-2'>
+								<Card className='rounded-sm h-[350px] mt-2 dark:bg-slate-900 flex flex-col justify-between'>
 									<CardHeader>
-										<CardDescription>Card description</CardDescription>
-										<CardTitle>Title card there</CardTitle>
+										<CardDescription className='flex items-center gap-1'>
+											{product.category?.name.map((categories, index) => {
+												return (
+													<span className='text-xs mb-0.5 ' key={index}>
+														{categories}
+													</span>
+												);
+											})}
+										</CardDescription>
+										<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
+											{product.name}
+										</CardTitle>
 									</CardHeader>
-									<CardContent>carcontent there..</CardContent>
-									<CardFooter>Footer card there!</CardFooter>
+									<CardContent className='flex items-center justify-center'>
+										<article className='w-[200px] h-[120px] flex items-center justify-center'>
+											<Image
+												src={product.image}
+												width={150}
+												height={150}
+												alt={product.name}
+												title={product.name}
+												loading='lazy'
+											/>
+										</article>
+									</CardContent>
+									<CardFooter className='px-3  justify-between  items-center'>
+										<span className='text-xl'>${product.price}</span>
+										<Button
+											aria-label='add to cart'
+											size={'icon'}
+											className='rounded-full'
+										>
+											<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
+										</Button>
+									</CardFooter>
 								</Card>
 							</SwiperSlide>
 						);
 					})}
 				</Swiper>
+				<div className='dots-recend-add absolute bottom-0 left-1/2 flex items-center gap-0.5 cursor-pointer w-fit mt-8'></div>
 			</section>
 			{/* users testimonials */}
 			<UserTestimonial />
@@ -649,7 +682,7 @@ const Home = () => {
 							modules={[Pagination]}
 							pagination={{
 								clickable: true,
-								el: '.users-bullets',
+								el: '.custom-bullets-aded',
 							}}
 						>
 							{Array.from({ length: 8 }, (_, index) => {
@@ -660,7 +693,7 @@ const Home = () => {
 								);
 							})}
 						</Swiper>
-						<div className='users-bullets absolute -bottom-5 left-1/2  z-10 w-fit flex items-center gap-[3px] cursor-pointer'></div>
+						<div className='custom-bullets-aded absolute -bottom-5 left-1/2  z-10 w-fit flex items-center gap-[3px]  cursor-pointer'></div>
 					</div>
 				</div>
 			</section>
