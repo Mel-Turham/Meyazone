@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { BrandsImages, CategroryLinks, products, users } from '@/db';
+import { BrandsImages, CategroryLinks } from '@/db';
 import {
 	Card,
 	CardContent,
@@ -44,25 +44,33 @@ import Hero from '@/sections/Hero';
 import UserTestimonial from '@/sections/UserTestimonial';
 import FeaturedCategories from '@/sections/FeaturedCategories';
 
+import { getSubCategories } from '@/utils/getSubCategories';
+import { getAllProducts } from '@/utils/getProducts';
+import formatPrice from '@/utils/formatPrice';
+import { useCurrencyStore } from '@/store/useCurrencyStore';
+
 const Home = () => {
+	const products = getAllProducts();
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
 	const TabFeaturedProducts = products.slice(0, 6);
 	const TabOnSaleProducts = products.slice(7, 13);
 	const TabTopRatedProducts = products.slice(14, 20);
 	const BestSellersProducts = products.slice(0, 10);
 	const CategoriesProducts = TabTopRatedProducts.slice(0, 5);
+	const subCategories = getSubCategories();
+	const { currency } = useCurrencyStore();
 	return (
 		<>
 			{/* Hero section */}
 
 			<section
-				className='w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-slate-800
-		overflow-hidden relative dark:text-white border-b'
+				className='section-hero  w-full h-[calc(100dvh-10.9rem)] flex items-center justify-end text-slate-800
+		overflow-hidden relative bg-bg-hero bg-cover bg-center'
 			>
 				<Hero />
 			</section>
 			<section className='py-8 dark:bg-slate-900 mt-8 bg-gray-300/15'>
-				<FeaturedCategories />
+				<FeaturedCategories subCategories={subCategories} />
 			</section>
 			{/* top products section */}
 			<section className='container py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -291,7 +299,7 @@ const Home = () => {
 			</section>
 			{/* tab sections*/}
 			<section className=' container w-full gap-5 grid grid-cols-3 overflow-hidden pb-5'>
-				<div className='col-span-1'>
+				<div className='col-span-1 flex flex-col gap-2'>
 					<Card className='cursor-pointer rounded dark:bg-slate-900'>
 						<CardHeader>
 							<CardTitle className='font-light'>Offer special</CardTitle>
@@ -327,6 +335,14 @@ const Home = () => {
 							</div>
 						</CardFooter>
 					</Card>
+					<Image
+						src='/banner.webp'
+						alt='image'
+						width={200}
+						height={150}
+						loading='lazy'
+						className='w-[400px] object-cover h-[260px]'
+					/>
 				</div>
 				<div className='col-span-2'>
 					<div
@@ -424,13 +440,7 @@ const Home = () => {
 								<Card className='rounded dark:bg-slate-900  w-full h-full overflow-hidden flex flex-col ga-1 justify-between'>
 									<CardHeader className='px-3'>
 										<CardDescription className='flex items-center gap-2'>
-											{product.category?.name.map((categories, index) => {
-												return (
-													<span className='text-xs mb-0.5 ' key={index}>
-														{categories}
-													</span>
-												);
-											})}
+											'categorie'
 										</CardDescription>
 										<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
 											{product.name}
@@ -447,7 +457,9 @@ const Home = () => {
 										/>
 									</CardContent>
 									<CardFooter className='px-3  justify-between  items-center'>
-										<span className='text-xl'>${product.price}</span>
+										<span className='text-xl'>
+											{formatPrice(product.price, currency)}
+										</span>
 										<Button
 											aria-label='add to cart'
 											size={'icon'}
@@ -497,44 +509,44 @@ const Home = () => {
 						className='w-full h-full'
 						slidesPerView={3}
 						autoplay
-						modules={[Grid, Pagination, Autoplay]}
+						modules={[Grid, Autoplay]}
 						grid={{
 							rows: 2,
 						}}
 						spaceBetween={10}
-						pagination={{
-							clickable: true,
-						}}
 					>
 						{BestSellersProducts.map((product) => {
 							return (
 								<SwiperSlide key={product.id}>
 									<Card className='rounded-none dark:bg-slate-900 flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
-										<div className='h-full w-[55%] relative'>
+										<div className='h-full w-[45%] relative'>
 											<Image
 												src={product.image}
 												alt={product.name}
 												loading='lazy'
-												width={500}
-												height={500}
+												width={200}
+												height={200}
 												className='object-contain w-full h-full overflow-none'
 											/>
 										</div>
-										<div className='flex flex-col h-full justify-between'>
+										<div className='flex flex-col h-full justify-betweenw-[55%]'>
 											<div>
 												<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
-													{product.category?.name.map((categorie, index) => {
-														return <span key={index}>{categorie}</span>;
-													})}
+													'categorie'
 												</p>
 												<h4 className='font-semibold text-blue-600 mt-2'>
 													{product.name}
 												</h4>
 											</div>
 											<div className='flex items-center justify-between mt-auto '>
-												<span className='font-medium text-xl text-gray-600 dark:text-gray-100 '>
-													${product.price}
-												</span>
+												<div className='flex items-center flex-col gap-1'>
+													<span className='text-red-600 text-xs font-medium line-through'>
+														{formatPrice(product?.oldPrice as number, currency)}
+													</span>
+													<span className='font-medium text-lg text-gray-600 dark:text-gray-100 '>
+														{formatPrice(product.price, currency)}
+													</span>
+												</div>
 												<Button size='icon' className='rounded-full p-0'>
 													<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
 												</Button>
@@ -588,8 +600,7 @@ const Home = () => {
 				</div>
 				<Swiper
 					slidesPerView={4}
-					modules={[Pagination, Navigation]}
-					pagination={{ clickable: true, el: '.dots-recend-add' }}
+					modules={[Navigation]}
 					spaceBetween={8}
 					className='mt-7  '
 					navigation={{
@@ -598,38 +609,35 @@ const Home = () => {
 					}}
 					cssMode={true}
 				>
-					{products.slice(0, 10).map((product, index) => {
+					{products.slice(10, 20).map((product, index) => {
 						return (
 							<SwiperSlide key={product.id}>
 								<Card className='rounded-sm h-[350px] mt-2 dark:bg-slate-900 flex flex-col justify-between'>
 									<CardHeader>
 										<CardDescription className='flex items-center gap-1'>
-											{product.category?.name.map((categories, index) => {
-												return (
-													<span className='text-xs mb-0.5 ' key={index}>
-														{categories}
-													</span>
-												);
-											})}
+											'Categorie'
 										</CardDescription>
-										<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
+										<CardTitle className='text-lg font-semibold text-blue-600  mb-0'>
 											{product.name}
 										</CardTitle>
 									</CardHeader>
-									<CardContent className='flex items-center justify-center'>
-										<article className='w-[200px] h-[120px] flex items-center justify-center'>
+									<CardContent className='flex items-center justify-center h-[200px'>
+										<article className=' flex items-center'>
 											<Image
 												src={product.image}
-												width={150}
-												height={150}
+												width={100}
+												height={100}
 												alt={product.name}
 												title={product.name}
 												loading='lazy'
+												className='w-[90%] h-[90%] object-contain'
 											/>
 										</article>
 									</CardContent>
 									<CardFooter className='px-3  justify-between  items-center'>
-										<span className='text-xl'>${product.price}</span>
+										<span className='text-xl'>
+											{formatPrice(product.price, currency)}
+										</span>
 										<Button
 											aria-label='add to cart'
 											size={'icon'}
@@ -643,7 +651,6 @@ const Home = () => {
 						);
 					})}
 				</Swiper>
-				<div className='dots-recend-add absolute bottom-0 left-1/2 flex items-center gap-0.5 cursor-pointer w-fit mt-8'></div>
 			</section>
 			{/* users testimonials */}
 			<UserTestimonial />
