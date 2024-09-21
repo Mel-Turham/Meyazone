@@ -99,3 +99,7 @@
 	height: 5px !important;
 	background-color: rgb(239, 124, 26) !important;
 }
+
+.section-hero {
+	background-image: url('../public/hero.jpg');
+}
