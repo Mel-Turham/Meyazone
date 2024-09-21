@@ -21,21 +21,21 @@ const slides = [
 		title: 'Shop to get what you love',
 		subtitle: 'Timepieces that make a statement',
 		discount: '40% off',
-		image: '/Sounddevice.webp',
+		image: '/product-28.png',
 		alt: 'Sounddevice',
 	},
 	{
 		title: 'Shop to get what you love',
 		subtitle: 'Timepieces that make a statement',
 		discount: '40% off',
-		image: '/Smartphones.webp',
+		image: '/product-93.png',
 		alt: 'Smartphones',
 	},
 	{
 		title: 'The new standard',
 		subtitle: 'under favorable smartwatches',
 		price: '749',
-		image: '/smartwatches-resized.webp',
+		image: '/product-22.png',
 		alt: 'smartwatches',
 	},
 ];
@@ -117,9 +117,9 @@ const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 					alt={slide.alt}
 					title=''
 					loading='lazy'
-					width={400}
-					height={350}
-					className='object-cover w-full h-full object-top'
+					width={300}
+					height={250}
+					className='object-contain w-full h-full object-top'
 				/>
 			</motion.div>
 		</div>
