@@ -6,6 +6,7 @@ import 'swiper/css/effect-fade';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import './hero.css';
 type Slide = {
 	title: string;
 	subtitle: string;
@@ -128,7 +129,7 @@ const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 
 const Hero = () => {
 	return (
-		<div className='w-[70%] items-center flex h-full justify-between relative'>
+		<div className='w-[70%] items-center flex h-full justify-between relative container-hero'>
 			<Swiper
 				className='h-full w-full'
 				effect={'fade'}
@@ -138,7 +139,7 @@ const Hero = () => {
 				pagination={{ clickable: true, el: '.heroBullets' }}
 			>
 				{slides.map((slide, index) => (
-					<SwiperSlide key={index} className='bg-white dark:bg-slate-950'>
+					<SwiperSlide key={index} className=''>
 						<SlideContent slide={slide} index={index} />
 					</SwiperSlide>
 				))}
