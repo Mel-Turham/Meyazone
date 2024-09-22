@@ -16,6 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { usePathname } from 'next/navigation';
+import CurrencySelector from '@/components/CurrencySelector';
 
 const Footer = () => {
 	const { theme } = useTheme();
@@ -74,7 +75,7 @@ const Footer = () => {
 			className='border-t border-solid border-slate-300 dark:border-gray-800 mt-8'
 			role='contentinfo'
 		>
-			<div className='container flex items-center gap-8 py-10 border-b border-solid dark:border-slate-800 border-gray-200'>
+			<div className='container flex items-center gap-8 py-10 border-b border-solid dark:border-slate-800 border-gray-200 '>
 				<div className='flex flex-col gap-5 w-3/12'>
 					<Link href='/' aria-label='Go to homepage'>
 						<Image
@@ -174,7 +175,7 @@ const Footer = () => {
 					</nav>
 				</div>
 			</div>
-			<div className='w-full container py-4 flex flex-col gap-10'>
+			<div className='w-full container py-4 flex flex-col gap-6'>
 				<div className='flex items-center justify-between'>
 					<div className='flex items-center justify-center gap-5'>
 						<h4 className='text-sm font-normal tracking-tight dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'>
@@ -213,6 +214,12 @@ const Footer = () => {
 							height={250}
 						/>
 					</div>
+				</div>
+				<div className='flex items-center gap-4'>
+					<h4 className='text-sm font-normal tracking-tight dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'>
+						Select currency:
+					</h4>
+					<CurrencySelector />
 				</div>
 				<div className='flex items-center justify-between'>
 					<p className='text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'>
