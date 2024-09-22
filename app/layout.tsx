@@ -24,13 +24,13 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<ThemeProvider
 					attribute='class'
-					defaultTheme='light'
+					defaultTheme='dark'
 					enableSystem
 					disableTransitionOnChange
 				>
 					<Navbar />
 					<main className='grow'>{children}</main>
-					<MenuSideBar/>
+					<MenuSideBar />
 					<Footer />
 					<div className='fixed left-5 top-1/2'>
 						<ToggleTheme />
