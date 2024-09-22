@@ -66,7 +66,18 @@ const Navbar: React.FC = () => {
 	const [megaMenuItem, setMegaMenuItem] =
 		useState<MegaMenuProps['megaMenu']>(undefined);
 	const [isHoveringMegaMenu, setIsHoveringMegaMenu] = useState<boolean>(false);
+	const handleOnMouseEnter = useCallback(
+		(megaMenu: MegaMenuProps['megaMenu']) => {
+			megaMenu && setMegaMenuItem(megaMenu);
+		},
+		[],
+	);
 
+	const handleOnMouseLeave = useCallback(() => {
+		if (!isHoveringMegaMenu) {
+			setMegaMenuItem(undefined);
+		}
+	}, [isHoveringMegaMenu]);
 	// Gestion du scroll lors de l'ouverture du menu
 	useEffect(() => {
 		const html = document.querySelector<HTMLHtmlElement>('html');
@@ -99,18 +110,6 @@ const Navbar: React.FC = () => {
 	if (shouldHide) return null;
 
 	// Gestion du survol pour le mega menu
-	const handleOnMouseEnter = useCallback(
-		(megaMenu: MegaMenuProps['megaMenu']) => {
-			megaMenu && setMegaMenuItem(megaMenu);
-		},
-		[],
-	);
-
-	const handleOnMouseLeave = useCallback(() => {
-		if (!isHoveringMegaMenu) {
-			setMegaMenuItem(undefined);
-		}
-	}, [isHoveringMegaMenu]);
 
 	return (
 		<header className='w-full bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700'>
@@ -151,6 +150,7 @@ const Navbar: React.FC = () => {
 						title='Meyazone - Votre boutique en ligne'
 						width={200}
 						height={200}
+						className='w-full h-full object-contain'
 					/>
 				</Link>
 
@@ -355,7 +355,7 @@ const Navbar: React.FC = () => {
 					/>
 					<div className='grid grid-rows-2 place-content-center h-full'>
 						<small className='font-light leading-none text-xs text-nowrap'>
-							Appelez-nous 24h/24 7j/7
+							Appelez-nous 24h/7
 						</small>
 						<p className='text-lg text-nowrap font-bold space-x-1 '>
 							<span>+237</span>
