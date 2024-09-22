@@ -8,31 +8,28 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import { ShoppingCart } from 'lucide-react';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import formatPrice from '@/utils/formatPrice';
+import { useCurrencyStore } from '@/store/useCurrencyStore';
 
-type Categories = {
-	name: string[];
-};
-
-type Description = {
-	desc: string[];
-};
-
-type Props = {
+interface Props {
 	id: number;
 	name: string;
-	image: StaticImageData | string;
+	image: string;
 	price: number;
-	category: Categories;
-	decription: Description;
-};
+	oldPrice?: number;
+	stock: number;
+	details: string;
+}
 
 const TabFeatured = ({
 	tabFeaturedProducts,
 }: {
 	tabFeaturedProducts: Props[];
 }) => {
+	const { currency } = useCurrencyStore();
+
 	return (
 		<>
 			{tabFeaturedProducts.map((product, index) => {
@@ -54,13 +51,7 @@ const TabFeatured = ({
 						<Card className='rounded dark:bg-slate-900 pb-1 w-full h-full overflow-hidden flex flex-col justify-between'>
 							<CardHeader className='px-3'>
 								<CardDescription className='flex items-center gap-2'>
-									{product.category?.name.map((categories, index) => {
-										return (
-											<span className='text-xs mb-0.5 ' key={index}>
-												{categories}
-											</span>
-										);
-									})}
+									categorie
 								</CardDescription>
 								<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
 									{product.name}
@@ -70,14 +61,16 @@ const TabFeatured = ({
 								<Image
 									src={product.image}
 									alt={product.name}
-									width={300}
-									height={300}
-									className='w-full h-full object-cover'
+									width={100}
+									height={100}
+									className='w-full h-full object-contain'
 									loading='lazy'
 								/>
 							</CardContent>
 							<CardFooter className='px-3  justify-between  items-center'>
-								<span className='text-xl'>${product.price}</span>
+								<span className='text-xl'>
+									{formatPrice(product.price, currency)}
+								</span>
 								<Button
 									aria-label='add to cart'
 									size={'icon'}

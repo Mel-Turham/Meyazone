@@ -10,12 +10,12 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 
-const ReacentProduct = () => {
+const ReacentProduct = ({ image }: { image: string }) => {
 	return (
 		<Card className='rounded dark:bg-slate-900'>
 			<CardContent className='relative p-0'>
 				<Image
-					src='/GoldPhone.webp'
+					src={image}
 					alt='image'
 					loading='lazy'
 					width={150}
