@@ -15,9 +15,9 @@ const CurrencySelector = () => {
 	};
 	return (
 		<Select value={currency} onValueChange={handleChangeCurrency}>
-			<SelectTrigger className='w-[180px]'>
+			<SelectTrigger className='w-[90px] p-1 right-0 focus:ring-offset-0'>
 				<SelectValue placeholder='Select currentcy' />
-				<SelectContent>
+				<SelectContent className='text-xs capitalize'>
 					<SelectGroup>
 						{/* <SelectLabel>Currency</SelectLabel> */}
 						<SelectItem value='USD'>USD</SelectItem>
