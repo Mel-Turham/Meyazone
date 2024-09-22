@@ -336,7 +336,7 @@ const Home = () => {
 						</CardFooter>
 					</Card>
 					<Image
-						src='/banner.webp'
+						src='/banner.jpg'
 						alt='image'
 						width={200}
 						height={150}
@@ -692,13 +692,15 @@ const Home = () => {
 								el: '.custom-bullets-aded',
 							}}
 						>
-							{Array.from({ length: 8 }, (_, index) => {
-								return (
-									<SwiperSlide key={index}>
-										<ReacentProduct />
-									</SwiperSlide>
-								);
-							})}
+							<SwiperSlide>
+								<ReacentProduct image='/article-1.jpg' />
+							</SwiperSlide>
+							<SwiperSlide>
+								<ReacentProduct image='/article-2.jpg' />
+							</SwiperSlide>
+							<SwiperSlide>
+								<ReacentProduct image='/article-3.jpg' />
+							</SwiperSlide>
 						</Swiper>
 						<div className='custom-bullets-aded absolute -bottom-5 left-1/2  z-10 w-fit flex items-center gap-[3px]  cursor-pointer'></div>
 					</div>
