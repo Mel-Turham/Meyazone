@@ -41,10 +41,50 @@ type Department = {
 	}[];
 };
 
+// type category
+
+type Specification = {
+	[key: string]: string | number;
+};
+
+type Rating = {
+	average: number;
+	count: number;
+};
+
+type Product = {
+	id: number;
+	name: string;
+	image: string;
+	subImages?: string[];
+	stock: number;
+	oldPrice?: number;
+	price: number;
+	details: string;
+	specifications?: Specification;
+	createdAt: string;
+	ratings: Rating;
+};
+
+type SubCategory = {
+	id: number;
+	name: string;
+	image: string;
+	products: Product[];
+};
+
+type Category = {
+	id: number;
+	name: string;
+	image: string;
+	subCategories: SubCategory[];
+};
+
 export {
 	type ProductTypes,
 	type TabTypes,
 	type UsersType,
 	type ImageType,
 	type Department,
+	type Category,
 };
