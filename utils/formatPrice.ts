@@ -2,7 +2,6 @@ function formatPrice(price: number, currency: 'USD' | 'XOF'): string {
 	const formatter = new Intl.NumberFormat(
 		currency === 'USD' ? 'en-US' : 'fr-FR',
 		{
-			style: 'currency',
 			currency: currency,
 			minimumFractionDigits: 0,
 			maximumFractionDigits: 0,
