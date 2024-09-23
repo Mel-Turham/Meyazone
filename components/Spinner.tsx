@@ -8,7 +8,7 @@ interface LoaderProps {
 
 export default function Spinner({
 	size = 40,
-	color = '#3498db',
+	color = '#EF7C1A',
 }: LoaderProps = {}) {
 	return (
 		<div className='flex items-center justify-center'>
