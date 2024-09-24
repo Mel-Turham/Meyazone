@@ -13,6 +13,11 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import Accessories from '@/sections/Accessorie';
+import Description from '@/sections/Description';
+import Specifications from '@/sections/Specifications';
+import Reviews from '@/sections/Reviews';
 
 const SingleProductPage = () => {
 	const params = useParams();
@@ -146,7 +151,7 @@ const SingleProductPage = () => {
 				</div>
 				{/* card price */}
 				<div className='w-3/12'>
-					<Card className='space-y-4 shadow'>
+					<Card className='space-y-4 shadow w-full dark:bg-slate-900'>
 						<CardHeader>
 							<CardDescription>
 								Availability:
@@ -158,7 +163,23 @@ const SingleProductPage = () => {
 						</CardHeader>
 						<CardContent className='space-y-5 flex flex-col'>
 							<p className='text-4xl font-bold'>$350.00</p>
-							<Input type='number' min={1} className='outline-none' />
+							<div className='space-y-2'>
+								<Label
+									htmlFor='quantity'
+									className='underline underline-offset-4'
+								>
+									Quantity:
+								</Label>
+								<Input
+									type='number'
+									min={1}
+									max={5}
+									className='outline-none dark:bg-slate-900 dark:border-slate-500'
+									id='quantity'
+									name='quantity'
+									placeholder='Quantity...'
+								/>
+							</div>
 							<Button
 								size={'lg'}
 								className='flex items-center justify-center gap-3'
@@ -180,6 +201,24 @@ const SingleProductPage = () => {
 					</Card>
 				</div>
 			</div>
+			{/* accessories sigle product page details product */}
+
+			<section className='py-8 mt-10 dark:bg-slate-900 bg-gray-400/15'>
+				<Accessories />
+			</section>
+			{/* Description single product page detail product */}
+			<section className='py-8 mt-10 dark:bg-slate-900 bg-gray-400/15'>
+				<Description />
+			</section>
+
+			{/* Specification sigle product page details product */}
+			<section className='p-8 mt-10 dark:bg-slate-900 bg-gray-400/15'>
+				<Specifications />
+			</section>
+			{/* Reviews sigle product page details product */}
+			<section className='p-8 mt-10 dark:bg-slate-900 bg-gray-400/15'>
+				<Reviews />
+			</section>
 		</section>
 	);
 };
