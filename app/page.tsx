@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { BrandsImages, CategroryLinks } from '@/db';
 import {
@@ -52,11 +52,14 @@ import { useCurrencyStore } from '@/store/useCurrencyStore';
 const Home = () => {
 	const products = getAllProducts();
 	const [activeTab, setActiveTab] = useState<TabTypes>('featured');
-	const TabFeaturedProducts = products.slice(0, 6);
-	const TabOnSaleProducts = products.slice(7, 13);
-	const TabTopRatedProducts = products.slice(14, 20);
-	const BestSellersProducts = products.slice(0, 10);
-	const CategoriesProducts = TabTopRatedProducts.slice(0, 5);
+	const TabFeaturedProducts = useMemo(() => products.slice(0, 6), [products]);
+	const TabOnSaleProducts = useMemo(() => products.slice(7, 13), [products]);
+	const TabTopRatedProducts = useMemo(() => products.slice(14, 20), [products]);
+	const BestSellersProducts = useMemo(() => products.slice(0, 10), [products]);
+	const CategoriesProducts = useMemo(
+		() => TabTopRatedProducts.slice(0, 5),
+		[TabTopRatedProducts],
+	);
 	const subCategories = getSubCategories();
 	const { currency } = useCurrencyStore();
 	return (
