@@ -4,8 +4,8 @@ function formatPrice(price: number, currency: 'USD' | 'XOF'): string {
 		{
 			style: 'currency',
 			currency: currency,
-			minimumFractionDigits: 0,
-			maximumFractionDigits: 0,
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 3,
 		},
 	);
 
