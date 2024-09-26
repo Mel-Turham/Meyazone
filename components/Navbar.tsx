@@ -168,7 +168,7 @@ const Navbar: React.FC = () => {
 
 				<div className='w-7/12 flex items-center gap-2 justify-between'>
 					<div
-						onClick={() => setIsOpen(!isOpen)}
+						onClick={() => setIsOpen(true)}
 						className='mr-8 flex items-center justify-center'
 					>
 						<Menu className='w-7 h-7 cursor-pointer' aria-label='Menu' />
