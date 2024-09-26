@@ -443,7 +443,7 @@ const Home = () => {
 								<Card className='rounded dark:bg-slate-900  w-full h-full overflow-hidden flex flex-col ga-1 justify-between'>
 									<CardHeader className='px-3'>
 										<CardDescription className='flex items-center gap-2'>
-											'categorie'
+											categorie
 										</CardDescription>
 										<CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
 											{product.name}
@@ -535,7 +535,7 @@ const Home = () => {
 										<div className='flex flex-col h-full justify-betweenw-[55%]'>
 											<div>
 												<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
-													'categorie'
+													categorie
 												</p>
 												<h4 className='font-semibold text-blue-600 mt-2'>
 													{product.name}
@@ -618,7 +618,7 @@ const Home = () => {
 								<Card className='rounded-sm h-[350px] mt-2 dark:bg-slate-900 flex flex-col justify-between'>
 									<CardHeader>
 										<CardDescription className='flex items-center gap-1'>
-											'Categorie'
+											Categorie
 										</CardDescription>
 										<CardTitle className='text-lg font-semibold text-blue-600  mb-0'>
 											{product.name}
