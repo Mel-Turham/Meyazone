@@ -16,7 +16,13 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import {
@@ -38,6 +44,7 @@ import { useMenuStore } from '@/store/MenuStore';
 import { usePathname } from 'next/navigation';
 import NavLink from '@/components/NavLink';
 import { departments } from '@/db';
+import useOutSideClick from '@/hooks/useOutSideClick';
 
 // Définition des liens de navigation principaux
 const links = [
@@ -61,6 +68,7 @@ interface MegaMenuProps {
 
 const Navbar: React.FC = () => {
 	const { setIsOpen, isOpen } = useMenuStore();
+	const [isDrowp, setIsDrowp] = useState<boolean>(false);
 	const { theme, systemTheme } = useTheme();
 	const pathname = usePathname();
 	const [megaMenuItem, setMegaMenuItem] =
@@ -96,7 +104,13 @@ const Navbar: React.FC = () => {
 			body?.classList.remove('overflow-hidden');
 		};
 	}, [isOpen]);
-
+	const refMenuDepartement = useRef<HTMLDivElement>(null);
+	useOutSideClick(refMenuDepartement, () => {
+		setIsDrowp(false);
+	});
+	const handleMenuDepartement = useCallback(() => {
+		setIsDrowp((prev) => !prev);
+	}, []);
 	// Pages où le footer doit être caché
 	const hideFooter = ['/login', '/register'];
 	const shouldHide = hideFooter.includes(pathname);
@@ -108,8 +122,6 @@ const Navbar: React.FC = () => {
 	}, [theme, systemTheme]);
 
 	if (shouldHide) return null;
-
-	// Gestion du survol pour le mega menu
 
 	return (
 		<header className='w-full bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700'>
@@ -256,84 +268,97 @@ const Navbar: React.FC = () => {
 
 			{/* Barre de navigation inférieure */}
 			<div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-700 py-1'>
-				{pathname === '/' && (
-					<Card className='w-[260px] rounded-sm absolute top-7 left-20  z-10'>
-						<CardHeader className='bg-myprimary py-2 px-4'>
-							<CardTitle className='flex items-center  gap-6'>
-								<Menu className='w-6 h-6 text-black' />
-								<span className='text-sm  font-medium text-black tracking-wide'>
-									Tous les départements
-								</span>
-							</CardTitle>
-						</CardHeader>
-						<CardContent className='p-1 rounded-none divide-y-[0.4px] relative'>
-							{departments.map((department) => (
-								<div className='flex flex-col gap-2' key={department.id}>
-									<div
-										onMouseEnter={() =>
-											handleOnMouseEnter(department?.megaMenu)
-										}
-										onMouseLeave={handleOnMouseLeave}
-										className='flex items-center justify-between hover:dark:bg-slate-700 transition-all duration-300 ease-in-out dark:text-white text-slate-800 ps-4 rounded hover:bg-slate-100'
-									>
-										<Link
-											href='#'
-											className='text-sm font-medium tracking-wide py-2'
-										>
-											{department.name}
-										</Link>
-										{department?.megaMenu && (
-											<ChevronRight
-												className='w-6 h-6 text-muted-foreground'
-												strokeWidth={1.5}
-											/>
-										)}
-									</div>
-								</div>
-							))}
-							<AnimatePresence mode='wait'>
-								{megaMenuItem && (
-									<motion.div
-										onMouseEnter={() => setIsHoveringMegaMenu(true)}
-										onMouseLeave={() => {
-											setIsHoveringMegaMenu(false);
-											setMegaMenuItem(undefined);
-										}}
-										initial={{ scaleX: 0, opacity: 0, originX: 'left' }}
-										animate={{ scaleX: 1, opacity: 1, originX: 'left' }}
-										transition={{
-											delay: 0.5,
-											duration: 0.3,
-											ease: 'easeOut',
-											stiffness: '80',
-											type: 'keyframes',
-										}}
-										exit={{ scaleX: 0, opacity: 0, originX: 'left' }}
-										className='absolute top-0 -right-[45vw] flex gap-5 w-[45vw] border-t-[1rem] px-5 py-8 bg-white dark:bg-slate-950 dark:text-white text-slate-800 z-10 border-solid border-myprimary'
-									>
-										{megaMenuItem.map((i) => (
-											<div className='space-y-3 w-1/2' key={i.id}>
-												<h3 className='text-lg text-balance font-bold capitalize'>
-													{i.categoryName}
-												</h3>
-												<ul className='space-y-4'>
-													{i.links.map((link) => (
-														<li
-															key={link.id}
-															className='hover:underline hover:underline-offset-4 text-sm'
-														>
-															<Link href='#'>{link.label}</Link>
-														</li>
-													))}
-												</ul>
+				<Card className='w-[260px] rounded-sm absolute top-7 left-20  z-10'>
+					<CardHeader className='bg-myprimary py-2 px-4'>
+						<CardTitle className='flex items-center  gap-6'>
+							<Menu
+								className='w-6 h-6 text-black cursor-pointer'
+								onClick={handleMenuDepartement}
+							/>
+							<span className='text-sm  font-medium text-black tracking-wide'>
+								Tous les départements
+							</span>
+						</CardTitle>
+					</CardHeader>
+					<AnimatePresence mode='wait'>
+						{isDrowp && (
+							<motion.div
+								ref={refMenuDepartement}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.5, ease: 'easeInOut' }}
+								exit={{ opacity: 0 }}
+							>
+								<CardContent className='p-1 rounded-none divide-y-[0.4px] relative'>
+									{departments.map((department) => (
+										<div className='flex flex-col gap-2' key={department.id}>
+											<div
+												onMouseEnter={() =>
+													handleOnMouseEnter(department?.megaMenu)
+												}
+												onMouseLeave={handleOnMouseLeave}
+												className='flex items-center justify-between hover:dark:bg-slate-700 transition-all duration-300 ease-in-out dark:text-white text-slate-800 ps-4 rounded hover:bg-slate-100'
+											>
+												<Link
+													href='#'
+													className='text-sm font-medium tracking-wide py-2'
+												>
+													{department.name}
+												</Link>
+												{department?.megaMenu && (
+													<ChevronRight
+														className='w-6 h-6 text-muted-foreground'
+														strokeWidth={1.5}
+													/>
+												)}
 											</div>
-										))}
-									</motion.div>
-								)}
-							</AnimatePresence>
-						</CardContent>
-					</Card>
-				)}
+										</div>
+									))}
+									<AnimatePresence mode='wait'>
+										{megaMenuItem && (
+											<motion.div
+												onMouseEnter={() => setIsHoveringMegaMenu(true)}
+												onMouseLeave={() => {
+													setIsHoveringMegaMenu(false);
+													setMegaMenuItem(undefined);
+												}}
+												initial={{ scaleX: 0, opacity: 0, originX: 'left' }}
+												animate={{ scaleX: 1, opacity: 1, originX: 'left' }}
+												transition={{
+													delay: 0.5,
+													duration: 0.3,
+													ease: 'easeOut',
+													stiffness: '80',
+													type: 'keyframes',
+												}}
+												exit={{ scaleX: 0, opacity: 0, originX: 'left' }}
+												className='absolute top-0 -right-[45vw] flex gap-5 w-[45vw] border-t-[1rem] px-5 py-8 bg-white dark:bg-slate-950 dark:text-white text-slate-800 z-10 border-solid border-myprimary'
+											>
+												{megaMenuItem.map((i) => (
+													<div className='space-y-3 w-1/2' key={i.id}>
+														<h3 className='text-lg text-balance font-bold capitalize'>
+															{i.categoryName}
+														</h3>
+														<ul className='space-y-4'>
+															{i.links.map((link) => (
+																<li
+																	key={link.id}
+																	className='hover:underline hover:underline-offset-4 text-sm'
+																>
+																	<Link href='#'>{link.label}</Link>
+																</li>
+															))}
+														</ul>
+													</div>
+												))}
+											</motion.div>
+										)}
+									</AnimatePresence>
+								</CardContent>
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</Card>
 				<div className='w-[260px]'></div>
 				<nav className='flex items-center' aria-label='Navigation principale'>
 					<ul className='flex items-center text-slate-600 font-medium dark:text-white'>
