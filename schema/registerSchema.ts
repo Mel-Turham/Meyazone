@@ -1,35 +1,45 @@
 import { z } from 'zod';
 
+// Define constants for reusable values
+const MIN_USERNAME_LENGTH = 2;
+const MAX_USERNAME_LENGTH = 30;
+const MIN_PASSWORD_LENGTH = 8;
+const MAX_PASSWORD_LENGTH = 16;
+
+// Define password regex pattern
+const PASSWORD_PATTERN =
+	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+
 const registerSchema = z
 	.object({
 		username: z
 			.string()
 			.trim()
-			.min(2, {
-				message: 'Username must contain at least 2 characters.',
+			.min(MIN_USERNAME_LENGTH, {
+				message: `Username must contain at least ${MIN_USERNAME_LENGTH} characters.`,
 			})
-			.max(30, {
-				message: 'Username must not exceed 30 characters.',
+			.max(MAX_USERNAME_LENGTH, {
+				message: `Username must not exceed ${MAX_USERNAME_LENGTH} characters.`,
 			}),
-		email: z.string().email({
-			message: 'Please provide a valid email address.',
-		}),
+		email: z
+			.string()
+			.email({
+				message: 'Please provide a valid email address.',
+			})
+			.trim(),
 		password: z
 			.string()
 			.trim()
-			.min(8, {
-				message: 'Password must contain at least 8 characters.',
+			.min(MIN_PASSWORD_LENGTH, {
+				message: `Password must contain at least ${MIN_PASSWORD_LENGTH} characters.`,
 			})
-			.max(16, {
-				message: 'Password must not exceed 16 characters.',
+			.max(MAX_PASSWORD_LENGTH, {
+				message: `Password must not exceed ${MAX_PASSWORD_LENGTH} characters.`,
 			})
-			.regex(
-				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/,
-				{
-					message:
-						'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
-				},
-			),
+			.regex(PASSWORD_PATTERN, {
+				message:
+					'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
+			}),
 		confirmPassword: z.string().trim(),
 	})
 	.refine((data) => data.password === data.confirmPassword, {
@@ -37,4 +47,5 @@ const registerSchema = z
 		path: ['confirmPassword'],
 	});
 
-export type IRegisterForm = z.infer<typeof registerSchema>;
+// Export the type for the register form based on the schema
+export type RegisterForm = z.infer<typeof registerSchema>;
