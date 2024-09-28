@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // Define the login schema using Zod
-const loginSchema = z.object({
+export const loginSchema = z.object({
 	// Email field validation
 	email: z
 		.string()
