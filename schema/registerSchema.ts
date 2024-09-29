@@ -10,7 +10,7 @@ const MAX_PASSWORD_LENGTH = 16;
 const PASSWORD_PATTERN =
 	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
 
-const registerSchema = z
+export const registerSchema = z
 	.object({
 		username: z
 			.string()
