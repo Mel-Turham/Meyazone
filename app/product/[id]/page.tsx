@@ -18,6 +18,7 @@ import Accessories from '@/sections/Accessorie';
 import Description from '@/sections/Description';
 import Specifications from '@/sections/Specifications';
 import Reviews from '@/sections/Reviews';
+import MoreProducts from '@/sections/MoreProducts';
 
 const SingleProductPage = () => {
 	const params = useParams();
@@ -218,6 +219,9 @@ const SingleProductPage = () => {
 			{/* Reviews sigle product page details product */}
 			<section className='p-8 mt-10 dark:bg-slate-900 bg-gray-400/15'>
 				<Reviews />
+			</section>
+			<section className='p-8 mt-10 dark:bg-slate-900 bg-gray-400/15'>
+				<MoreProducts />
 			</section>
 		</section>
 	);
