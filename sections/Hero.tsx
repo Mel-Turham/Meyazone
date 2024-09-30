@@ -44,7 +44,7 @@ const slides = [
 // Composant pour le contenu de chaque slide
 const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 	<div className='flex w-full h-full justify-between'>
-		<div className='w-6/12 h-full flex flex-col justify-center'>
+		<div className='w-7/12 h-full flex flex-col justify-center space-y-5'>
 			<motion.p
 				initial={{ opacity: 0, x: 100 }}
 				animate={{ opacity: 1, x: 0 }}
@@ -56,7 +56,7 @@ const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 				initial={{ opacity: 0, scale: 1.8 }}
 				animate={{ opacity: 1, scale: 1 }}
 				transition={{ delay: 0.8, ease: 'easeInOut' }}
-				className='scroll-m-20 text-4xl font-light leading-loose uppercase lg:text-5xl mb-10 mt-5'
+				className='scroll-m-20 font-light leading-7  uppercase lg:text-6xl'
 			>
 				{slide.subtitle}
 				<br />
@@ -83,14 +83,14 @@ const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 				transition={{ delay: 1, ease: 'linear' }}
 			>
 				<Button
-					className='bg-myprimary font-normal text-lg hover:bg-myseconary text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
+					className='bg-myprimary font-normal text-sm hover:bg-myseconary text-black hover:text-white capitalize transition-all duration-300 ease-in-out w-52'
 					size='lg'
 				>
 					Start buying
 				</Button>
 			</motion.div>
 		</div>
-		<div className='w-6/12 h-full relative overflow-hidden'>
+		<div className='w-5/12 h-full relative overflow-hidden'>
 			<motion.div
 				className='absolute w-full h-full dark:bg-black z-[2] bg-white'
 				initial={{ x: 0 }}
@@ -126,17 +126,17 @@ const SlideContent = ({ slide, index }: { slide: Slide; index: number }) => (
 		</div>
 	</div>
 );
-
+// hero component
 const Hero = () => {
 	return (
-		<div className='w-[70%] items-center flex h-full justify-between relative container-hero'>
+		<div className='w-full container items-center flex h-full justify-between relative container-hero'>
 			<Swiper
 				className='h-full w-full'
 				effect={'fade'}
 				autoplay
 				modules={[Pagination, Autoplay, EffectFade]}
 				slidesPerView={1}
-				pagination={{ clickable: true, el: '.heroBullets' }}
+				pagination={{ clickable: true }}
 			>
 				{slides.map((slide, index) => (
 					<SwiperSlide key={index} className=''>
@@ -144,8 +144,6 @@ const Hero = () => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-
-			<div className='heroBullets absolute left-0 bottom-4 z-[2] max-w-fit flex items-center gap-0.5'></div>
 		</div>
 	);
 };
