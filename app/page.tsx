@@ -1,4 +1,5 @@
 'use client';
+import type { Metadata } from 'next';
 import React, { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { BrandsImages, CategroryLinks } from '@/db';
@@ -19,7 +20,6 @@ import {
 	ShoppingCart,
 	Star,
 	ChevronRight,
-	ArrowLeft,
 } from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -48,6 +48,10 @@ import { getSubCategories } from '@/utils/getSubCategories';
 import { getAllProducts } from '@/utils/getProducts';
 import formatPrice from '@/utils/formatPrice';
 import { useCurrencyStore } from '@/store/useCurrencyStore';
+export const metadeta: Metadata = {
+	title: 'Meyazone Home',
+	description: 'Meyazone e-commerce web site ',
+};
 
 const Home = () => {
 	const products = getAllProducts();
@@ -62,6 +66,7 @@ const Home = () => {
 	);
 	const subCategories = getSubCategories();
 	const { currency } = useCurrencyStore();
+
 	return (
 		<>
 			{/* Hero section */}
