@@ -1,5 +1,4 @@
 'use client';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Heart, Repeat, ShoppingCart, Star } from 'lucide-react';
@@ -19,10 +18,18 @@ import Description from '@/sections/Description';
 import Specifications from '@/sections/Specifications';
 import Reviews from '@/sections/Reviews';
 import MoreProducts from '@/sections/MoreProducts';
+import { getAllProducts } from '@/utils/getProducts';
+import { useParams } from 'next/navigation';
+import formatPrice from '@/utils/formatPrice';
+import { useCurrencyStore } from '@/store/useCurrencyStore';
+import { Suspense } from 'react';
 
 const SingleProductPage = () => {
+	const products = getAllProducts();
+	const { currency } = useCurrencyStore();
 	const params = useParams();
 	const { id } = params;
+	const product = products.find((product) => String(product.id) === id);
 	return (
 		<section className='py-8'>
 			<div className='container flex gap-5'>
@@ -30,15 +37,23 @@ const SingleProductPage = () => {
 				<div className='w-5/12 flex flex-col gap-5'>
 					{/* default image */}
 					<div className='w-full min-h-[22.5rem] dark:bg-slate-900 bg-gray-400/15 flex items-center justify-center rounded-sm'>
-						<Image
-							width={200}
-							height={200}
-							src='/product-63.png'
-							alt='product'
-							loading='lazy'
-							title='product'
-							className='w-[80%] aspect-square object-cover'
-						/>
+						<Suspense
+							fallback={
+								<div className='text-xl font-medium text-center m-auto'>
+									Loading...
+								</div>
+							}
+						>
+							<Image
+								width={500}
+								height={200}
+								src={product?.image as string}
+								alt='product'
+								loading='lazy'
+								title={product?.name}
+								className='w-[95%] aspect-square object-contain'
+							/>
+						</Suspense>
 					</div>
 					{/* subImge */}
 					<div className='flex items-center justify-between gap-2'>
@@ -105,9 +120,7 @@ const SingleProductPage = () => {
 					<p className='text-slate-400 font-normal text-sm'>
 						Accessories, Headphones
 					</p>
-					<h2 className='text-4xl font-bold leading-snug'>
-						Ultra Wireless S50 Headphones S50 with Bluetooth
-					</h2>
+					<h2 className='text-4xl font-bold leading-snug'>{product?.name}</h2>
 					<div className='flex items-center gap-2'>
 						<div className='flex items-center justify-center'>
 							{Array.from({ length: 5 }, (_, index) => {
@@ -144,11 +157,7 @@ const SingleProductPage = () => {
 							);
 						})}
 					</ul>
-					<p className='text-sm leading-6 '>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi
-						nostrum dignissimos reprehenderit exercitationem repellendus dolorum
-						quis, magni soluta!
-					</p>
+					<p className='text-sm leading-6 '>{product?.details}</p>
 				</div>
 				{/* card price */}
 				<div className='w-3/12'>
@@ -157,13 +166,15 @@ const SingleProductPage = () => {
 							<CardDescription>
 								Availability:
 								<span className='text-myprimary ml-2 font-bold'>
-									27 in stock
+									{product?.stock} in stock
 								</span>
 							</CardDescription>
 							<Separator />
 						</CardHeader>
 						<CardContent className='space-y-5 flex flex-col'>
-							<p className='text-4xl font-bold'>$350.00</p>
+							<p className='text-4xl font-bold'>
+								{formatPrice(product?.price as number, currency)}
+							</p>
 							<div className='space-y-2'>
 								<Label
 									htmlFor='quantity'

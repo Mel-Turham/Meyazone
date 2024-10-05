@@ -441,7 +441,8 @@ const Home = () => {
 				<div className=' grid grid-cols-4 gap-1  grid-rows-2 mt-4 [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3 min-h-[80%]'>
 					{CategoriesProducts.map((product) => {
 						return (
-							<article
+							<Link
+								href={`/product/${product.id}`}
 								key={product.id}
 								className='h-full w-full overflow-hidden cursor-pointer'
 							>
@@ -477,7 +478,7 @@ const Home = () => {
 										</Button>
 									</CardFooter>
 								</Card>
-							</article>
+							</Link>
 						);
 					})}
 				</div>
@@ -526,41 +527,49 @@ const Home = () => {
 						{BestSellersProducts.map((product) => {
 							return (
 								<SwiperSlide key={product.id}>
-									<Card className='rounded-none dark:bg-slate-900 flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
-										<div className='h-full w-[45%] relative'>
-											<Image
-												src={product.image}
-												alt={product.name}
-												loading='lazy'
-												width={200}
-												height={200}
-												className='object-contain w-full h-full overflow-none'
-											/>
-										</div>
-										<div className='flex flex-col h-full justify-betweenw-[55%]'>
-											<div>
-												<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
-													categorie
-												</p>
-												<h4 className='font-semibold text-blue-600 mt-2'>
-													{product.name}
-												</h4>
+									<Link href={`/product/${product.id}`}>
+										<Card className='rounded-none dark:bg-slate-900 flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
+											<div className='h-full w-[45%] relative'>
+												<Image
+													src={product.image}
+													alt={product.name}
+													loading='lazy'
+													width={200}
+													height={200}
+													className='object-contain w-full h-full overflow-none'
+												/>
 											</div>
-											<div className='flex items-center justify-between mt-auto '>
-												<div className='flex items-center flex-col gap-1'>
-													<span className='text-red-600 text-xs font-medium line-through'>
-														{formatPrice(product?.oldPrice as number, currency)}
-													</span>
-													<span className='font-medium text-lg text-gray-600 dark:text-gray-100 '>
-														{formatPrice(product.price, currency)}
-													</span>
+											<div className='flex flex-col h-full justify-betweenw-[55%]'>
+												<div>
+													<p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
+														categorie
+													</p>
+													<h4 className='font-semibold text-blue-600 mt-2'>
+														{product.name}
+													</h4>
 												</div>
-												<Button size='icon' className='rounded-full p-0'>
-													<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
-												</Button>
+												<div className='flex items-center justify-between mt-auto '>
+													<div className='flex items-center flex-col gap-1'>
+														<span className='text-red-600 text-xs font-medium line-through'>
+															{formatPrice(
+																product?.oldPrice as number,
+																currency,
+															)}
+														</span>
+														<span className='font-medium text-lg text-gray-600 dark:text-gray-100 '>
+															{formatPrice(product.price, currency)}
+														</span>
+													</div>
+													<Button size='icon' className='rounded-full p-0'>
+														<ShoppingCart
+															className='w-6 h-6'
+															strokeWidth={1.5}
+														/>
+													</Button>
+												</div>
 											</div>
-										</div>
-									</Card>
+										</Card>
+									</Link>
 								</SwiperSlide>
 							);
 						})}
@@ -620,41 +629,43 @@ const Home = () => {
 					{products.slice(10, 20).map((product, index) => {
 						return (
 							<SwiperSlide key={product.id}>
-								<Card className='rounded-sm h-[350px] mt-2 dark:bg-slate-900 flex flex-col justify-between'>
-									<CardHeader>
-										<CardDescription className='flex items-center gap-1'>
-											Categorie
-										</CardDescription>
-										<CardTitle className='text-lg font-semibold text-blue-600  mb-0'>
-											{product.name}
-										</CardTitle>
-									</CardHeader>
-									<CardContent className='flex items-center justify-center h-[200px'>
-										<article className=' flex items-center'>
-											<Image
-												src={product.image}
-												width={100}
-												height={100}
-												alt={product.name}
-												title={product.name}
-												loading='lazy'
-												className='w-[90%] h-[90%] object-contain'
-											/>
-										</article>
-									</CardContent>
-									<CardFooter className='px-3  justify-between  items-center'>
-										<span className='text-xl'>
-											{formatPrice(product.price, currency)}
-										</span>
-										<Button
-											aria-label='add to cart'
-											size={'icon'}
-											className='rounded-full'
-										>
-											<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
-										</Button>
-									</CardFooter>
-								</Card>
+								<Link href={`/product/${product.id}`}>
+									<Card className='rounded-sm h-[350px] mt-2 dark:bg-slate-900 flex flex-col justify-between'>
+										<CardHeader>
+											<CardDescription className='flex items-center gap-1'>
+												Categorie
+											</CardDescription>
+											<CardTitle className='text-lg font-semibold text-blue-600  mb-0'>
+												{product.name}
+											</CardTitle>
+										</CardHeader>
+										<CardContent className='flex items-center justify-center h-[200px'>
+											<article className=' flex items-center'>
+												<Image
+													src={product.image}
+													width={100}
+													height={100}
+													alt={product.name}
+													title={product.name}
+													loading='lazy'
+													className='w-[90%] h-[90%] object-contain'
+												/>
+											</article>
+										</CardContent>
+										<CardFooter className='px-3  justify-between  items-center'>
+											<span className='text-xl'>
+												{formatPrice(product.price, currency)}
+											</span>
+											<Button
+												aria-label='add to cart'
+												size={'icon'}
+												className='rounded-full'
+											>
+												<ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
+											</Button>
+										</CardFooter>
+									</Card>
+								</Link>
 							</SwiperSlide>
 						);
 					})}
