@@ -1,6 +1,6 @@
 import { categories } from '@/db';
 
-export interface Product {
+export interface ProductInterface {
 	id: number;
 	name: string;
 	image: string;
@@ -10,11 +10,11 @@ export interface Product {
 	details: string;
 }
 
-export function getAllProducts(): Product[] {
+export function getAllProducts(): ProductInterface[] {
 	return categories.flatMap((category) =>
 		category.subCategories.flatMap((subCategory) =>
 			subCategory.products.map(
-				({ id, name, image, price, oldPrice, stock, details }) => ({
+				({
 					id,
 					name,
 					image,
@@ -22,6 +22,18 @@ export function getAllProducts(): Product[] {
 					oldPrice,
 					stock,
 					details,
+					specifications,
+					subImages,
+				}) => ({
+					id,
+					name,
+					image,
+					price,
+					oldPrice,
+					stock,
+					details,
+					specifications,
+					subImages,
 				}),
 			),
 		),
