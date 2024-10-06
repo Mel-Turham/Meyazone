@@ -29,12 +29,14 @@
 		"clsx": "^2.1.1",
 		"cmdk": "^1.0.0",
 		"framer-motion": "^11.3.31",
+		"leaflet": "^1.9.4",
 		"lucide-react": "^0.437.0",
 		"next": "^14.2.12",
 		"next-themes": "^0.3.0",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-hook-form": "^7.53.0",
+		"react-leaflet": "^4.2.1",
 		"react-phone-number-input": "^3.4.8",
 		"swiper": "^11.1.12",
 		"tailwind-merge": "^2.5.2",
@@ -44,6 +46,7 @@
 		"zustand": "^4.5.5"
 	},
 	"devDependencies": {
+		"@types/leaflet": "^1.9.12",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
