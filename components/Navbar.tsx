@@ -66,6 +66,8 @@ interface MegaMenuProps {
 		| undefined;
 }
 
+const isLoggin = false;
+
 const Navbar: React.FC = () => {
 	const { setIsOpen, isOpen } = useMenuStore();
 	const [isDrowp, setIsDrowp] = useState<boolean>(false);
@@ -136,18 +138,35 @@ const Navbar: React.FC = () => {
 							icon: MapPin,
 							text: 'Localisateur de magasin',
 							className: 'pe-4',
+							href: '#',
 						},
-						{ icon: Bus, text: 'Suivre votre commande', className: 'px-4' },
-						{ icon: ShoppingBag, text: 'Boutique', className: 'px-4' },
-						{ icon: User, text: 'Mon compte', className: 'ps-4' },
-					].map(({ icon: Icon, text, className }, index) => (
-						<div
+						{
+							icon: Bus,
+							text: 'Suivre votre commande',
+							className: 'px-4',
+							href: '#',
+						},
+						{
+							icon: ShoppingBag,
+							text: 'Boutique',
+							className: 'px-4',
+							href: '',
+						},
+						{
+							icon: User,
+							text: 'Mon compte',
+							className: 'ps-4',
+							href: '/profil',
+						},
+					].map(({ icon: Icon, text, className, href }, index) => (
+						<Link
+							href={isLoggin ? href : '/login'}
 							key={index}
 							className={`flex items-center text-gray-600 text-sm gap-1 cursor-pointer dark:text-gray-100 ${className}`}
 						>
 							<Icon className='w-4 h-4' strokeWidth={1} />
 							<span>{text}</span>
-						</div>
+						</Link>
 					))}
 				</div>
 			</div>
