@@ -5,16 +5,16 @@ import React from 'react';
 const userInformation = {
 	name: 'Sarah',
 	email: 'rafiqulislamsuvobd@gmail.com',
-	phone: 91792166627,
-	city: 'Dhaka,Bangladesh',
-	Zip: 4040,
+	phone: +237699838117,
+	city: 'Douala cameroun',
+	zip: 4040,
 };
 
-const { name, email, phone, city, Zip } = userInformation;
+const { name, email, phone, city, zip } = userInformation;
 const DashbordPage = () => {
 	return (
-		<>
-			<div className=' flex  justify-between'>
+		<div className='flex flex-col justify-between'>
+			<div className=' flex justify-between'>
 				<div className='space-y-1'>
 					<span>Hello, Sara</span>
 					<h2 className='text-2xl font-bold'>Welcome to your Profile</h2>
@@ -57,10 +57,10 @@ const DashbordPage = () => {
 					</div>
 				</div>
 			</div>
-			<div className='min-h-[60vh] mt-12'>
-				<div className='grid grid-cols-2 gap-3 min-h-full grid-rows-1'>
-					<div className='h-full p-5 rounded-sm bg-slate-700 space-y-4'>
-						<h3 className='text-2xl font-medium'>Parsonal Information</h3>
+			<div className='min-h-[60vh] flex items-center'>
+				<div className='flex justify-between w-full gap-3 h-full'>
+					<div className='h-full w-6/12 p-5 rounded-sm bg-slate-700 space-y-4'>
+						<h3 className='text-2xl font-medium'>Parsonal Informations</h3>
 						<div className='space-y-5'>
 							<div className='flex items-center'>
 								<span className='w-3/12 text-lg text-gray-400'>Name:</span>
@@ -79,41 +79,39 @@ const DashbordPage = () => {
 								<span>{city}</span>
 							</div>
 							<div className='flex items-center'>
-								<span className='w-3/12 text-lg text-gray-400'>Zip:</span>{' '}
-								<span>{Zip}</span>
+								<span className='w-3/12 text-lg text-gray-400'>zip:</span>{' '}
+								<span>{zip}</span>
 							</div>
 						</div>
 					</div>
-					<div className='h-full '>
-						<div className='h-full p-5 rounded-sm bg-slate-700 space-y-4'>
-							<h3 className='text-2xl font-medium'>Shop Info</h3>
-							<div className='space-y-5'>
-								<div className='flex items-center'>
-									<span className='w-3/12 text-lg text-gray-400'>Name:</span>
-									<span>{name}</span>
-								</div>
-								<div className='flex items-center'>
-									<span className='w-3/12 text-lg text-gray-400'>Email:</span>
-									<span>{email}</span>
-								</div>
-								<div className='flex items-center'>
-									<span className='w-3/12 text-lg text-gray-400'>Phone:</span>
-									<span>{phone}</span>
-								</div>
-								<div className='flex items-center'>
-									<span className='w-3/12 text-lg text-gray-400'>City:</span>
-									<span>{city}</span>
-								</div>
-								<div className='flex items-center'>
-									<span className='w-3/12 text-lg text-gray-400'>Zip:</span>{' '}
-									<span>{Zip}</span>
-								</div>
+					<div className='h-full w-6/12 p-5 rounded-sm bg-slate-700 space-y-4'>
+						<h3 className='text-2xl font-medium'>Shop Informations</h3>
+						<div className='space-y-5'>
+							<div className='flex items-center'>
+								<span className='w-3/12 text-lg text-gray-400'>Name:</span>
+								<span>{name}</span>
+							</div>
+							<div className='flex items-center'>
+								<span className='w-3/12 text-lg text-gray-400'>Email:</span>
+								<span>{email}</span>
+							</div>
+							<div className='flex items-center'>
+								<span className='w-3/12 text-lg text-gray-400'>Phone:</span>
+								<span>{phone}</span>
+							</div>
+							<div className='flex items-center'>
+								<span className='w-3/12 text-lg text-gray-400'>City:</span>
+								<span>{city}</span>
+							</div>
+							<div className='flex items-center'>
+								<span className='w-3/12 text-lg text-gray-400'>zip:</span>{' '}
+								<span>{zip}</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

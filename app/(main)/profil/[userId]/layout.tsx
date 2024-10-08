@@ -15,47 +15,47 @@ import Link from 'next/link';
 
 const Links = [
 	{
-		href: '#',
+		href: '/profil/1',
 		label: 'Dashbaord',
 		icon: <LayoutDashboard />,
 	},
 	{
-		href: '#',
-		label: 'Parsonal Info',
+		href: '/profil/1/userInfo',
+		label: 'Personal Info',
 		icon: <User />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/payementMetho',
 		label: 'Payment Method',
 		icon: <CreditCard />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/order',
 		label: 'Order',
 		icon: <ShoppingBag />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/wishlist',
 		label: 'Wishlist',
 		icon: <Heart />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/address',
 		label: 'Address',
 		icon: <MapPinHouse />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/userReviews',
 		label: 'Reviews',
 		icon: <ThumbsUp />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/changePassword',
 		label: 'Change Password',
 		icon: <LockKeyhole />,
 	},
 	{
-		href: '#',
+		href: '/profil/1/supportticket',
 		label: 'Support Ticket',
 		icon: <UserRoundCheck />,
 	},
@@ -65,7 +65,7 @@ const UserProfilLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<main className='grow pt-8 flex items-center justify-center'>
 			<div className='flex gap-3 container py-12 dark:bg-slate-900 bg-gray-200/25'>
-				<aside className='w-3/12 min-h-screen flex flex-col gap-3 justify-between bg-white dark:bg-slate-800 shadow-sm pt-6 pb-3 px-4'>
+				<aside className='w-3/12 min-h-[90vh] flex flex-col gap-3 justify-between bg-white dark:bg-slate-800 shadow-sm py-8 px-10'>
 					<h1 className='text-2xl font-bold'>Your Dashboard</h1>
 					<ul className='mt-8 space-y-10'>
 						{Links.map((link) => (
@@ -86,7 +86,7 @@ const UserProfilLayout = ({ children }: { children: React.ReactNode }) => {
 						<span>Logout</span>
 					</Button>
 				</aside>
-				<div className='w-9/12 bg-white  dark:bg-slate-800 shadow-sm  py-6 px-4'>
+				<div className='w-9/12 bg-white  dark:bg-slate-800 shadow-sm  pt-6 px-8'>
 					{children}
 				</div>
 			</div>
