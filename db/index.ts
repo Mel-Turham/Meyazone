@@ -37,7 +37,7 @@ import {
 	user_7,
 	user_8,
 } from '@/public';
-import { Department, ImageType, UsersType, Category } from '@/types';
+import { Department, ImageType, UsersType, Category, BlogPost } from '@/types';
 
 const CategroryLinks = [
 	{
@@ -1655,6 +1655,133 @@ const categories: Category[] = [
 				],
 			},
 		],
+	},
+];
+
+// Exemple de 10 posts de blog avec des descriptions longues
+
+const blogPosts: BlogPost[] = [
+	{
+		id: '1',
+		title: 'Comment booster vos ventes en e-commerce',
+		description: `Le monde de l'e-commerce évolue rapidement et les stratégies de vente doivent suivre. 
+    Dans cet article, nous explorons différentes méthodes pour booster vos ventes en ligne, 
+    notamment l'optimisation du parcours client, l'utilisation des campagnes marketing personnalisées, 
+    et l'importance des promotions ciblées. Nous aborderons aussi les erreurs fréquentes à éviter pour 
+    maximiser vos conversions et fidéliser votre clientèle.`,
+		customTitle: 'Booster vos ventes en ligne',
+		imageUrl: 'https://example.com/image1.jpg',
+		tags: ['ventes', 'stratégie', 'e-commerce'],
+		author: 'Marie Lefebvre',
+		publishDate: new Date('2024-01-05'),
+	},
+	{
+		id: '2',
+		title: 'Les meilleures plateformes de paiement pour 2024',
+		description: `Choisir la bonne plateforme de paiement pour votre boutique en ligne peut être complexe. 
+    Cet article compare les principales plateformes de paiement en 2024, y compris PayPal, Stripe, et 
+    d'autres solutions émergentes. Nous examinerons leurs avantages, leurs coûts, et leur facilité 
+    d'intégration, afin de vous aider à choisir la solution la mieux adaptée à votre e-commerce.`,
+		imageUrl: 'https://example.com/image2.jpg',
+		videoUrl: 'https://example.com/video1.mp4',
+		tags: ['paiement', 'plateforme', 'e-commerce'],
+		author: 'Pierre Dubois',
+		publishDate: new Date('2024-02-10'),
+	},
+	{
+		id: '3',
+		title: 'Guide SEO pour les sites e-commerce',
+		description: `Le référencement naturel (SEO) est essentiel pour attirer du trafic vers votre site e-commerce. 
+    Dans cet article, nous couvrons les meilleures pratiques SEO pour améliorer le positionnement de vos 
+    produits sur Google. Vous apprendrez comment optimiser vos descriptions de produits, structurer vos 
+    pages, utiliser des balises appropriées, et améliorer la vitesse de chargement de votre site.`,
+		tags: ['SEO', 'référencement', 'e-commerce'],
+		author: 'Sophie Martin',
+		publishDate: new Date('2024-03-15'),
+	},
+	{
+		id: '4',
+		title: "L'importance des avis clients pour votre e-commerce",
+		description: `Les avis clients jouent un rôle crucial dans la décision d'achat des consommateurs. 
+    Dans cet article, nous expliquons comment encourager vos clients à laisser des avis positifs et 
+    comment gérer les critiques négatives de manière constructive. Nous parlerons aussi de l'impact 
+    des avis sur votre taux de conversion et la réputation de votre boutique.`,
+		customTitle: 'Avis clients et e-commerce',
+		imageUrl: 'https://example.com/image4.jpg',
+		tags: ['avis clients', 'confiance', 'e-commerce'],
+		author: 'Luc Durand',
+		publishDate: new Date('2024-04-20'),
+	},
+	{
+		id: '5',
+		title: 'Tendances e-commerce en 2024',
+		description: `L'année 2024 s'annonce riche en innovations pour l'e-commerce. Nous vous proposons un tour 
+    d'horizon des tendances clés qui influenceront le secteur, telles que l'intelligence artificielle, 
+    le commerce vocal, les expériences d'achat en réalité augmentée, et l'importance croissante de la 
+    durabilité. Restez à la pointe de ces tendances pour garantir la compétitivité de votre boutique en ligne.`,
+		imageUrl: 'https://example.com/image5.jpg',
+		tags: ['tendances', 'e-commerce', '2024'],
+		author: 'Julie Bernard',
+		publishDate: new Date('2024-05-12'),
+	},
+	{
+		id: '6',
+		title: 'Les erreurs à éviter en e-commerce',
+		description: `De nombreuses erreurs peuvent freiner la croissance d'une boutique en ligne. Dans cet article, 
+    nous passons en revue les erreurs les plus fréquentes que font les entrepreneurs e-commerce, telles que 
+    la mauvaise gestion des stocks, le manque d'optimisation mobile, et l'absence de stratégie marketing claire. 
+    Éviter ces erreurs peut vous aider à garantir le succès de votre boutique.`,
+		tags: ['erreurs', 'conseils', 'e-commerce'],
+		author: 'Jean Dupont',
+		publishDate: new Date('2024-06-25'),
+	},
+	{
+		id: '7',
+		title: "Optimiser l'expérience utilisateur pour augmenter les conversions",
+		description: `L'expérience utilisateur (UX) est un facteur crucial pour augmenter vos ventes en ligne. 
+    Cet article vous montre comment optimiser le design de votre boutique pour offrir une navigation fluide, 
+    améliorer l'accessibilité et réduire les frictions lors du processus de paiement. Une UX soignée peut 
+    considérablement améliorer votre taux de conversion.`,
+		videoUrl: 'https://example.com/video2.mp4',
+		tags: ['UX', 'conversion', 'e-commerce'],
+		author: 'Camille Richard',
+		publishDate: new Date('2024-07-30'),
+	},
+	{
+		id: '8',
+		title: "Le marketing d'influence dans l'e-commerce",
+		description: `Le marketing d'influence est devenu un levier puissant pour promouvoir vos produits. 
+    Dans cet article, nous détaillons comment identifier les bons influenceurs pour votre niche, 
+    structurer vos collaborations, et mesurer l'impact de vos campagnes d'influence. Nous aborderons 
+    également les risques et avantages liés à cette stratégie.`,
+		imageUrl: 'https://example.com/image8.jpg',
+		tags: ['marketing', 'influence', 'e-commerce'],
+		author: 'Antoine Laurent',
+		publishDate: new Date('2024-08-18'),
+	},
+	{
+		id: '9',
+		title: 'Comment choisir le bon CMS pour votre boutique en ligne',
+		description: `Choisir le bon système de gestion de contenu (CMS) est essentiel pour la réussite de votre 
+    boutique en ligne. Ce guide vous aidera à comparer les différentes plateformes comme Shopify, 
+    WooCommerce et Magento, en fonction de vos besoins spécifiques : facilité d'utilisation, flexibilité, 
+    coût et support. Nous vous proposons une analyse détaillée pour faciliter votre choix.`,
+		customTitle: 'Choisir le bon CMS pour votre e-commerce',
+		imageUrl: 'https://example.com/image9.jpg',
+		tags: ['CMS', 'comparatif', 'e-commerce'],
+		author: 'Isabelle Rousseau',
+		publishDate: new Date('2024-09-05'),
+	},
+	{
+		id: '10',
+		title: "Les meilleures pratiques de gestion d'inventaire en e-commerce",
+		description: `Une gestion efficace de l'inventaire est essentielle pour éviter les ruptures de stock et 
+    garantir la satisfaction de vos clients. Dans cet article, nous partageons des conseils pour optimiser 
+    la gestion de vos stocks, utiliser des outils de suivi en temps réel, et prévoir les tendances 
+    de demande. Une gestion fluide de l'inventaire peut améliorer votre rentabilité et l'expérience client.`,
+		tags: ['gestion', 'inventaire', 'e-commerce'],
+		author: 'Alexandre Fournier',
+		publishDate: new Date('2024-10-15'),
 	},
 ];
 

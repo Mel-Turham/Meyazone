@@ -80,6 +80,19 @@ type Category = {
 	subCategories: SubCategory[];
 };
 
+// Interface pour un blog post
+export interface BlogPost {
+	id: string;
+	title: string;
+	description: string;
+	customTitle?: string;
+	imageUrl?: string;
+	videoUrl?: string;
+	tags: string[];
+	author: string;
+	publishDate: Date;
+}
+
 export {
 	type ProductTypes,
 	type TabTypes,
