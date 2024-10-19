@@ -75,6 +75,73 @@ const Footer = () => {
 			className='border-t border-solid border-slate-300 dark:border-gray-800 mt-8'
 			role='contentinfo'
 		>
+			<div className='bg-myprimary '>
+				<div className='container pt-5 flex items-center justify-between gap-8'>
+					<div className='flex'>
+						<Image
+							src={'/Phone-footer.png'}
+							alt='Icon'
+							loading='lazy'
+							width={100}
+							height={80}
+							className='w-[90px] object-top aspect-square object-contain'
+						/>
+						<div className='space-y-1'>
+							<h4 className='font-semibold'>Expert Service</h4>
+							<p className='text-xs text-balance'>
+								Our Friendly team&apos;s on hand seven days a week
+							</p>
+						</div>
+					</div>
+					<div className='flex gap-2 items-center mb-5'>
+						<Image
+							src={'/cart-footer.png'}
+							alt='Icon'
+							loading='lazy'
+							width={90}
+							height={50}
+							className='w-[70px]  object-top aspect-square object-contain'
+						/>
+						<div className='space-y-1'>
+							<h4 className='font-semibold'>Amezing Value</h4>
+							<p className='text-xs text-balance'>
+								The brands you prefer, at the prices you crave
+							</p>
+						</div>
+					</div>
+					<div className='flex gap-2'>
+						<Image
+							src={'/delivrerie-footer.png'}
+							alt='Icon'
+							loading='lazy'
+							width={100}
+							className='w-[70px] object-top aspect-square object-contain'
+							height={80}
+						/>
+						<div className='space-y-1'>
+							<h4 className='font-semibold'>Fast & Free Shipping</h4>
+							<p className='text-xs text-balance'>
+								Order Ships out it a snap, and delivers in 1-3 days
+							</p>
+						</div>
+					</div>
+					<div className='flex'>
+						<Image
+							src={'/box-footer.png'}
+							alt='Icon'
+							loading='lazy'
+							width={100}
+							height={80}
+						/>
+						<div className='space-y-1 mt-4'>
+							<h4 className='font-semibold'>Unbeatable Selection</h4>
+							<p className='text-xs text-balance'>
+								Everything you want for your car all, in one playe
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div className='container flex items-center gap-8 py-10 border-b border-solid dark:border-slate-800 border-gray-200 '>
 				<div className='flex flex-col gap-5 w-3/12'>
 					<Link href='/' aria-label='Go to homepage'>
@@ -223,7 +290,8 @@ const Footer = () => {
 				</div>
 				<div className='flex items-center justify-between'>
 					<p className='text-sm font-normal dark:text-slate-400 capitalize dark:hover:text-gray-200 text-slate-600'>
-						Copyright &copy; {new Date().getFullYear()}. All Rights Reserved
+						Copyright &copy; {new Date().getFullYear()} Agora Tech Academy. All
+						Rights Reserved
 					</p>
 					<nav aria-label='Legal links'>
 						<ul className='flex items-center justify-center gap-8'>
