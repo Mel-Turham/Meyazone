@@ -9,7 +9,7 @@ import {
 import Link from 'next/link';
 const AuthorBlog = () => {
 	return (
-		<div className='  mx-auto rounded-lg p-4 relative bg-myprimary flex flex-col items-center gap-4'>
+		<div className='rounded-lg p-4 relative bg-myprimary flex flex-col items-center gap-4'>
 			<div className='absolute w-36 h-36 top-3 left-1 bg-red-50/10  rounded-full  shadow-white/20 shadow-inner'></div>
 			<div className='absolute w-20 h-20 top-10 right-0 bg-red-50/10  rounded-full  shadow-white/20 shadow-inner'></div>
 			<div className='absolute w-20 h-20 top-10 left-1/2 bg-red-50/10  rounded-full  shadow-white/20 shadow-inner'></div>
