@@ -4,11 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import CardBlog from '@/components/CardBlog';
 import AuthorBlog from '@/components/AuthorBlog';
-import { Search } from 'lucide-react';
+import { ChevronRight, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import SibarTitle from '@/components/SibarTitle';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { icon } from 'leaflet';
 
 const BlogPage = () => {
 	return (
@@ -54,7 +55,22 @@ const BlogPage = () => {
 						{Array.from({ length: 6 }, (_, index) => {
 							return <CardBlog key={index} />;
 						})}
+						<div className=' flex items-center gap-2'>
+							{Array.from({ length: 5 }, (_, index) => (
+								<Button
+									size={'icon'}
+									key={index}
+									className={`${index === 0 && 'bg-myprimary'} font-semibold`}
+								>
+									{index + 1}
+								</Button>
+							))}
+							<Button size={'icon'}>
+								<ChevronRight />
+							</Button>
+						</div>
 					</div>
+
 					<div className='col-span-2 flex flex-col items-center'>
 						<AuthorBlog />
 						<form
