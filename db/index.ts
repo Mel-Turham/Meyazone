@@ -1670,7 +1670,6 @@ const blogPosts: BlogPost[] = [
     et l'importance des promotions ciblées. Nous aborderons aussi les erreurs fréquentes à éviter pour 
     maximiser vos conversions et fidéliser votre clientèle.`,
 		customTitle: 'Booster vos ventes en ligne',
-		imageUrl: 'https://example.com/image1.jpg',
 		tags: ['ventes', 'stratégie', 'e-commerce'],
 		author: 'Marie Lefebvre',
 		publishDate: new Date('2024-01-05'),
@@ -1682,7 +1681,6 @@ const blogPosts: BlogPost[] = [
     Cet article compare les principales plateformes de paiement en 2024, y compris PayPal, Stripe, et 
     d'autres solutions émergentes. Nous examinerons leurs avantages, leurs coûts, et leur facilité 
     d'intégration, afin de vous aider à choisir la solution la mieux adaptée à votre e-commerce.`,
-		imageUrl: 'https://example.com/image2.jpg',
 		videoUrl: 'https://example.com/video1.mp4',
 		tags: ['paiement', 'plateforme', 'e-commerce'],
 		author: 'Pierre Dubois',
@@ -1695,6 +1693,7 @@ const blogPosts: BlogPost[] = [
     Dans cet article, nous couvrons les meilleures pratiques SEO pour améliorer le positionnement de vos 
     produits sur Google. Vous apprendrez comment optimiser vos descriptions de produits, structurer vos 
     pages, utiliser des balises appropriées, et améliorer la vitesse de chargement de votre site.`,
+		customTitle: 'Avis clients et e-commerce',
 		tags: ['SEO', 'référencement', 'e-commerce'],
 		author: 'Sophie Martin',
 		publishDate: new Date('2024-03-15'),
@@ -1706,7 +1705,6 @@ const blogPosts: BlogPost[] = [
     Dans cet article, nous expliquons comment encourager vos clients à laisser des avis positifs et 
     comment gérer les critiques négatives de manière constructive. Nous parlerons aussi de l'impact 
     des avis sur votre taux de conversion et la réputation de votre boutique.`,
-		customTitle: 'Avis clients et e-commerce',
 		imageUrl: 'https://example.com/image4.jpg',
 		tags: ['avis clients', 'confiance', 'e-commerce'],
 		author: 'Luc Durand',
@@ -1732,6 +1730,7 @@ const blogPosts: BlogPost[] = [
     la mauvaise gestion des stocks, le manque d'optimisation mobile, et l'absence de stratégie marketing claire. 
     Éviter ces erreurs peut vous aider à garantir le succès de votre boutique.`,
 		tags: ['erreurs', 'conseils', 'e-commerce'],
+		customTitle: 'Choisir le bon CMS pour votre e-commerce',
 		author: 'Jean Dupont',
 		publishDate: new Date('2024-06-25'),
 	},
@@ -1766,7 +1765,6 @@ const blogPosts: BlogPost[] = [
     boutique en ligne. Ce guide vous aidera à comparer les différentes plateformes comme Shopify, 
     WooCommerce et Magento, en fonction de vos besoins spécifiques : facilité d'utilisation, flexibilité, 
     coût et support. Nous vous proposons une analyse détaillée pour faciliter votre choix.`,
-		customTitle: 'Choisir le bon CMS pour votre e-commerce',
 		imageUrl: 'https://example.com/image9.jpg',
 		tags: ['CMS', 'comparatif', 'e-commerce'],
 		author: 'Isabelle Rousseau',
@@ -1779,10 +1777,18 @@ const blogPosts: BlogPost[] = [
     garantir la satisfaction de vos clients. Dans cet article, nous partageons des conseils pour optimiser 
     la gestion de vos stocks, utiliser des outils de suivi en temps réel, et prévoir les tendances 
     de demande. Une gestion fluide de l'inventaire peut améliorer votre rentabilité et l'expérience client.`,
+		customTitle: 'Choisir le bon CMS pour votre e-commerce',
 		tags: ['gestion', 'inventaire', 'e-commerce'],
 		author: 'Alexandre Fournier',
 		publishDate: new Date('2024-10-15'),
 	},
 ];
 
-export { CategroryLinks, users, BrandsImages, departments, categories };
+export {
+	CategroryLinks,
+	users,
+	BrandsImages,
+	departments,
+	categories,
+	blogPosts,
+};
