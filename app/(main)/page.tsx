@@ -39,7 +39,7 @@ import TabOnsale from '@/components/TabOnsale';
 import TabTopRated from '@/components/TabTopRated';
 import Link from 'next/link';
 import Braind from '@/components/Braind';
-import ReacentProduct from '@/components/recentProduct/ReacentProduct';
+import ReacentProduct from '@/components/ReacentProduct';
 import Hero from '@/sections/Hero';
 import UserTestimonial from '@/sections/UserTestimonial';
 import FeaturedCategories from '@/sections/FeaturedCategories';
@@ -48,6 +48,7 @@ import { getSubCategories } from '@/utils/getSubCategories';
 import { getAllProducts } from '@/utils/getProducts';
 import formatPrice from '@/utils/formatPrice';
 import { useCurrencyStore } from '@/store/useCurrencyStore';
+import Pricing from '@/components/Pricing';
 export const metadeta: Metadata = {
 	title: 'Meyazone Home',
 	description: 'Meyazone e-commerce web site ',
@@ -673,6 +674,8 @@ const Home = () => {
 			</section>
 			{/* users testimonials */}
 			<UserTestimonial />
+
+			<Pricing />
 
 			<section className='py-8'>
 				<div className='container  gap-2 border-y border-solid border-gray-200 grid grid-cols-6 py-4 dark:border-slate-800'>
