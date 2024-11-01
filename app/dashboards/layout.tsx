@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
-	return <main className='min-h-screen grow'>{children}</main>;
+	return <div className='min-h-screen grow'>{children}</div>;
 };
 
 export default DashboardLayout;

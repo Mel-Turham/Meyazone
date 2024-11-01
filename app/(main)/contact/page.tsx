@@ -77,15 +77,6 @@ export default function ContactPage() {
 		formState: { isSubmitting },
 	} = form;
 
-	// const handleSubmit = (e: React.FormEvent) => {
-	// 	e.preventDefault();
-	// 	// Handle form submission logic here
-	// 	alert(JSON.stringify({ name, email, message }, null, 2));
-	// 	// Reset form fields
-	// 	setName('');
-	// 	setEmail('');
-	// 	setMessage('');
-	// };
 	const onSubmit = (values: Icontact) => {
 		alert(JSON.stringify(values, null, 2));
 		reset();
