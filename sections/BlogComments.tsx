@@ -6,26 +6,24 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
 
-interface userProps {
-  name: string;
-  image: string;
-}
-
 interface Comment {
   id: string;
-  user: userProps;
+  user: {
+    name: string;
+    image: string;
+  };
   date: string;
   text: string;
   likes: number;
   dislikes: number;
+  userVote: 'like' | 'dislike' | null;
   replies?: Comment[];
 }
 
 interface CommentProps {
   comment: Comment;
   onReply: (parentId: string, replyText: string) => void;
-  onLike: (commentId: string) => void;
-  onDislike: (commentId: string) => void;
+  onVote: (commentId: string, voteType: 'like' | 'dislike' | null) => void;
   depth?: number;
   isLastReply?: boolean;
 }
@@ -33,8 +31,7 @@ interface CommentProps {
 function CommentComponent({
   comment,
   onReply,
-  onLike,
-  onDislike,
+  onVote,
   depth = 0,
   isLastReply = true,
 }: CommentProps) {
@@ -46,6 +43,14 @@ function CommentComponent({
       onReply(comment.id, replyText);
       setReplyText('');
       setIsReplying(false);
+    }
+  };
+
+  const handleVote = (voteType: 'like' | 'dislike') => {
+    if (comment.userVote === voteType) {
+      onVote(comment.id, null);
+    } else {
+      onVote(comment.id, voteType);
     }
   };
 
@@ -83,8 +88,10 @@ function CommentComponent({
             <Button
               variant='ghost'
               size='sm'
-              className='text-xs text-gray-500 hover:text-gray-700'
-              onClick={() => onLike(comment.id)}
+              className={`text-xs ${
+                comment.userVote === 'like' ? 'text-blue-500' : 'text-gray-500'
+              } hover:text-blue-700`}
+              onClick={() => handleVote('like')}
             >
               <ThumbsUp className='w-4 h-4 mr-1' />
               {comment.likes}
@@ -92,8 +99,12 @@ function CommentComponent({
             <Button
               variant='ghost'
               size='sm'
-              className='text-xs text-gray-500 hover:text-gray-700'
-              onClick={() => onDislike(comment.id)}
+              className={`text-xs ${
+                comment.userVote === 'dislike'
+                  ? 'text-red-500'
+                  : 'text-gray-500'
+              } hover:text-red-700`}
+              onClick={() => handleVote('dislike')}
             >
               <ThumbsDown className='w-4 h-4 mr-1' />
               {comment.dislikes}
@@ -120,8 +131,7 @@ function CommentComponent({
               key={reply.id}
               comment={reply}
               onReply={onReply}
-              onLike={onLike}
-              onDislike={onDislike}
+              onVote={onVote}
               depth={depth + 1}
               isLastReply={index === comment.replies!.length - 1}
             />
@@ -144,6 +154,7 @@ export default function CommentSection() {
       text: 'Great post! I learned a lot from this.',
       likes: 5,
       dislikes: 1,
+      userVote: null,
       replies: [
         {
           id: '1-1',
@@ -155,6 +166,7 @@ export default function CommentSection() {
           text: 'I agree! The author did a great job explaining the concepts.',
           likes: 2,
           dislikes: 0,
+          userVote: null,
         },
         {
           id: '1-2',
@@ -166,6 +178,7 @@ export default function CommentSection() {
           text: 'I have a question about the third point. Can you elaborate?',
           likes: 1,
           dislikes: 0,
+          userVote: null,
         },
       ],
     },
@@ -178,7 +191,8 @@ export default function CommentSection() {
       date: '2023-05-17',
       text: 'This is exactly what I was looking for. Thanks for sharing!',
       likes: 3,
-      dislikes: 7,
+      dislikes: 0,
+      userVote: null,
     },
   ]);
 
@@ -193,6 +207,7 @@ export default function CommentSection() {
       text: replyText,
       likes: 0,
       dislikes: 0,
+      userVote: null,
     };
 
     setComments((prevComments) => {
@@ -217,37 +232,39 @@ export default function CommentSection() {
     });
   };
 
-  const handleLike = (commentId: string) => {
+  const handleVote = (
+    commentId: string,
+    voteType: 'like' | 'dislike' | null
+  ) => {
     setComments((prevComments) => {
-      const updateLikes = (comments: Comment[]): Comment[] => {
+      const updateVotes = (comments: Comment[]): Comment[] => {
         return comments.map((comment) => {
           if (comment.id === commentId) {
-            return { ...comment, likes: comment.likes + 1 };
+            let newLikes = comment.likes;
+            let newDislikes = comment.dislikes;
+
+            // Remove previous vote
+            if (comment.userVote === 'like') newLikes--;
+            if (comment.userVote === 'dislike') newDislikes--;
+
+            // Add new vote
+            if (voteType === 'like') newLikes++;
+            if (voteType === 'dislike') newDislikes++;
+
+            return {
+              ...comment,
+              likes: newLikes,
+              dislikes: newDislikes,
+              userVote: voteType,
+            };
           } else if (comment.replies) {
-            return { ...comment, replies: updateLikes(comment.replies) };
+            return { ...comment, replies: updateVotes(comment.replies) };
           }
           return comment;
         });
       };
 
-      return updateLikes(prevComments);
-    });
-  };
-
-  const handleDislike = (commentId: string) => {
-    setComments((prevComments) => {
-      const updateDislikes = (comments: Comment[]): Comment[] => {
-        return comments.map((comment) => {
-          if (comment.id === commentId) {
-            return { ...comment, dislikes: comment.dislikes + 1 };
-          } else if (comment.replies) {
-            return { ...comment, replies: updateDislikes(comment.replies) };
-          }
-          return comment;
-        });
-      };
-
-      return updateDislikes(prevComments);
+      return updateVotes(prevComments);
     });
   };
 
@@ -259,8 +276,7 @@ export default function CommentSection() {
           key={comment.id}
           comment={comment}
           onReply={handleReply}
-          onLike={handleLike}
-          onDislike={handleDislike}
+          onVote={handleVote}
           isLastReply={index === comments.length - 1}
         />
       ))}
