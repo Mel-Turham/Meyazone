@@ -72,7 +72,7 @@ function CommentComponent({
           <AvatarFallback>{comment.user.name[0]}</AvatarFallback>
         </Avatar>
         <div className='flex-1'>
-          <div className='bg-gray-100 rounded-2xl px-4 py-2'>
+          <div className=' rounded-xl px-4 py-2 bg-gray-100 dark:bg-slate-900'>
             <div className='font-semibold'>{comment.user.name}</div>
             <p className='mt-1'>{comment.text}</p>
           </div>
@@ -80,7 +80,7 @@ function CommentComponent({
             <Button
               variant='ghost'
               size='sm'
-              className='text-xs text-gray-500 hover:text-gray-700'
+              className='text-xs text-gray-500 hover:text-gray-700 dark:text-white'
               onClick={() => setIsReplying(!isReplying)}
             >
               Reply
@@ -270,7 +270,12 @@ export default function CommentSection() {
 
   return (
     <div className='space-y-4 p-4'>
-      <h2 className='text-2xl font-bold mb-4'>Comments</h2>
+      <h2 className='text-4xl font-bold font-serif'>
+        Comments
+        <span className='font-normal text-muted-foreground ml-3'>
+          ({comments.length})
+        </span>
+      </h2>
       {comments.map((comment, index) => (
         <CommentComponent
           key={comment.id}

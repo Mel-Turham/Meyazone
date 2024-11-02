@@ -28,15 +28,33 @@ const features = [
   { name: 'Listings', icon: <Tag className='w-4 h-4 mr-2' /> },
   { name: 'Transaction Fees', icon: <ShoppingCart className='w-4 h-4 mr-2' /> },
   { name: 'Shipping Labels', icon: <Truck className='w-4 h-4 mr-2' /> },
-  { name: 'Customer Support', icon: <Check className='w-4 h-4 mr-2' /> },
-  { name: 'Analytics Dashboard', icon: <Check className='w-4 h-4 mr-2' /> },
-  { name: 'Priority Placement', icon: <Check className='w-4 h-4 mr-2' /> },
-  { name: 'Bulk Listing Tools', icon: <Check className='w-4 h-4 mr-2' /> },
-  { name: 'API Access', icon: <Check className='w-4 h-4 mr-2' /> },
-  { name: 'Custom Storefront', icon: <Check className='w-4 h-4 mr-2' /> },
+  {
+    name: 'Customer Support',
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
+  },
+  {
+    name: 'Analytics Dashboard',
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
+  },
+  {
+    name: 'Priority Placement',
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
+  },
+  {
+    name: 'Bulk Listing Tools',
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
+  },
+  {
+    name: 'API Access',
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
+  },
+  {
+    name: 'Custom Storefront',
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
+  },
   {
     name: 'Dedicated Account Manager',
-    icon: <Check className='w-4 h-4 mr-2' />,
+    icon: <Check className='w-4 h-4 mr-2 text-green-400' />,
   },
 ];
 
@@ -95,7 +113,7 @@ export default function Pricing() {
 
   return (
     <section className='py-8'>
-      <div className='container mx-auto px-4'>
+      <div className='container'>
         <motion.h2
           className='text-4xl font-bold text-center mb-8'
           initial={{ opacity: 0, y: -50 }}

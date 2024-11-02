@@ -104,7 +104,7 @@ const SingleBlogPage = ({ params }: paramsProps) => {
                 <div className='space-x-3 '>
                   {blog?.tags.map((tag, index) => (
                     <Badge
-                      className='rounded capitalize font-medium tracking-wide'
+                      className='rounded capitalize p-2 font-medium tracking-wide'
                       key={index}
                     >
                       {tag}
@@ -133,10 +133,6 @@ const SingleBlogPage = ({ params }: paramsProps) => {
               </div>
             </div>
             <div className='space-y-5 pt-5 '>
-              <h2 className='text-4xl font-bold font-serif'>
-                Comments
-                <span className='font-normal text-muted-foreground'>(02)</span>
-              </h2>
               <CommentSection />
             </div>
           </div>
@@ -187,49 +183,47 @@ const SingleBlogPage = ({ params }: paramsProps) => {
           </div>
         </div>
         {/* Sidebar */}
-      <aside className='inline-block w-4/12'>
-        <AuthorBlog />
-        <SearchForm />
-        <SidebarSection title='Categories'>
-          <ul className='space-y-4 list-disc marker:text-myprimary ps-3.5'>
-            {categories.map((category, index) => (
-              <li
-                key={index}
-                className='capitalize cursor-pointer hover:text-myprimary transition duration-300'
-              >
-                {category}
-              </li>
+        <aside className='inline-block w-4/12'>
+          <AuthorBlog />
+          <SearchForm />
+          <SidebarSection title='Categories'>
+            <ul className='space-y-4 list-disc marker:text-myprimary ps-3.5'>
+              {categories.map((category, index) => (
+                <li
+                  key={index}
+                  className='capitalize cursor-pointer hover:text-myprimary transition duration-300'
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </SidebarSection>
+
+          <SidebarSection title='Recent Posts'>
+            {recentPosts.map((post, index) => (
+              <RecentPost key={index} post={post} />
             ))}
-          </ul>
-        </SidebarSection>
+          </SidebarSection>
 
-        <SidebarSection title='Recent Posts'>
-          {recentPosts.map((post, index) => (
-            <RecentPost key={index} post={post} />
-          ))}
-        </SidebarSection>
+          <SidebarSection title='Gallery'>
+            <div className='grid grid-cols-3 gap-3'>
+              {galleryImages.map((image, index) => (
+                <ImageItem key={index} src={image} />
+              ))}
+            </div>
+          </SidebarSection>
 
-        <SidebarSection title='Gallery'>
-          <div className='grid grid-cols-3 gap-3'>
-            {galleryImages.map((image, index) => (
-              <ImageItem key={index} src={image} />
-            ))}
-          </div>
-        </SidebarSection>
+          <SidebarSection title='Tags'>
+            <div className='flex flex-wrap gap-4'>
+              {tags.map((tag, index) => (
+                <Tag key={index} tag={tag} />
+              ))}
+            </div>
+          </SidebarSection>
 
-        <SidebarSection title='Tags'>
-          <div className='flex flex-wrap gap-4'>
-            {tags.map((tag, index) => (
-              <Tag key={index} tag={tag} />
-            ))}
-          </div>
-        </SidebarSection>
-
-        <PromoSection />
-      </aside>
+          <PromoSection />
+        </aside>
       </div>
-
-      
     </section>
   );
 };
