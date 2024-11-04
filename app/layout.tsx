@@ -22,8 +22,8 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <ThemeProvider
           attribute='class'
-          defaultTheme='dark'
-          enableSystem
+          defaultTheme='light'
+          enableSystem={true}
           disableTransitionOnChange
         >
           <Suspense fallback={<Loading />}>{children}</Suspense>

@@ -1,27 +1,26 @@
-import Image from 'next/image';
+'use client';
 import React, { ReactNode } from 'react';
+import AdminSideBar from './admin-sidebar';
+import { useToggleAdminSideBar } from '@/store/useToggleAdminSideBar';
+import Header from './header';
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {
-	return (
-		<div className='grid grid-cols-12'>
-			<aside className='col-span-3 min-h-screen dark:bg-slate-900 px-8'>
-				<div>
-					<Image
-						src={'/logo-white.png'}
-						alt='log meyazone'
-						width={300}
-						height={200}
-						loading='lazy'
-						className='w-[130px] object-contain aspect-square'
-					/>
-				</div>
-			</aside>
-			<div className='col-span-9'>
-				<header className='dark:bg-slate-900 py-8 px-6'>hearder</header>
-				<main className='px-6 py-8'>{children}</main>
-			</div>
-		</div>
-	);
+  const { toggleSideBar } = useToggleAdminSideBar();
+
+  return (
+    <div className='flex h-screen overflow-hidden'>
+      <AdminSideBar />
+
+      {/* Conteneur principal */}
+      <div className={`${toggleSideBar ? 'flex-1' : 'w-[80%]'} flex flex-col`}>
+        {/* Header fixe */}
+        <Header />
+
+        {/* Zone de contenu avec défilement */}
+        <main className='flex-1 px-6 py-8 overflow-y-auto'>{children}</main>
+      </div>
+    </div>
+  );
 };
 
 export default AdminLayout;
