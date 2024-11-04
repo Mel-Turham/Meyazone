@@ -33,7 +33,9 @@ const AdminSideBar = () => {
           loading='lazy'
           className='transition-all ease-in-out duration-300 w-[45px]'
         />
-        <h1 className='text-xl font-black'>MEYAZONE</h1>
+        {toggleSideBar ? null : (
+          <h1 className='text-xl font-black'>MEYAZONE</h1>
+        )}
       </div>
       <div className='min-h-full relative'>
         <div className='h-[calc(100vh-75px)]  overflow-y-scroll gap-4 pt-5  flex flex-col items-center scrollbar-none'>
