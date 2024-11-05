@@ -16,9 +16,12 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  LogOut,
   Moon,
   Search,
+  Settings,
   Sun,
+  User,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 const Header = () => {
@@ -73,9 +76,18 @@ const Header = () => {
           <DropdownMenuContent align='end'>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem>
+              <User className='w-4 h-4 mr-2' />
+              <span>Profile</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Settings className='w-4 h-4 mr-2' />
+              <span>Settings</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem className='dark:hover:bg-red-600 text-red-600'>
+              <LogOut className='w-4 h-4 mr-2' />
+              <span>Logout</span>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
