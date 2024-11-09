@@ -34,6 +34,7 @@ import {
   Truck,
   UserCheck,
 } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import React, { useState } from 'react';
 import {
   BarChart,
@@ -137,6 +138,7 @@ const UsersTabs = () => {
   const [sortDirection, setSortDirection] = useState('asc');
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const { theme } = useTheme();
 
   const filterData = (data: typeof mockUsers) => {
     return data
@@ -412,7 +414,13 @@ const UsersTabs = () => {
                     />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
+                    borderColor: theme === 'dark' ? '#374151' : '#e5e7eb',
+                    color: theme === 'dark' ? '#ffffff' : '#00000',
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
@@ -437,7 +445,13 @@ const UsersTabs = () => {
                 <CartesianGrid strokeDasharray='3 3' />
                 <XAxis dataKey='name' />
                 <YAxis />
-                <Tooltip />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff',
+                    borderColor: theme === 'dark' ? '#374151' : '#e5e7eb',
+                    color: theme === 'dark' ? '#ffffff' : '#00000',
+                  }}
+                />
                 <Line type='monotone' dataKey='users' stroke='#8884d8' />
               </LineChart>
             </ResponsiveContainer>
