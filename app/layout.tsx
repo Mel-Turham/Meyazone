@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { Suspense } from 'react';
 import Loading from '@/app/loading';
+import { Toaster } from '@/components/ui/toaster';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           enableSystem={true}
           disableTransitionOnChange
         >
+          <Toaster />
           <Suspense fallback={<Loading />}>{children}</Suspense>
         </ThemeProvider>
       </body>
