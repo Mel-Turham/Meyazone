@@ -117,9 +117,18 @@ const AdminSideBar = () => {
                   }`}
                 >
                   {link.icon}
-                  {toggleSideBar ? null : (
-                    <span className='text-base font-medium'>{link.label}</span>
-                  )}
+                  <AnimatePresence mode='wait'>
+                    {toggleSideBar ? null : (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: toggleSideBar ? 0 : 1 }}
+                        transition={{ duration: 0.6 }}
+                        className='text-base font-medium'
+                      >
+                        {link.label}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                   {toggleSideBar && (
                     <AnimatePresence mode='wait'>
                       {isHovered === link.label && (
