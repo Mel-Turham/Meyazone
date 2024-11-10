@@ -12,12 +12,18 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
       <AdminSideBar />
 
       {/* Conteneur principal */}
-      <div className={`${toggleSideBar ? 'flex-1' : 'w-[80%]'} flex flex-col`}>
+      <div
+        className={`${
+          toggleSideBar ? 'flex-1' : 'w-[80%]'
+        } flex flex-col h-full`}
+      >
         {/* Header fixe */}
         <Header />
 
         {/* Zone de contenu avec défilement */}
-        <main className='flex-1 px-6 py-8 overflow-y-auto'>{children}</main>
+        <main className='flex-1 px-6 pb-6 pt-4 overflow-y-scroll '>
+          {children}
+        </main>
       </div>
     </div>
   );
