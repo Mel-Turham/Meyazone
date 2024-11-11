@@ -16,7 +16,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import CurrencySelector from '@/components/CurrencySelector';
+import CurrencySelector from '@/components/customs/CurrencySelector';
 
 const Footer = () => {
   const { theme } = useTheme();

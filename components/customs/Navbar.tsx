@@ -42,7 +42,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useMenuStore } from '@/store/MenuStore';
 import { usePathname } from 'next/navigation';
-import NavLink from '@/components/NavLink';
+import NavLink from '@/components/customs/NavLink';
 import { departments } from '@/db';
 import useOutSideClick from '@/hooks/useOutSideClick';
 
