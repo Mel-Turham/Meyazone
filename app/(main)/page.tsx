@@ -87,7 +87,7 @@ const Home = () => {
           <CardContent className='flex  mb-0 pb-0  gap-8'>
             <div className='w-5/12 h-full '>
               <Image
-                src='/laptop.webp'
+                src='/product-85.png'
                 alt='laptop'
                 loading='lazy'
                 width={250}
@@ -161,7 +161,7 @@ const Home = () => {
           <CardContent className='flex  mb-0 pb-0  gap-8'>
             <div className='w-5/12 h-full '>
               <Image
-                src='/laptop.webp'
+                src='/product-85.png'
                 alt='laptop'
                 loading='lazy'
                 width={250}
@@ -235,7 +235,7 @@ const Home = () => {
           <CardContent className='flex  mb-0 pb-0  gap-8'>
             <div className='w-5/12 h-full '>
               <Image
-                src='/laptop.webp'
+                src='/product-85.png'
                 alt='laptop'
                 loading='lazy'
                 width={250}
@@ -315,7 +315,7 @@ const Home = () => {
             </CardHeader>
             <CardContent>
               <Image
-                src='/consal.webp'
+                src='/consal-300.webp'
                 alt='consal'
                 loading='lazy'
                 width={400}

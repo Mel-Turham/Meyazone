@@ -132,6 +132,7 @@ const Footer = () => {
               loading='lazy'
               width={100}
               height={80}
+              className='w-[90px] object-top aspect-square object-contain'
             />
             <div className='space-y-1 mt-4'>
               <h4 className='font-semibold'>Unbeatable Selection</h4>
@@ -152,6 +153,7 @@ const Footer = () => {
               alt='Meyazone logo'
               loading='lazy'
               title='Meyazone'
+              className='w-32 h-12 object-contain'
             />
           </Link>
           <div className='flex items-center gap-6'>
@@ -279,6 +281,7 @@ const Footer = () => {
               loading='lazy'
               width={250}
               height={250}
+              className='w-64 h-12 object-contain'
             />
           </div>
         </div>

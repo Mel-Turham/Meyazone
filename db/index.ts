@@ -280,7 +280,7 @@ const categories: Category[] = [
           {
             id: 1901,
             name: 'Samsung Galaxy S23 Ultra',
-            image: '/sam1.webp',
+            image: '/product-89.png',
             subImages: ['', ''],
             stock: 45,
             oldPrice: 1399,
@@ -448,7 +448,7 @@ const categories: Category[] = [
           {
             id: 1908,
             name: 'Motorola Edge 40 Pro',
-            image: '/redmi.webp',
+            image: '/product-94.png',
             subImages: ['', ''],
             stock: 35,
             oldPrice: 999,
