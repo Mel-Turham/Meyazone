@@ -1,3 +1,5 @@
+import BackButton from '@/components/customs/BackButton';
+import CouponForm from '@/components/customs/CouponForm';
 import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Card,
@@ -34,13 +36,7 @@ const CartPage = () => {
     <section className='min-h-screen py-8'>
       <div className='container space-y-5'>
         {/* Link to previous page */}
-        <Link
-          href={'/'}
-          className=' group flex items-center gap-1 dark:bg-slate-900 dark:hover:bg-slate-900/50 transition-all duration-300 ease-in-out cursor-pointer w-fit px-5 py-2 rounded-full bg-gray-200 hover:bg-gray-300'
-        >
-          <ArrowLeft className='w-6 h-6 group-hover:-translate-x-1 transition-all duration-300 ease-in-out' />
-          <span className='text-sm font-semibold tracking-wide'>Back</span>
-        </Link>
+        <BackButton />
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           <div className='md:col-span-2'>
@@ -140,21 +136,7 @@ const CartPage = () => {
           </div>
           <div className='md:col-span-1 space-y-4'>
             {/* coupon code card */}
-            <div className='rounded-lg bg-myprimary p-4 text-sm tracking-wider w-full'>
-              <h3 className='text-lg font-bold text-white'>Coupon code</h3>
-              <p className='mt-4 text-white tracking-wide text-sm'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
-                molestias.
-              </p>
-              <div className='mt-4 grid grid-cols-3 gap-3'>
-                <Input
-                  className='col-span-2'
-                  type='text'
-                  placeholder='Coupon code'
-                />
-                <Button className=' w-full col-span-1'>Apply</Button>
-              </div>
-            </div>
+            <CouponForm />
             {/* summary card */}
             <Card>
               <CardHeader className='px-0 pb-4 mb-6  border-b '>
@@ -163,9 +145,9 @@ const CartPage = () => {
                 </CardTitle>
                 <CardDescription className='px-6'>
                   {/* description */}
-                  <p>
+                  <span>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
+                  </span>
                 </CardDescription>
               </CardHeader>
               <CardContent className=' flex flex-col gap-4'>
