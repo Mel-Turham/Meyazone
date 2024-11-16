@@ -11,7 +11,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       {children}
       <MenuSideBar />
       <Footer />
-      <div className='fixed left-5 top-1/2'>
+      <div className='fixed left-5 top-1/2 z-30'>
         <ToggleTheme />
       </div>
       <ScrollTop />
