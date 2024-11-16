@@ -49,6 +49,7 @@ import { getSubCategories } from '@/utils/getSubCategories';
 import { getAllProducts } from '@/utils/getProducts';
 import formatPrice from '@/utils/formatPrice';
 import { useCurrencyStore } from '@/store/useCurrencyStore';
+import ProductCard from '@/components/customs/ProductCard';
 export const metadeta: Metadata = {
   title: 'Meyazone Home',
   description: 'Meyazone e-commerce web site ',
@@ -61,10 +62,7 @@ const Home = () => {
   const TabOnSaleProducts = useMemo(() => products.slice(7, 13), [products]);
   const TabTopRatedProducts = useMemo(() => products.slice(14, 20), [products]);
   const BestSellersProducts = useMemo(() => products.slice(0, 10), [products]);
-  const CategoriesProducts = useMemo(
-    () => TabTopRatedProducts.slice(0, 5),
-    [TabTopRatedProducts]
-  );
+  const CategoriesProducts = useMemo(() => products.slice(30, 36), [products]);
   const subCategories = getSubCategories();
   const { currency } = useCurrencyStore();
 
@@ -421,8 +419,8 @@ const Home = () => {
         </div>
       </section>
       {/* Section categories */}
-      <section className='container bg-[#F4F4F4] dark:bg-slate-950 pt-6 pb-8 '>
-        <nav className=' w-full flex items-center justify-center h-3/12'>
+      <section className='container bg-[#F4F4F4] dark:bg-slate-950 py-6 '>
+        <nav className=' w-full flex items-center justify-center h-3/12 '>
           <ul className='flex w-full justify-evenly items-center gap-5 border-b border-solid border-slate-200 dark:border-gray-300'>
             {CategroryLinks.map((link, index) => (
               <Link
@@ -439,47 +437,21 @@ const Home = () => {
             ))}
           </ul>
         </nav>
-        <div className=' grid grid-cols-4 gap-1  grid-rows-2 mt-4 [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3 min-h-[80%]'>
+        {/* [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3 */}
+        <div className=' grid grid-cols-4 gap-2 mt-4 [&>*:nth-child(2)]:col-span-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(5)]:col-start-2 [&>*:nth-child(5)]:col-end-4'>
           {CategoriesProducts.map((product) => {
+            const { id, name, details, oldPrice, price, image } = product;
             return (
-              <Link
-                href={`/product/${product.id}`}
-                key={product.id}
-                className='h-full w-full overflow-hidden cursor-pointer'
-              >
-                <Card className='rounded dark:bg-slate-900  w-full h-full overflow-hidden flex flex-col ga-1 justify-between'>
-                  <CardHeader className='px-3'>
-                    <CardDescription className='flex items-center gap-2'>
-                      categorie
-                    </CardDescription>
-                    <CardTitle className='text-sm font-semibold text-blue-600  mb-0'>
-                      {product.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className=' px-3 mt-0 '>
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      width={300}
-                      height={300}
-                      className='w-full h-full object-cover'
-                      loading='lazy'
-                    />
-                  </CardContent>
-                  <CardFooter className='px-3  justify-between  items-center'>
-                    <span className='text-xl'>
-                      {formatPrice(product.price, currency)}
-                    </span>
-                    <Button
-                      aria-label='add to cart'
-                      size={'icon'}
-                      className='rounded-full'
-                    >
-                      <ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </Link>
+              <ProductCard
+                key={id}
+                id={id}
+                orientation='horizontal'
+                name={name}
+                image={image}
+                details={details}
+                oldPrice={oldPrice}
+                price={price}
+              />
             );
           })}
         </div>
@@ -528,49 +500,16 @@ const Home = () => {
             {BestSellersProducts.map((product) => {
               return (
                 <SwiperSlide key={product.id}>
-                  <Link href={`/product/${product.id}`}>
-                    <Card className='rounded-none dark:bg-slate-900 flex gap-4 p-4 cursor-pointer shadow-none hover:shadow-md transition-all duration-300 ease-in-out h-[185px]'>
-                      <div className='h-full w-[45%] relative'>
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          loading='lazy'
-                          width={200}
-                          height={200}
-                          className='object-contain w-full h-full overflow-none'
-                        />
-                      </div>
-                      <div className='flex flex-col h-full justify-betweenw-[55%]'>
-                        <div>
-                          <p className='flex items-center  gap-1 text-gray-400 text-xs font-light'>
-                            categorie
-                          </p>
-                          <h4 className='font-semibold text-blue-600 mt-2'>
-                            {product.name}
-                          </h4>
-                        </div>
-                        <div className='flex items-center justify-between mt-auto '>
-                          <div className='flex items-center flex-col gap-1'>
-                            <span className='text-red-600 text-xs font-medium line-through'>
-                              {formatPrice(
-                                product?.oldPrice as number,
-                                currency
-                              )}
-                            </span>
-                            <span className='font-medium text-lg text-gray-600 dark:text-gray-100 '>
-                              {formatPrice(product.price, currency)}
-                            </span>
-                          </div>
-                          <Button size='icon' className='rounded-full p-0'>
-                            <ShoppingCart
-                              className='w-6 h-6'
-                              strokeWidth={1.5}
-                            />
-                          </Button>
-                        </div>
-                      </div>
-                    </Card>
-                  </Link>
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    orientation='horizontal'
+                    name={product.name}
+                    image={product.image}
+                    details={product.details}
+                    oldPrice={product.oldPrice}
+                    price={product.price}
+                  />
                 </SwiperSlide>
               );
             })}
@@ -630,43 +569,16 @@ const Home = () => {
           {products.slice(10, 20).map((product) => {
             return (
               <SwiperSlide key={product.id}>
-                <Link href={`/product/${product.id}`}>
-                  <Card className='rounded-sm h-[350px] mt-2 dark:bg-slate-900 flex flex-col justify-between'>
-                    <CardHeader>
-                      <CardDescription className='flex items-center gap-1'>
-                        Categorie
-                      </CardDescription>
-                      <CardTitle className='text-lg font-semibold text-blue-600  mb-0'>
-                        {product.name}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className='flex items-center justify-center h-[200px'>
-                      <article className=' flex items-center'>
-                        <Image
-                          src={product.image}
-                          width={100}
-                          height={100}
-                          alt={product.name}
-                          title={product.name}
-                          loading='lazy'
-                          className='w-[90%] h-[90%] object-contain'
-                        />
-                      </article>
-                    </CardContent>
-                    <CardFooter className='px-3  justify-between  items-center'>
-                      <span className='text-xl'>
-                        {formatPrice(product.price, currency)}
-                      </span>
-                      <Button
-                        aria-label='add to cart'
-                        size={'icon'}
-                        className='rounded-full'
-                      >
-                        <ShoppingCart className='w-6 h-6' strokeWidth={1.5} />
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </Link>
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  orientation='vertical'
+                  name={product.name}
+                  image={product.image}
+                  details={product.details}
+                  oldPrice={product.oldPrice}
+                  price={product.price}
+                />
               </SwiperSlide>
             );
           })}
