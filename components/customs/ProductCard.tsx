@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Info, BarChart2, Star, Heart } from 'lucide-react';
-
 import {
   Button,
   buttonVariants as variantButtons,
@@ -20,6 +19,8 @@ import {
 } from '@/components/ui/tooltip';
 import Link from 'next/link';
 import VendorProfil from './vendor-profil';
+import formatPrice from '@/utils/formatPrice';
+import { useCurrencyStore } from '@/store/useCurrencyStore';
 
 interface ProductOrientation {
   orientation: 'horizontal' | 'vertical';
@@ -35,6 +36,7 @@ export default function ProductCard({
   details,
 }: ProductInterface & ProductOrientation) {
   const [isHovered, setIsHovered] = useState(false);
+  const { currency } = useCurrencyStore();
 
   const buttonVariants = {
     hidden: { opacity: 0, x: -20 },
@@ -52,13 +54,13 @@ export default function ProductCard({
       onHoverEnd={() => setIsHovered(false)}
     >
       <Card
-        className={` overflow-hidden group-hover:border-2 h-full rouded-non w-full group-hover:dark:border-slate-200 group-hover:border-myprimary relative  transition-all duration-300 ease-in-out ${
+        className={` overflow-hidden group-hover:border h-full rouded-non w-full group-hover:dark:border-slate-200 group-hover:border-myprimary relative  transition-all duration-300 ease-in-out ${
           orientation === 'horizontal' ? 'md:flex' : 'flex flex-col'
         }`}
       >
         <VendorProfil />
         <div
-          className={`relative ${
+          className={`relative py-3 ${
             orientation === 'horizontal' ? 'md:w-1/2' : 'w-full'
           } ${orientation === 'vertical' ? 'h-48 sm:h-1/2' : 'h-full'}`}
         >
@@ -86,15 +88,15 @@ export default function ProductCard({
           <div className='h-full'>
             <h2 className='font-semibold mb-2 truncate'>{name}</h2>
             <p className='text-sm text-pretty mb-2 line-clamp-2'>{details}</p>
-            <div className='flex items-center gap-0.5 mb-1 flex-wrap'>
+            <div className='flex items-center gap-0.5 mb-3 flex-wrap'>
               {price !== undefined ? (
                 <>
-                  <span className='text-lg font-semibold'>
-                    ${price.toFixed(2)}
+                  <span className='text-sm font-semibold truncate'>
+                    {formatPrice(price, currency)}
                   </span>
-                  {oldPrice !== undefined && (
-                    <span className='text-sm ml-1 text-red-500 line-through'>
-                      ${oldPrice.toFixed(2)}
+                  {oldPrice && (
+                    <span className='text-xs ml-1 text-red-500 line-through'>
+                      {formatPrice(oldPrice, currency)}
                     </span>
                   )}
                 </>
@@ -119,7 +121,7 @@ export default function ProductCard({
               </span>
             </div>
           </div>
-          <AnimatePresence mode='wait'>
+          <AnimatePresence mode='popLayout'>
             {isHovered && (
               <motion.div
                 className={`flex flex-col justify-center items-start absolute  px-4  gap-2 left-0 ${

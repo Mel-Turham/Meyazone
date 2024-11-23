@@ -2,7 +2,7 @@ import getAllBlogs from '@/utils/getAllBlogs';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
-import AuthorBlog from '@/components/AuthorBlog';
+import AuthorBlog from '@/components/customs/AuthorBlog';
 import { Input } from '@/components/ui/input';
 import { MessageCircle, QuoteIcon, Search, User2 } from 'lucide-react';
 import SibarTitle from '@/components/customs/SibarTitle';

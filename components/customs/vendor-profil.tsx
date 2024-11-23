@@ -31,12 +31,12 @@ const IsVerifed = true;
 
 export default function VendorProfil() {
   return (
-    <div className='absolute top-3 right-3 z-10'>
+    <div className='absolute bottom-1 right-3 z-10 '>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant='outline' size={'icon'} className='rounded-full'>
             {IsVerifed && (
-              <div className='absolute bottom-1 right-0 z-20 w-4 h-4 rounded-full '>
+              <div className='absolute bottom-1 right-0 z-20 w-4 h-4 '>
                 <Image
                   src={'/verifed.png'}
                   width={56}

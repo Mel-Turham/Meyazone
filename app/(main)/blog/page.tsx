@@ -3,15 +3,17 @@ import Link from 'next/link';
 import React from 'react';
 import { motion } from 'framer-motion';
 import CardBlog from '@/components/customs/CardBlog';
-import AuthorBlog from '@/components/AuthorBlog';
+import AuthorBlog from '@/components/customs/AuthorBlog';
 import { ChevronRight, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import SibarTitle from '@/components/customs/SibarTitle';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { icon } from 'leaflet';
+import getAllBlogs from '@/utils/getAllBlogs';
 
 const BlogPage = () => {
+  const AllBlogs = getAllBlogs();
   return (
     <>
       <section className='w-full h-[calc(100dvh-10.9rem)] article-hero bg-cover bg-no-repeat bg-left-top relative overflow-hidden'>
@@ -52,8 +54,18 @@ const BlogPage = () => {
       <section className='py-16'>
         <div className='container grid grid-cols-6 gap-10'>
           <div className='col-span-4 space-y-7'>
-            {Array.from({ length: 6 }, (_, index) => {
-              return <CardBlog key={index} />;
+            {AllBlogs.map((blog) => {
+              const { id, title, description, author, tags } = blog;
+              return (
+                <CardBlog
+                  key={id}
+                  id={id}
+                  title={title}
+                  description={description}
+                  author={author}
+                  tags={tags}
+                />
+              );
             })}
             <div className=' flex items-center gap-2'>
               {Array.from({ length: 5 }, (_, index) => (

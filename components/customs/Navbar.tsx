@@ -16,13 +16,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import {
@@ -71,8 +65,7 @@ const isLoggin = false;
 const Navbar: React.FC = () => {
   const { setIsOpen, isOpen } = useMenuStore();
   const [isDrowp, setIsDrowp] = useState<boolean>(false);
-  const { theme, systemTheme } = useTheme();
-  const pathname = usePathname();
+  const { theme } = useTheme();
   const [megaMenuItem, setMegaMenuItem] =
     useState<MegaMenuProps['megaMenu']>(undefined);
   const [isHoveringMegaMenu, setIsHoveringMegaMenu] = useState<boolean>(false);
@@ -113,17 +106,6 @@ const Navbar: React.FC = () => {
   const handleMenuDepartement = useCallback(() => {
     setIsDrowp((prev) => !prev);
   }, []);
-  // Pages où le footer doit être caché
-  const hideFooter = ['/login', '/register'];
-  const shouldHide = hideFooter.includes(pathname);
-
-  // Sélection du logo en fonction du thème
-  const logoSrc = useMemo(() => {
-    const currentTheme = theme === 'system' ? systemTheme : theme;
-    return currentTheme === 'light' ? '/logo-dark.png' : '/logo-white.png';
-  }, [theme, systemTheme]);
-
-  if (shouldHide) return null;
 
   return (
     <header className='w-full bg-white text-slate-800 dark:bg-slate-950 dark:text-white flex flex-col border-b border-solid border-slate-100 dark:border-gray-700'>
@@ -175,7 +157,7 @@ const Navbar: React.FC = () => {
       <div className='container flex items-center justify-between py-2'>
         <Link href='/' className='w-2/12'>
           <Image
-            src={logoSrc}
+            src={theme === 'light' ? '/logo-dark.png' : '/logo-white.png'}
             alt='Logo Meyazone'
             loading='lazy'
             title='Meyazone - Votre boutique en ligne'
@@ -240,7 +222,7 @@ const Navbar: React.FC = () => {
             </Button>
           </form>
         </div>
-        <div className='w-2/12 flex items-center between gap-5'>
+        <div className='w-2/12 flex items-center  gap-5'>
           <TooltipProvider>
             {[
               {
@@ -303,11 +285,11 @@ const Navbar: React.FC = () => {
           </TooltipProvider>
         </div>
       </div>
-
+      <Separator />
       {/* Barre de navigation inférieure */}
-      <div className='container flex items-center justify-between h-14 relative border-t border-solid border-gray-700 py-1'>
-        <Card className='w-[260px] rounded-sm absolute top-7 left-20  z-10'>
-          <CardHeader className='bg-myprimary py-2 px-4'>
+      <div className='container flex items-center justify-between h-14 relative  py-1'>
+        <Card className='w-[260px] border-none absolute top-2 left-18  z-50'>
+          <CardHeader className='bg-myprimary py-2 rounded-sm  px-4'>
             <CardTitle className='flex items-center  gap-6'>
               <Menu
                 className='w-6 h-6 text-black cursor-pointer'
@@ -397,9 +379,11 @@ const Navbar: React.FC = () => {
             )}
           </AnimatePresence>
         </Card>
-        <div className='w-[260px]'></div>
-        <nav className='flex items-center' aria-label='Navigation principale'>
-          <ul className='flex items-center text-slate-600 font-medium dark:text-white'>
+        <nav
+          className='flex items-center mx-auto  flex-1 justify-center'
+          aria-label='Navigation principale'
+        >
+          <ul className='flex  flex-1 grow justify-center ml-64 items-center text-slate-600 font-medium dark:text-white'>
             {links.map((link) => (
               <li key={link.linkId} className='px-4'>
                 <NavLink label={link.label} href={link.href} />

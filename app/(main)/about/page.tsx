@@ -17,6 +17,41 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
+const data = [
+  {
+    icon: Globe,
+    title: 'Variety of Products',
+    description: 'Access a wide range of products from diverse sellers.',
+  },
+  {
+    icon: Lock,
+    title: 'Secure Transactions',
+    description:
+      'Shop with confidence knowing your transactions are protected.',
+  },
+  {
+    icon: Truck,
+    title: 'Fast & Efficient Delivery',
+    description:
+      'Get your purchases quickly with our reliable delivery network.',
+  },
+  {
+    icon: Users,
+    title: 'Support for Sellers',
+    description: 'Empower your business with our seller-friendly platform.',
+  },
+  {
+    icon: Star,
+    title: 'Customer Satisfaction',
+    description: 'Your happiness is our top priority.',
+  },
+  {
+    icon: Zap,
+    title: 'Sustainability Commitment',
+    description: 'Join us in our efforts for a greener future.',
+  },
+];
+
 export default function AboutUs() {
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
@@ -28,10 +63,10 @@ export default function AboutUs() {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-background to-secondary/20'>
-      <div className='container mx-auto px-4 py-12 max-w-5xl'>
+    <div className='min-h-screen py-8'>
+      <div className='container '>
         <motion.h1
-          className='text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-foreground'
+          className='text-9xl font-bold mb-8 text-center'
           style={{ scale }}
           {...fadeInUp}
         >
@@ -42,7 +77,7 @@ export default function AboutUs() {
           <h2 className='text-3xl font-semibold mb-4'>
             Welcome to Our Community
           </h2>
-          <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
+          <p className='text-xl max-w-3xl  mx-auto text-balance'>
             At Meyazone, we're more than just a platform – we're a thriving
             ecosystem that connects customers, sellers, and drivers. Our
             marketplace is built on the foundation of mutual growth and success
@@ -53,13 +88,13 @@ export default function AboutUs() {
         <motion.section className='mb-16' {...fadeInUp}>
           <div className='relative h-64 mb-8 rounded-xl overflow-hidden'>
             <Image
-              src='/placeholder.svg?height=400&width=800'
+              src='/article-1.jpg'
               alt='Marketplace community'
               layout='fill'
               objectFit='cover'
             />
-            <div className='absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent flex items-center p-8'>
-              <h2 className='text-3xl font-bold text-white max-w-md'>
+            <div className='absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent flex items-center p-8'>
+              <h2 className='text-3xl font-bold text-slate-900 max-w-md'>
                 Our Mission: Simplifying Commerce for Everyone
               </h2>
             </div>
@@ -77,42 +112,7 @@ export default function AboutUs() {
             Why Choose Meyazone?
           </h2>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {[
-              {
-                icon: Globe,
-                title: 'Variety of Products',
-                description:
-                  'Access a wide range of products from diverse sellers.',
-              },
-              {
-                icon: Lock,
-                title: 'Secure Transactions',
-                description:
-                  'Shop with confidence knowing your transactions are protected.',
-              },
-              {
-                icon: Truck,
-                title: 'Fast & Efficient Delivery',
-                description:
-                  'Get your purchases quickly with our reliable delivery network.',
-              },
-              {
-                icon: Users,
-                title: 'Support for Sellers',
-                description:
-                  'Empower your business with our seller-friendly platform.',
-              },
-              {
-                icon: Star,
-                title: 'Customer Satisfaction',
-                description: 'Your happiness is our top priority.',
-              },
-              {
-                icon: Zap,
-                title: 'Sustainability Commitment',
-                description: 'Join us in our efforts for a greener future.',
-              },
-            ].map((item, index) => (
+            {data.map((item, index) => (
               <Card key={index} className='overflow-hidden group'>
                 <CardContent className='p-6'>
                   <motion.div
@@ -239,9 +239,10 @@ export default function AboutUs() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href={'/shop'}
-              className={` bg-gradient-to-r from-primary to-primary-foreground text-white  ${buttonVariants(
-                { variant: 'default', size: 'lg' }
-              )}`}
+              className={`   ${buttonVariants({
+                variant: 'default',
+                size: 'lg',
+              })}`}
             >
               Shop now
               <ArrowRight className='ml-2 h-4 w-4' />
@@ -256,7 +257,7 @@ export default function AboutUs() {
           </p>
           <Link
             href='/contact'
-            className='text-primary hover:text-primary-foreground transition-colors duration-300 text-lg font-semibold'
+            className='text-primary hover:translate-y-3 transition-all duration-300 text-lg font-semibold'
           >
             Contact our support team
           </Link>
