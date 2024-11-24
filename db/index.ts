@@ -1649,7 +1649,7 @@ const blogPosts: BlogPost[] = [
     customTitle: 'Booster vos ventes en ligne',
     tags: ['ventes', 'stratégie', 'e-commerce'],
     author: 'Marie Lefebvre',
-    publishDate: new Date('2024-01-05'),
+    publishDate: '2024-01-05',
   },
   {
     id: '2',
@@ -1661,7 +1661,7 @@ const blogPosts: BlogPost[] = [
     videoUrl: 'https://example.com/video1.mp4',
     tags: ['paiement', 'plateforme', 'e-commerce'],
     author: 'Pierre Dubois',
-    publishDate: new Date('2024-02-10'),
+    publishDate: '2024-02-10',
   },
   {
     id: '3',
@@ -1673,7 +1673,7 @@ const blogPosts: BlogPost[] = [
     customTitle: 'Avis clients et e-commerce',
     tags: ['SEO', 'référencement', 'e-commerce'],
     author: 'Sophie Martin',
-    publishDate: new Date('2024-03-15'),
+    publishDate: '2024-03-15',
   },
   {
     id: '4',
@@ -1685,7 +1685,7 @@ const blogPosts: BlogPost[] = [
     imageUrl: 'https://example.com/image4.jpg',
     tags: ['avis clients', 'confiance', 'e-commerce'],
     author: 'Luc Durand',
-    publishDate: new Date('2024-04-20'),
+    publishDate: '2024-04-20',
   },
   {
     id: '5',
@@ -1697,7 +1697,7 @@ const blogPosts: BlogPost[] = [
     imageUrl: 'https://example.com/image5.jpg',
     tags: ['tendances', 'e-commerce', '2024'],
     author: 'Julie Bernard',
-    publishDate: new Date('2024-05-12'),
+    publishDate: '2024-05-12',
   },
   {
     id: '6',
@@ -1709,7 +1709,7 @@ const blogPosts: BlogPost[] = [
     tags: ['erreurs', 'conseils', 'e-commerce'],
     customTitle: 'Choisir le bon CMS pour votre e-commerce',
     author: 'Jean Dupont',
-    publishDate: new Date('2024-06-25'),
+    publishDate: '2024-06-25',
   },
   {
     id: '7',
@@ -1721,7 +1721,7 @@ const blogPosts: BlogPost[] = [
     videoUrl: 'https://example.com/video2.mp4',
     tags: ['UX', 'conversion', 'e-commerce'],
     author: 'Camille Richard',
-    publishDate: new Date('2024-07-30'),
+    publishDate: '2024-07-30',
   },
   {
     id: '8',
@@ -1733,7 +1733,7 @@ const blogPosts: BlogPost[] = [
     imageUrl: 'https://example.com/image8.jpg',
     tags: ['marketing', 'influence', 'e-commerce'],
     author: 'Antoine Laurent',
-    publishDate: new Date('2024-08-18'),
+    publishDate: '2024-08-18',
   },
   {
     id: '9',
@@ -1745,7 +1745,7 @@ const blogPosts: BlogPost[] = [
     imageUrl: 'https://example.com/image9.jpg',
     tags: ['CMS', 'comparatif', 'e-commerce'],
     author: 'Isabelle Rousseau',
-    publishDate: new Date('2024-09-05'),
+    publishDate: '2024-09-05',
   },
   {
     id: '10',
@@ -1757,7 +1757,7 @@ const blogPosts: BlogPost[] = [
     customTitle: 'Choisir le bon CMS pour votre e-commerce',
     tags: ['gestion', 'inventaire', 'e-commerce'],
     author: 'Alexandre Fournier',
-    publishDate: new Date('2024-10-15'),
+    publishDate: '2024-10-15',
   },
 ];
 
@@ -1815,6 +1815,45 @@ const recentOrders = [
     customer: 'Charlie Davis',
     status: 'In Progress',
     amount: '$249',
+  },
+];
+
+export const trendingItems = [
+  {
+    imageUrl: '/product-67.png',
+    title: 'Vintage Leather Jacket',
+    price: 129.99,
+    rating: 4.7,
+    salesCount: 1234,
+    description:
+      'Classic vintage leather jacket with a modern twist. Perfect for any casual occasion.',
+  },
+  {
+    imageUrl: '/product-12.png',
+    title: 'Smart Home Security Camera',
+    price: 79.99,
+    rating: 4.5,
+    salesCount: 987,
+    description:
+      'High-definition smart security camera with night vision and two-way audio.',
+  },
+  {
+    imageUrl: '/product-32.png',
+    title: 'Wireless Noise-Canceling Headphones',
+    price: 199.99,
+    rating: 4.8,
+    salesCount: 2345,
+    description:
+      'Premium wireless headphones with active noise cancellation and 30-hour battery life.',
+  },
+  {
+    imageUrl: '/product-45.png',
+    title: 'Organic Skincare Set',
+    price: 59.99,
+    rating: 4.6,
+    salesCount: 876,
+    description:
+      'Luxurious organic skincare set including cleanser, toner, and moisturizer.',
   },
 ];
 
