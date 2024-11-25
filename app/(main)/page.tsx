@@ -6,21 +6,11 @@ import { BrandsImages, CategroryLinks } from '@/db';
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  ArrowRight,
-  ChevronLeft,
-  Eye,
-  Heart,
-  Repeat,
-  ShoppingCart,
-  Star,
-  ChevronRight,
-} from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -47,8 +37,6 @@ import Pricing from '@/sections/PricingSection';
 
 import { getSubCategories } from '@/utils/getSubCategories';
 import { getAllProducts } from '@/utils/getProducts';
-import formatPrice from '@/utils/formatPrice';
-import { useCurrencyStore } from '@/store/useCurrencyStore';
 import ProductCard from '@/components/customs/ProductCard';
 import TrendingProducts from '@/sections/trending-products';
 export const metadeta: Metadata = {
@@ -65,7 +53,6 @@ const Home = () => {
   const BestSellersProducts = useMemo(() => products.slice(0, 10), [products]);
   const CategoriesProducts = useMemo(() => products.slice(30, 36), [products]);
   const subCategories = getSubCategories();
-  const { currency } = useCurrencyStore();
 
   return (
     <>
@@ -77,7 +64,7 @@ const Home = () => {
       >
         <Hero />
       </section>
-      <section className='py-8 dark:bg-slate-900  bg-gray-300/15'>
+      <section className='py-8 '>
         <FeaturedCategories subCategories={subCategories} />
       </section>
       {/* top products section */}
@@ -85,7 +72,7 @@ const Home = () => {
       {/* tab sections*/}
       <section className=' container w-full gap-5 grid grid-cols-3 overflow-hidden pb-5'>
         <div className='col-span-1 flex flex-col gap-2'>
-          <Card className='cursor-pointer rounded dark:bg-slate-900'>
+          <Card className='cursor-pointer rounded '>
             <CardHeader>
               <CardTitle className='font-light'>Offer special</CardTitle>
             </CardHeader>
@@ -215,7 +202,6 @@ const Home = () => {
             ))}
           </ul>
         </nav>
-        {/* [&>*:nth-child(2)]:col-start-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(2)]:row-start-1 [&>*:nth-child(2)]:row-end-3 */}
         <div className=' grid grid-cols-4 gap-2 mt-4 [&>*:nth-child(2)]:col-span-2 [&>*:nth-child(2)]:col-end-4 [&>*:nth-child(5)]:col-start-2 [&>*:nth-child(5)]:col-end-4'>
           {CategoriesProducts.map((product) => {
             const { id, name, details, oldPrice, price, image } = product;
